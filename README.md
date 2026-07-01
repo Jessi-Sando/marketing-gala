@@ -22,6 +22,6 @@ print(es_par(6))            # True
 
 No requiere dependencias externas. Solo Python 3.8+.
 
-## Contibución   
+## Contribución
 
 ¡Las contribuciones son bienvenidas! Por favor abre un issue antes de enviar un PR.
