@@ -1,0 +1,355 @@
+:root {
+  --bg: #0f0f0e;
+  --bg-elevated: #171715;
+  --bg-card: #1c1c19;
+  --border: #2c2c28;
+  --text: #ececE6;
+  --text-muted: #9a9a92;
+  --text-faint: #6f6f68;
+  --accent: #C9A84C;
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Topbar ---------- */
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding: 1.75rem 2rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: 0.02em;
+}
+
+.brand span {
+  color: var(--accent);
+  transition: color 0.25s ease;
+}
+
+.period {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Tabs ---------- */
+
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elevated);
+  scrollbar-width: thin;
+}
+
+.tab {
+  flex: 0 0 auto;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.tab:hover {
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.tab--active {
+  color: var(--bg);
+  background: var(--tab-accent, var(--accent));
+  border-color: var(--tab-accent, var(--accent));
+  font-weight: 600;
+}
+
+/* ---------- Main content ---------- */
+
+main#content {
+  padding: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.unit-header {
+  margin-bottom: 1.5rem;
+}
+
+.unit-title {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+  color: var(--text);
+  border-left: 4px solid var(--accent);
+  padding-left: 0.75rem;
+}
+
+.unit-subtitle {
+  margin: 0;
+  padding-left: 1rem;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+}
+
+/* ---------- Info block ---------- */
+
+.info-block {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.info-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.info-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.info-value {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.info-value--objective {
+  font-style: italic;
+  color: var(--text);
+}
+
+/* ---------- Months grid ---------- */
+
+.months-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.month-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem 1.1rem 1.3rem;
+}
+
+.month-card__label {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0 0 0.9rem;
+  color: var(--accent);
+}
+
+.item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+/* ---------- Card items ---------- */
+
+.card-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.8rem 0.9rem;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.card-item--highlight {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent) inset;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.card-item--pendiente {
+  border-style: dashed;
+  border-color: var(--text-faint);
+  background: transparent;
+}
+
+.card-item--colaboracion {
+  border-left: 3px solid #6C5CE7;
+}
+
+.item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.item-meta {
+  font-size: 0.76rem;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.15rem;
+}
+
+.item-title {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.98rem;
+  margin: 0 0 0.25rem;
+  color: var(--text);
+}
+
+.item-desc {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Tags ---------- */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-muted);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.tag--sorteo { background: rgba(201, 168, 76, 0.15); color: #d9bc6c; }
+.tag--contenido { background: rgba(120, 170, 200, 0.15); color: #8fb8d6; }
+.tag--accion { background: rgba(196, 98, 26, 0.18); color: #e0935a; }
+.tag--campana { background: rgba(139, 38, 53, 0.2); color: #e08d97; }
+.tag--lanzamiento { background: rgba(108, 92, 231, 0.18); color: #b0a4f3; }
+.tag--la-experiencia { background: linear-gradient(90deg, rgba(201,168,76,0.25), rgba(201,168,76,0.08)); color: #e6cf8f; border-color: rgba(201,168,76,0.4); }
+.tag--colaboracion { background: rgba(108, 92, 231, 0.2); color: #b0a4f3; }
+.tag--ecommerce { background: rgba(46, 174, 173, 0.18); color: #7fd6d4; }
+.tag--promocion { background: rgba(59, 109, 17, 0.2); color: #9ed36b; }
+.tag--produccion { background: rgba(160, 120, 80, 0.2); color: #d3b795; }
+.tag--posicionamiento { background: rgba(12, 68, 124, 0.25); color: #7fb2e6; }
+.tag--humand { background: rgba(154, 154, 146, 0.18); color: #c4c4bc; }
+.tag--box-de-comida { background: rgba(196, 98, 26, 0.18); color: #e0935a; }
+
+.tag--pautar,
+.tag--pautar-selectivo {
+  background: transparent;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tag--pendiente {
+  background: transparent;
+  border: 1px dashed var(--text-faint);
+  color: var(--text-faint);
+}
+
+/* ---------- Pendientes generales ---------- */
+
+.pendientes-generales {
+  margin-top: 1.75rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px dashed var(--text-faint);
+  border-radius: 10px;
+}
+
+.pendientes-generales__label {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+  color: var(--text-muted);
+}
+
+.pendientes-generales ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.pendientes-generales li {
+  margin-bottom: 0.3rem;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--text-faint);
+  font-size: 0.78rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 980px) {
+  .months-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    padding: 1.25rem 1.25rem 1rem;
+  }
+
+  main#content {
+    padding: 1.25rem;
+  }
+
+  .unit-title {
+    font-size: 1.6rem;
+  }
+}
