@@ -1,6 +1,7 @@
 // Render del dashboard a partir de UNITS (data.js). Sin backend, sin build step.
 
-const MONTH_LABELS = { julio: "Julio", agosto: "Agosto", septiembre: "Septiembre" };
+const MONTH_LABELS = { junio: "Junio", julio: "Julio", agosto: "Agosto", septiembre: "Septiembre" };
+const MONTH_ORDER = ["junio", "julio", "agosto", "septiembre"];
 
 const DIACRITICS_RE = new RegExp("[\\u0300-\\u036f]", "g");
 
@@ -35,6 +36,9 @@ function renderItem(item) {
 
   const metaHtml = item.meta ? `<div class="item-meta">${item.highlight ? "★ " : ""}${item.meta}</div>` : (item.highlight ? `<div class="item-meta">★</div>` : "");
   const descHtml = item.desc ? `<p class="item-desc">${item.desc}</p>` : "";
+  const statsHtml = (typeof item.likes === "number" || typeof item.views === "number")
+    ? `<div class="item-stats">${typeof item.likes === "number" ? `<span>❤ ${item.likes}</span>` : ""}${typeof item.views === "number" ? `<span>▶ ${item.views}</span>` : ""}${typeof item.comments === "number" ? `<span>💬 ${item.comments}</span>` : ""}</div>`
+    : "";
 
   return `
     <li class="${classes}">
@@ -42,18 +46,20 @@ function renderItem(item) {
       ${metaHtml}
       <h4 class="item-title">${item.title}</h4>
       ${descHtml}
+      ${statsHtml}
     </li>
   `;
 }
 
 function renderMonthCard(monthKey, items) {
-  if (!items || items.length === 0) return "";
+  if (!items) return "";
+  const body = items.length === 0
+    ? `<p class="month-card__empty">Sin publicaciones registradas este mes.</p>`
+    : `<ul class="item-list">${items.map(renderItem).join("")}</ul>`;
   return `
     <section class="month-card">
       <h3 class="month-card__label">${MONTH_LABELS[monthKey]}</h3>
-      <ul class="item-list">
-        ${items.map(renderItem).join("")}
-      </ul>
+      ${body}
     </section>
   `;
 }
@@ -90,7 +96,7 @@ function renderUnit(unit) {
     </div>
     ${renderInfoBlock(unit)}
     <div class="months-grid">
-      ${["julio", "agosto", "septiembre"].map((m) => renderMonthCard(m, unit.months[m])).join("")}
+      ${MONTH_ORDER.map((m) => renderMonthCard(m, unit.months[m])).join("")}
     </div>
     ${renderPendientesGenerales(unit.pendientesGenerales)}
   `;

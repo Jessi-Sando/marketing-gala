@@ -8,6 +8,16 @@ const UNITS = [
     subtitle: "7 salas · cuenta única centralizada · Mundial de la Suerte → La Experiencia (Sala Central)",
     accent: "#C9A84C",
     months: {
+      junio: [
+        { tags: ["contenido", "pautar"], meta: "1 jun", title: "Anuncio Sorteo Sala Castelli", desc: "El Mundial de la Suerte arranca en Sala Castelli · 11 de junio · Smart TV, celular, auriculares", likes: 7 },
+        { tags: ["contenido"], meta: "2 jun", title: "Cupones BOXIE acumulados", desc: "No canjees tus cupones, sumalos para el Mundial de la Suerte · motos, Smart TV, celular, camiseta", likes: 20 },
+        { tags: ["contenido", "pautar"], meta: "4 jun", title: "Anuncio Sorteo Sala Ruta 11", desc: "\"No alcanza con entrar a la cancha\" · próxima parada Sala Ruta 11 · 17 de junio", likes: 22 },
+        { tags: ["contenido"], meta: "5 jun", title: "Sorteo Sala Ruta 11 — premios", desc: "Smart TV 43\", celular, auriculares · 17 de junio", likes: 9 },
+        { tags: ["contenido", "pautar"], meta: "10 jun", title: "Anuncio Sorteo Sala Güemes", desc: "Moto 110cc, Smart TV, $300.000 en Boxie · 26 de junio", likes: 7 },
+        { tags: ["contenido"], meta: "21 jun", title: "Promo BOXIE previa del partido", desc: "Lunes 22, de 12 a 18 hs: duplicás puntos y baja el precio de canje", likes: 6 },
+        { tags: ["contenido"], meta: "24 jun", title: "Argentina ya sumó 2 victorias", desc: "Anticipo Sala Barranqueras · 7 de julio · Smart TV, celular, auriculares", likes: 3 },
+        { tags: ["contenido"], meta: "30 jun", title: "Ganadores de Castelli y Ruta 11", desc: "Resumen de ganadores · anticipo próxima fecha en Sala Barranqueras · 7 de julio", likes: 14 }
+      ],
       julio: [
         { tags: ["sorteo", "pautar"], meta: "1 jul · Sala Fontana", title: "Sorteo Mundial", desc: "Premios propios de sala · BOXIE" },
         { tags: ["sorteo", "pautar"], meta: "7 jul · Sala Barranqueras", title: "Sorteo Mundial", desc: "Premios propios de sala · BOXIE" },
@@ -41,6 +51,13 @@ const UNITS = [
     accent: "#8B2635",
     channels: "Pedidos Ya · FUDO · Riservi · Teléfono · Recepción hotel · Paquete fidelización (en desarrollo)",
     months: {
+      junio: [
+        { tags: ["contenido"], meta: "1 jun", title: "Sugerencia del Chef", desc: "Solomillo glaseado a la barbacoa con chips de boniato frito · $20.000", likes: 8 },
+        { tags: ["colaboración", "contenido"], meta: "8 jun", title: "Sapori e Vino — agradecimiento", desc: "Recap de la cena maridaje italiana junto a Bodega Séptima (evento del 3 de junio)", likes: 24 },
+        { tags: ["promoción"], meta: "11 jun", title: "Promo Día del Padre", desc: "2x1 en botellas de Terrazas de los Andes Reserva Malbec", likes: 4 },
+        { tags: ["contenido"], meta: "12 jun", title: "Sugerencia del Chef", desc: "Lomo braseado con risotto de hongos y nueces · $28.700", likes: 5 },
+        { tags: ["promoción"], meta: "19 jun", title: "Día del Padre", desc: "Papá recibe una copa de vino de regalo con su almuerzo o cena", likes: 4 }
+      ],
       julio: [
         { tags: ["contenido", "pautar"], meta: "28 jun–7 jul", title: "Lanzamiento Cena Temática Argentina", desc: "Flyer feed · historia · copy WhatsApp · carga Riservi · Humand" },
         { tags: ["cena temática", "pautar"], highlight: true, meta: "8 jul", title: "Cena Temática Argentina", desc: "Bodega Terrazas de los Andes · Sommelier Carlos Daownie · menú por pasos · maridaje" },
@@ -68,6 +85,14 @@ const UNITS = [
     accent: "#C4621A",
     channels: "FUDO · Riservi · Teléfono / recepción",
     months: {
+      junio: [
+        { tags: ["contenido", "pautar"], meta: "9 jun", title: "Anuncio Cena Maridaje Ruca Malén", desc: "19 de junio · Sommelier Carlos Downie · menú de 3 pasos", likes: 14 },
+        { tags: ["contenido", "pautar"], meta: "12 jun", title: "Anuncio Cena Maridaje Ruca Malén", desc: "Segunda pieza de la campaña · 19 de junio · $40.000 por persona", likes: 61, comments: 2 },
+        { tags: ["promoción"], meta: "19 jun", title: "Día del Padre", desc: "Copa de vino de regalo para acompañar el almuerzo o cena", likes: 1 },
+        { tags: ["contenido"], meta: "22 jun", title: "Cena Maridaje Ruca Malén — recap", desc: "Reel de la experiencia junto a Bodega Ruca Malén", likes: 23 },
+        { tags: ["contenido"], meta: "24 jun", title: "Cena Maridaje Ruca Malén — fotos", desc: "Agradecimiento a los asistentes de la cena maridaje", likes: 21, comments: 3 },
+        { tags: ["contenido"], meta: "25 jun", title: "Sugerencia del Chef", desc: "Suprema a la Riojana con papas cuñas · $19.000", likes: 13, comments: 1 }
+      ],
       julio: [
         { tags: ["cena maridaje", "evento especial", "pautar"], meta: "Fecha a confirmar · julio", title: "Desafío de Sommelier", desc: "2 sommeliers (Juan Chichizola y El Tano) · 2 vinos · cata a ciegas · los clientes votan al ganador" },
         { tags: ["contenido"], meta: "10 días antes del evento", title: "Presentación Juan Chichizola", desc: "Quién es · su propuesta · generar expectativa" },
@@ -103,6 +128,11 @@ const UNITS = [
     objective: "Que cuando alguien decida venir a Resistencia, Amerian sea la única opción que tenga en la cabeza.",
     pilares: "Habitaciones · Servicios (piscina, spa, gimnasio, bar) · Gastronomía (Valentino) · Ubicación céntrica",
     months: {
+      junio: [
+        { tags: ["contenido"], meta: "7 jun", title: "Testimonio de Carmen Barbieri", desc: "Video agradeciendo su estadía junto a su equipo de trabajo (mención de una figura pública)", likes: 275 },
+        { tags: ["colaboración"], meta: "9 jun", title: "Evento privado — CPCE Chaco", desc: "Fiesta del Consejo Profesional de Ciencias Económicas del Chaco, mencionada por el proveedor de barra", likes: 57 },
+        { tags: ["colaboración"], meta: "12 jun", title: "Evento \"Geral\"", desc: "Presentación registrada por Magina Films en el hotel", likes: 120 }
+      ],
       julio: [
         { tags: ["producción"], meta: "Todo julio", title: "Sesión de fotos y video", desc: "Habitaciones · piscina · spa · bar · lobby · Valentino · exteriores. Banco para los 3 meses." },
         { tags: ["contenido", "pautar"], meta: "Julio", title: "Presentación del hotel", desc: "Serie de piezas por espacio. Con fotos existentes mientras llega el material nuevo." },
@@ -134,6 +164,11 @@ const UNITS = [
     objective: "El lugar de Resistencia donde pasan los eventos que importan.",
     pilares: "Convenciones · Alojamiento · Gastronomía (Ruta 11) · Recepciones",
     months: {
+      junio: [
+        { tags: ["colaboración"], meta: "17 jun", title: "Mención en Ciudad TV Chaco", desc: "Nota sobre la Cena Maridaje de Resto Ruta 11 con el sommelier Carlos Downie", likes: 18 },
+        { tags: ["colaboración"], meta: "18 jun", title: "Evento — boda", desc: "Fotógrafo de bodas etiqueta al hotel como sede del evento", likes: 59 },
+        { tags: ["pendiente"], meta: "", title: "Cuenta propia con poca publicación directa", desc: "En junio casi todo el contenido llegó por etiquetas de proveedores/prensa, no publicaciones propias" }
+      ],
       julio: [
         { tags: ["producción"], meta: "Todo julio", title: "Sesión de fotos y video", desc: "Salones · habitaciones · exteriores · Ruta 11 · lobby." },
         { tags: ["contenido", "pautar"], meta: "Julio", title: "Presentación del hotel", desc: "Serie de piezas por espacio con fotos existentes." },
@@ -164,6 +199,7 @@ const UNITS = [
     objective: "Que los padres entiendan que con Gala Recepciones tienen todo en un solo lugar — y que usar la plataforma es lo más cómodo que existe.",
     channels: "WhatsApp (principal) · Redes sociales (novedades) · Ecommerce (eventosgala.com.ar)",
     months: {
+      junio: [],
       julio: [
         { tags: ["promoción", "pautar"], meta: "1–17 jul", title: "5% de descuento en ecommerce", desc: "Para padres que paguen online hasta el 17 de julio." },
         { tags: ["promoción", "WhatsApp"], meta: "17 jul", title: "Extensión una semana más", desc: "“Extendemos el descuento hasta el 24 de julio.” Comunicar ese mismo día." },
@@ -182,6 +218,9 @@ const UNITS = [
         { tags: ["promoción"], meta: "Septiembre", title: "Acción del mes", desc: "A definir. Puede vincularse al BOX o al cierre de pagos." },
         { tags: ["contenido", "pautar"], meta: "Septiembre", title: "Redes · detrás de escena", desc: "Preparativos, salones, detalles de una recepción Gala." }
       ]
-    }
+    },
+    pendientesGenerales: [
+      "Junio sin publicaciones en Instagram: el último post antes de julio fue el 8 de mayo. Evaluar si retomar cadencia mensual."
+    ]
   }
 ];
