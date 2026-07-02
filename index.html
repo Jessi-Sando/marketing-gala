@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
   <header class="topbar">
@@ -40,6 +40,15 @@
         <input type="url" id="panel-drive" placeholder="https://drive.google.com/..." />
       </label>
 
+      <div class="panel-field">
+        <span>Lista de tareas</span>
+        <ul id="panel-tasks" class="panel-tasks"></ul>
+        <div class="panel-tasks__add">
+          <input type="text" id="panel-task-input" placeholder="Nueva tarea..." />
+          <button type="button" id="panel-task-add" class="panel-btn">+ Agregar</button>
+        </div>
+      </div>
+
       <div class="panel-checks">
         <label><input type="checkbox" id="panel-terminado" /> Terminado</label>
         <label><input type="checkbox" id="panel-publicado" /> Publicado</label>
@@ -58,7 +67,7 @@
     </div>
   </div>
 
-  <script src="data.js?v=2"></script>
-  <script src="app.js?v=2"></script>
+  <script src="data.js?v=3"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>

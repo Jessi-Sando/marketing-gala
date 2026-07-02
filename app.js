@@ -16,7 +16,7 @@ function slugify(str) {
 // ---------- Panel colaborativo (prototipo, guardado local en el navegador) ----------
 
 const PANEL_STORAGE_PREFIX = "galaDashboardPanel::";
-const PANEL_DEFAULT_STATE = { copy: "", drive: "", terminado: false, publicado: false, pautado: false, sugerencia: "" };
+const PANEL_DEFAULT_STATE = { copy: "", drive: "", tasks: [], terminado: false, publicado: false, pautado: false, sugerencia: "" };
 
 function panelKey(unitId, monthKey, item) {
   return unitId + "::" + monthKey + "::" + slugify(item.title + "-" + (item.meta || ""));
@@ -64,10 +64,13 @@ function renderItem(unitId, monthKey, item) {
 
   const key = panelKey(unitId, monthKey, item);
   const panel = loadPanelState(key);
+  const taskTotal = (panel.tasks || []).length;
+  const taskDone = (panel.tasks || []).filter((t) => t.done).length;
   const badges = [
     panel.terminado ? `<span class="status-badge status-badge--terminado">✓ Terminado</span>` : "",
     panel.publicado ? `<span class="status-badge status-badge--publicado">✓ Publicado</span>` : "",
-    panel.pautado ? `<span class="status-badge status-badge--pautado">✓ Pautado</span>` : ""
+    panel.pautado ? `<span class="status-badge status-badge--pautado">✓ Pautado</span>` : "",
+    taskTotal > 0 ? `<span class="status-badge status-badge--tasks${taskDone === taskTotal ? " status-badge--tasks-complete" : ""}">☑ ${taskDone}/${taskTotal} tareas</span>` : ""
   ].filter(Boolean).join("");
   const badgesHtml = badges ? `<div class="status-badges">${badges}</div>` : "";
 
@@ -154,10 +157,42 @@ function setActiveTab(unitId) {
 // ---------- Modal del panel colaborativo ----------
 
 let activePanelKey = null;
+let currentTasks = [];
+
+function renderTaskList() {
+  const list = document.getElementById("panel-tasks");
+  if (currentTasks.length === 0) {
+    list.innerHTML = `<li class="panel-tasks__empty">Todavía no hay tareas cargadas.</li>`;
+    return;
+  }
+  list.innerHTML = currentTasks
+    .map(
+      (t) => `
+        <li class="panel-tasks__item${t.done ? " panel-tasks__item--done" : ""}" data-task-id="${t.id}">
+          <label>
+            <input type="checkbox" class="panel-tasks__check" data-task-id="${t.id}" ${t.done ? "checked" : ""} />
+            <span class="panel-tasks__text">${t.text}</span>
+          </label>
+          <button type="button" class="panel-tasks__delete" data-task-id="${t.id}" aria-label="Eliminar tarea">✕</button>
+        </li>
+      `
+    )
+    .join("");
+}
+
+function addTask() {
+  const input = document.getElementById("panel-task-input");
+  const text = input.value.trim();
+  if (!text) return;
+  currentTasks.push({ id: String(Date.now()) + Math.random().toString(36).slice(2), text, done: false });
+  input.value = "";
+  renderTaskList();
+}
 
 function openPanelModal(key, title, subtitle) {
   const state = loadPanelState(key);
   activePanelKey = key;
+  currentTasks = (state.tasks || []).map((t) => Object.assign({}, t));
   document.getElementById("panel-modal-title").textContent = title;
   document.getElementById("panel-modal-subtitle").textContent = subtitle || "";
   document.getElementById("panel-copy").value = state.copy;
@@ -166,12 +201,14 @@ function openPanelModal(key, title, subtitle) {
   document.getElementById("panel-publicado").checked = state.publicado;
   document.getElementById("panel-pautado").checked = state.pautado;
   document.getElementById("panel-sugerencia").value = state.sugerencia;
+  renderTaskList();
   document.getElementById("panel-modal").hidden = false;
 }
 
 function closePanelModal() {
   document.getElementById("panel-modal").hidden = true;
   activePanelKey = null;
+  currentTasks = [];
 }
 
 function savePanelModal() {
@@ -179,6 +216,7 @@ function savePanelModal() {
   savePanelState(activePanelKey, {
     copy: document.getElementById("panel-copy").value,
     drive: document.getElementById("panel-drive").value,
+    tasks: currentTasks,
     terminado: document.getElementById("panel-terminado").checked,
     publicado: document.getElementById("panel-publicado").checked,
     pautado: document.getElementById("panel-pautado").checked,
@@ -203,6 +241,30 @@ function initPanelModal() {
   });
 
   document.getElementById("panel-save").addEventListener("click", savePanelModal);
+
+  document.getElementById("panel-task-add").addEventListener("click", addTask);
+  document.getElementById("panel-task-input").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      addTask();
+    }
+  });
+
+  document.getElementById("panel-tasks").addEventListener("click", (e) => {
+    const del = e.target.closest(".panel-tasks__delete");
+    if (del) {
+      currentTasks = currentTasks.filter((t) => t.id !== del.dataset.taskId);
+      renderTaskList();
+    }
+  });
+
+  document.getElementById("panel-tasks").addEventListener("change", (e) => {
+    const check = e.target.closest(".panel-tasks__check");
+    if (!check) return;
+    const task = currentTasks.find((t) => t.id === check.dataset.taskId);
+    if (task) task.done = check.checked;
+    renderTaskList();
+  });
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !document.getElementById("panel-modal").hidden) closePanelModal();
