@@ -7,6 +7,8 @@ const UNITS = [
     name: "Casino Gala",
     subtitle: "7 salas · cuenta única centralizada · Mundial de la Suerte → La Experiencia (Sala Central)",
     accent: "#C9A84C",
+    objective: "Posicionar a Casino Gala como la principal experiencia de entretenimiento de la región, aumentando tráfico a salas, recurrencia de juego y fidelización mediante beneficios exclusivos.",
+    pilares: "Sorteos y activaciones · Pozos activos · Ganadores reales · Experiencia en sala · Beneficios Boxie · Comunidad de jugadores",
     months: {
       junio: [
         { tags: ["contenido", "pautar"], meta: "1 jun", title: "Anuncio Sorteo Sala Castelli", desc: "El Mundial de la Suerte arranca en Sala Castelli · 11 de junio · Smart TV, celular, auriculares", likes: 7 },
@@ -55,6 +57,8 @@ const UNITS = [
     name: "Valentino Restaurant",
     subtitle: "Amerian Hotel Casino Gala · cenas temáticas mensuales · delivery · reservas Riservi",
     accent: "#8B2635",
+    objective: "Que Valentino sea percibido como el restaurante premium de referencia en Resistencia para vivir experiencias gastronómicas memorables.",
+    pilares: "Platos destacados · Chef y cocina · Maridajes · Eventos especiales · Experiencia gourmet",
     channels: "Pedidos Ya · FUDO · Riservi · Teléfono · Recepción hotel · Paquete fidelización (en desarrollo)",
     months: {
       junio: [
@@ -89,6 +93,8 @@ const UNITS = [
     name: "Resto Ruta 11",
     subtitle: "Gala Hotel & Convenciones · Desafío de Sommelier · FUDO · Riservi",
     accent: "#C4621A",
+    objective: "Que Ruta 11 sea la parada gastronómica elegida para disfrutar buena comida en un entorno relajado y diferencial.",
+    pilares: "Menú diario · Platos estrella · Promociones · Eventos especiales · Experiencia del lugar",
     channels: "FUDO · Riservi · Teléfono / recepción",
     months: {
       junio: [
@@ -131,8 +137,8 @@ const UNITS = [
     name: "Amerian Hotel Casino Gala",
     subtitle: "Posicionamiento de marca · colaboración con Valentino Restaurant · generación de banco visual",
     accent: "#0C447C",
-    objective: "Que cuando alguien decida venir a Resistencia, Amerian sea la única opción que tenga en la cabeza.",
-    pilares: "Habitaciones · Servicios (piscina, spa, gimnasio, bar) · Gastronomía (Valentino) · Ubicación céntrica",
+    objective: "Que cuando alguien decida venir a Resistencia, Amerian sea la primera opción que tenga en la cabeza.",
+    pilares: "Habitaciones · Servicios (spa, piscina, gimnasio, bar) · Gastronomía (Valentino) · Ubicación estratégica · Experiencia premium",
     months: {
       junio: [
         { tags: ["contenido"], meta: "7 jun", title: "Testimonio de Carmen Barbieri", desc: "Video agradeciendo su estadía junto a su equipo de trabajo (mención de una figura pública)", likes: 275 },
@@ -167,8 +173,8 @@ const UNITS = [
     name: "Gala Hotel & Convenciones",
     subtitle: "Posicionamiento · eventos y convenciones · colaboración con Resto Ruta 11 · generación de banco visual",
     accent: "#3B6D11",
-    objective: "El lugar de Resistencia donde pasan los eventos que importan.",
-    pilares: "Convenciones · Alojamiento · Gastronomía (Ruta 11) · Recepciones",
+    objective: "Posicionar a Gala Hotel como el espacio ideal para hospedaje, eventos y experiencias de alto nivel en la región.",
+    pilares: "Habitaciones · Servicios · Salones y eventos · Gastronomía · Experiencias corporativas y sociales",
     months: {
       junio: [
         { tags: ["colaboración"], meta: "17 jun", title: "Mención en Ciudad TV Chaco", desc: "Nota sobre la Cena Maridaje de Resto Ruta 11 con el sommelier Carlos Downie", likes: 18 },
@@ -202,7 +208,8 @@ const UNITS = [
     name: "Gala Recepciones",
     subtitle: "17 noches nov–dic · educación ecommerce · acciones mensuales · BOX de comida en septiembre",
     accent: "#72243E",
-    objective: "Que los padres entiendan que con Gala Recepciones tienen todo en un solo lugar — y que usar la plataforma es lo más cómodo que existe.",
+    objective: "Posicionar a Gala como el lugar de referencia para eventos sociales y corporativos, ofreciendo experiencias memorables de principio a fin.",
+    pilares: "Eventos realizados · Salones · Montajes y ambientación · Testimonios · Producción integral · Experiencias memorables",
     channels: "WhatsApp (principal) · Redes sociales (novedades) · Ecommerce (eventosgala.com.ar)",
     months: {
       junio: [],
