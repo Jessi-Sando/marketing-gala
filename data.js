@@ -20,8 +20,10 @@ const UNITS = [
       ],
       julio: [
         { tags: ["contenido"], meta: "2 jul", title: "Argentina ya está en 16avos", desc: "Anticipo Sala Sáenz Peña · 14 de julio · Moto 110, Smart TV, $300.000 en créditos Boxie" },
-        { tags: ["sorteo", "pautar"], meta: "1 jul · Sala Fontana", title: "Sorteo Mundial", desc: "Premios propios de sala · BOXIE" },
+        { tags: ["contenido", "pautar"], meta: "3 jul", title: "Carrusel ganadores Sala Güemes", desc: "Resultados y ganadores del sorteo del 26 de junio" },
+        { tags: ["contenido", "pautar"], meta: "6 jul · lunes", title: "Reel — lo que vamos viviendo", desc: "Clima y ambiente de campaña del Mundial de la Suerte" },
         { tags: ["sorteo", "pautar"], meta: "7 jul · Sala Barranqueras", title: "Sorteo Mundial", desc: "Premios propios de sala · BOXIE" },
+        { tags: ["sorteo", "campaña", "pautar"], meta: "8 jul · martes", title: "Anuncio Sorteo Final", desc: "Comunicación del Gran Sorteo Final en Sala Central" },
         { tags: ["sorteo", "pautar"], meta: "14 jul · Sala Sáenz Peña", title: "Sorteo Mundial", desc: "Premios propios de sala · BOXIE" },
         { tags: ["sorteo", "campaña", "pautar"], highlight: true, meta: "19 jul · Sala Central 21:00 hs", title: "Gran Sorteo Final", desc: "Cierre Mundial de la Suerte · anuncio sorpresa La Experiencia al final de la noche" },
         { tags: ["lanzamiento", "pautar"], meta: "20 jul · Sala Central", title: "Lanzamiento La Experiencia", desc: "Primera pieza digital · imagen ruleta EGT · crédito promo en ruleta · tragos en blackjack con dealer" },
