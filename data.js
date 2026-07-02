@@ -7,6 +7,7 @@ const UNITS = [
     name: "Casino Gala",
     subtitle: "7 salas · cuenta única centralizada · Mundial de la Suerte → La Experiencia (Sala Central)",
     accent: "#C9A84C",
+    logo: "assets/logos/casino-gala.png",
     objective: "Posicionar a Casino Gala como la principal experiencia de entretenimiento de la región, aumentando tráfico a salas, recurrencia de juego y fidelización mediante beneficios exclusivos.",
     pilares: "Sorteos y activaciones · Pozos activos · Ganadores reales · Experiencia en sala · Beneficios Boxie · Comunidad de jugadores",
     months: {
@@ -57,6 +58,7 @@ const UNITS = [
     name: "Valentino Restaurant",
     subtitle: "Amerian Hotel Casino Gala · cenas temáticas mensuales · delivery · reservas Riservi",
     accent: "#8B2635",
+    logo: "assets/logos/valentino.png",
     objective: "Que Valentino sea percibido como el restaurante premium de referencia en Resistencia para vivir experiencias gastronómicas memorables.",
     pilares: "Platos destacados · Chef y cocina · Maridajes · Eventos especiales · Experiencia gourmet",
     channels: "Pedidos Ya · FUDO · Riservi · Teléfono · Recepción hotel · Paquete fidelización (en desarrollo)",
@@ -93,6 +95,7 @@ const UNITS = [
     name: "Resto Ruta 11",
     subtitle: "Gala Hotel & Convenciones · Desafío de Sommelier · FUDO · Riservi",
     accent: "#C4621A",
+    logo: "assets/logos/resto-ruta-11.png",
     objective: "Que Ruta 11 sea la parada gastronómica elegida para disfrutar buena comida en un entorno relajado y diferencial.",
     pilares: "Menú diario · Platos estrella · Promociones · Eventos especiales · Experiencia del lugar",
     channels: "FUDO · Riservi · Teléfono / recepción",
@@ -137,6 +140,7 @@ const UNITS = [
     name: "Amerian Hotel Casino Gala",
     subtitle: "Posicionamiento de marca · colaboración con Valentino Restaurant · generación de banco visual",
     accent: "#0C447C",
+    logo: "assets/logos/amerian.png",
     objective: "Que cuando alguien decida venir a Resistencia, Amerian sea la primera opción que tenga en la cabeza.",
     pilares: "Habitaciones · Servicios (spa, piscina, gimnasio, bar) · Gastronomía (Valentino) · Ubicación estratégica · Experiencia premium",
     months: {
@@ -173,6 +177,7 @@ const UNITS = [
     name: "Gala Hotel & Convenciones",
     subtitle: "Posicionamiento · eventos y convenciones · colaboración con Resto Ruta 11 · generación de banco visual",
     accent: "#3B6D11",
+    logo: "assets/logos/gala-hotel-convenciones.png",
     objective: "Posicionar a Gala Hotel como el espacio ideal para hospedaje, eventos y experiencias de alto nivel en la región.",
     pilares: "Habitaciones · Servicios · Salones y eventos · Gastronomía · Experiencias corporativas y sociales",
     months: {

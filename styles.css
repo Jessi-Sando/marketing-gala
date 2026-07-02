@@ -43,15 +43,14 @@ body {
 }
 
 .brand {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.6rem;
-  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
 }
 
-.brand span {
-  color: var(--accent-ink);
-  transition: color 0.25s ease;
+.brand__logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 .period {
@@ -114,7 +113,23 @@ main#content {
 }
 
 .unit-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
   margin-bottom: 1.5rem;
+}
+
+.unit-logo {
+  max-height: 72px;
+  max-width: 140px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.unit-header__text {
+  min-width: 0;
 }
 
 .unit-title {
@@ -663,5 +678,10 @@ main#content {
 
   .unit-title {
     font-size: 1.6rem;
+  }
+
+  .unit-logo {
+    max-height: 48px;
+    max-width: 90px;
   }
 }
