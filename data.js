@@ -25,10 +25,11 @@ const UNITS = [
         { tags: ["sorteo"], meta: "7 jul · Sala Barranqueras", title: "Sorteo Mundial", desc: "Premios propios de sala · BOXIE" },
         { tags: ["sorteo", "campaña", "pautar"], meta: "8 jul · martes", title: "Anuncio Sorteo Final", desc: "Comunicación del Gran Sorteo Final en Sala Central" },
         { tags: ["sorteo", "pautar"], meta: "9 jul · jueves", title: "Ganadores Sala Barranqueras", desc: "Publicación de los ganadores del sorteo del 7 de julio" },
+        { tags: ["lanzamiento", "pautar"], meta: "12 jul", title: "Lanzamiento La Experiencia", desc: "Adelantado para invitar por redes antes del primer miércoles · imagen ruleta EGT · crédito promo en ruleta · tragos en blackjack con dealer" },
         { tags: ["sorteo", "pautar"], meta: "14 jul · Sala Sáenz Peña", title: "Sorteo Mundial", desc: "Premios propios de sala · BOXIE" },
         { tags: ["sorteo", "campaña", "pautar"], highlight: true, meta: "19 jul · Sala Central 21:00 hs", title: "Gran Sorteo Final", desc: "Cierre Mundial de la Suerte · anuncio sorpresa La Experiencia al final de la noche" },
-        { tags: ["lanzamiento", "pautar"], meta: "20 jul · Sala Central", title: "Lanzamiento La Experiencia", desc: "Primera pieza digital · imagen ruleta EGT · crédito promo en ruleta · tragos en blackjack con dealer" },
         { tags: ["sorteo", "campaña", "pautar"], meta: "21 jul", title: "Resumen Sorteo Final", desc: "Recap del Gran Sorteo Final en Sala Central" },
+        { tags: ["La Experiencia", "contenido", "pautar"], meta: "22 jul · miércoles", title: "Recordamos el primer día de La Experiencia", desc: "Recap de la primera noche · recordatorio: La Experiencia es todos los miércoles" },
         { tags: ["contenido"], meta: "Todo julio", title: "Publicación casi diaria", desc: "Sala → premios → ganadores al día siguiente → próximo sorteo → BOXIE" }
       ],
       agosto: [
