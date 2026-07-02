@@ -13,6 +13,28 @@ function slugify(str) {
     .replace(/(^-|-$)/g, "");
 }
 
+// ---------- Panel colaborativo (prototipo, guardado local en el navegador) ----------
+
+const PANEL_STORAGE_PREFIX = "galaDashboardPanel::";
+const PANEL_DEFAULT_STATE = { copy: "", drive: "", terminado: false, publicado: false, pautado: false, sugerencia: "" };
+
+function panelKey(unitId, monthKey, item) {
+  return unitId + "::" + monthKey + "::" + slugify(item.title + "-" + (item.meta || ""));
+}
+
+function loadPanelState(key) {
+  try {
+    const raw = localStorage.getItem(PANEL_STORAGE_PREFIX + key);
+    return raw ? Object.assign({}, PANEL_DEFAULT_STATE, JSON.parse(raw)) : Object.assign({}, PANEL_DEFAULT_STATE);
+  } catch (e) {
+    return Object.assign({}, PANEL_DEFAULT_STATE);
+  }
+}
+
+function savePanelState(key, state) {
+  localStorage.setItem(PANEL_STORAGE_PREFIX + key, JSON.stringify(state));
+}
+
 function renderTags(tags) {
   return tags
     .map((tag) => {
@@ -24,7 +46,7 @@ function renderTags(tags) {
     .join("");
 }
 
-function renderItem(item) {
+function renderItem(unitId, monthKey, item) {
   const isPendiente = item.tags.includes("pendiente");
   const isColaboracion = item.tags.includes("colaboración");
   const classes = [
@@ -40,6 +62,15 @@ function renderItem(item) {
     ? `<div class="item-stats">${typeof item.likes === "number" ? `<span>❤ ${item.likes}</span>` : ""}${typeof item.views === "number" ? `<span>▶ ${item.views}</span>` : ""}${typeof item.comments === "number" ? `<span>💬 ${item.comments}</span>` : ""}</div>`
     : "";
 
+  const key = panelKey(unitId, monthKey, item);
+  const panel = loadPanelState(key);
+  const badges = [
+    panel.terminado ? `<span class="status-badge status-badge--terminado">✓ Terminado</span>` : "",
+    panel.publicado ? `<span class="status-badge status-badge--publicado">✓ Publicado</span>` : "",
+    panel.pautado ? `<span class="status-badge status-badge--pautado">✓ Pautado</span>` : ""
+  ].filter(Boolean).join("");
+  const badgesHtml = badges ? `<div class="status-badges">${badges}</div>` : "";
+
   return `
     <li class="${classes}">
       <div class="item-tags">${renderTags(item.tags)}</div>
@@ -47,15 +78,17 @@ function renderItem(item) {
       <h4 class="item-title">${item.title}</h4>
       ${descHtml}
       ${statsHtml}
+      ${badgesHtml}
+      <button type="button" class="card-item__manage" data-panel-key="${key}" data-panel-title="${item.title.replace(/"/g, "&quot;")}" data-panel-subtitle="${(item.meta || "").replace(/"/g, "&quot;")}">⚙ Gestionar</button>
     </li>
   `;
 }
 
-function renderMonthCard(monthKey, items) {
+function renderMonthCard(unitId, monthKey, items) {
   if (!items) return "";
   const body = items.length === 0
     ? `<p class="month-card__empty">Sin publicaciones registradas este mes.</p>`
-    : `<ul class="item-list">${items.map(renderItem).join("")}</ul>`;
+    : `<ul class="item-list">${items.map((item) => renderItem(unitId, monthKey, item)).join("")}</ul>`;
   return `
     <section class="month-card">
       <h3 class="month-card__label">${MONTH_LABELS[monthKey]}</h3>
@@ -96,11 +129,13 @@ function renderUnit(unit) {
     </div>
     ${renderInfoBlock(unit)}
     <div class="months-grid">
-      ${MONTH_ORDER.map((m) => renderMonthCard(m, unit.months[m])).join("")}
+      ${MONTH_ORDER.map((m) => renderMonthCard(unit.id, m, unit.months[m])).join("")}
     </div>
     ${renderPendientesGenerales(unit.pendientesGenerales)}
   `;
 }
+
+let currentUnitId = null;
 
 function setActiveTab(unitId) {
   document.querySelectorAll(".tab").forEach((btn) => {
@@ -110,9 +145,68 @@ function setActiveTab(unitId) {
   });
   const unit = UNITS.find((u) => u.id === unitId);
   if (unit) {
+    currentUnitId = unitId;
     renderUnit(unit);
     history.replaceState(null, "", `#${unitId}`);
   }
+}
+
+// ---------- Modal del panel colaborativo ----------
+
+let activePanelKey = null;
+
+function openPanelModal(key, title, subtitle) {
+  const state = loadPanelState(key);
+  activePanelKey = key;
+  document.getElementById("panel-modal-title").textContent = title;
+  document.getElementById("panel-modal-subtitle").textContent = subtitle || "";
+  document.getElementById("panel-copy").value = state.copy;
+  document.getElementById("panel-drive").value = state.drive;
+  document.getElementById("panel-terminado").checked = state.terminado;
+  document.getElementById("panel-publicado").checked = state.publicado;
+  document.getElementById("panel-pautado").checked = state.pautado;
+  document.getElementById("panel-sugerencia").value = state.sugerencia;
+  document.getElementById("panel-modal").hidden = false;
+}
+
+function closePanelModal() {
+  document.getElementById("panel-modal").hidden = true;
+  activePanelKey = null;
+}
+
+function savePanelModal() {
+  if (!activePanelKey) return;
+  savePanelState(activePanelKey, {
+    copy: document.getElementById("panel-copy").value,
+    drive: document.getElementById("panel-drive").value,
+    terminado: document.getElementById("panel-terminado").checked,
+    publicado: document.getElementById("panel-publicado").checked,
+    pautado: document.getElementById("panel-pautado").checked,
+    sugerencia: document.getElementById("panel-sugerencia").value
+  });
+  closePanelModal();
+  if (currentUnitId) {
+    const unit = UNITS.find((u) => u.id === currentUnitId);
+    if (unit) renderUnit(unit);
+  }
+}
+
+function initPanelModal() {
+  document.getElementById("content").addEventListener("click", (e) => {
+    const btn = e.target.closest(".card-item__manage");
+    if (!btn) return;
+    openPanelModal(btn.dataset.panelKey, btn.dataset.panelTitle, btn.dataset.panelSubtitle);
+  });
+
+  document.querySelectorAll("[data-close]").forEach((el) => {
+    el.addEventListener("click", closePanelModal);
+  });
+
+  document.getElementById("panel-save").addEventListener("click", savePanelModal);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !document.getElementById("panel-modal").hidden) closePanelModal();
+  });
 }
 
 function renderTabs() {
@@ -128,6 +222,7 @@ function renderTabs() {
 
 function init() {
   renderTabs();
+  initPanelModal();
   const fromHash = window.location.hash.replace("#", "");
   const initialUnit = UNITS.find((u) => u.id === fromHash) ? fromHash : UNITS[0].id;
   setActiveTab(initialUnit);

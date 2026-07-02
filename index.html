@@ -7,12 +7,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2" />
 </head>
 <body>
   <header class="topbar">
     <div class="brand">Gala <span>SA</span></div>
-    <div class="period">Campaña Q3 2026 · Julio – Septiembre</div>
+    <div class="period">Campaña Q3 2026 · Junio – Septiembre</div>
   </header>
 
   <nav class="tabs" id="tabs" role="tablist" aria-label="Unidades de negocio"></nav>
@@ -23,7 +23,42 @@
     <span>Uso interno · Gala SA</span>
   </footer>
 
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <div id="panel-modal" class="panel-modal" hidden>
+    <div class="panel-modal__backdrop" data-close></div>
+    <div class="panel-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="panel-modal-title">
+      <button type="button" class="panel-modal__close" data-close aria-label="Cerrar">✕</button>
+      <h3 class="panel-modal__title" id="panel-modal-title"></h3>
+      <p class="panel-modal__subtitle" id="panel-modal-subtitle"></p>
+
+      <label class="panel-field">
+        <span>Copy</span>
+        <textarea id="panel-copy" rows="4" placeholder="Texto del caption..."></textarea>
+      </label>
+
+      <label class="panel-field">
+        <span>Enlace de Drive (piezas gráficas)</span>
+        <input type="url" id="panel-drive" placeholder="https://drive.google.com/..." />
+      </label>
+
+      <div class="panel-checks">
+        <label><input type="checkbox" id="panel-terminado" /> Terminado</label>
+        <label><input type="checkbox" id="panel-publicado" /> Publicado</label>
+        <label><input type="checkbox" id="panel-pautado" /> Pautado</label>
+      </div>
+
+      <label class="panel-field">
+        <span>Sugerencia de historia</span>
+        <textarea id="panel-sugerencia" rows="3" placeholder="Idea para historia..."></textarea>
+      </label>
+
+      <div class="panel-modal__actions">
+        <span class="panel-modal__hint">Se guarda en este navegador (prototipo, todavía no es colaborativo)</span>
+        <button type="button" id="panel-save" class="panel-btn panel-btn--primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js?v=2"></script>
+  <script src="app.js?v=2"></script>
 </body>
 </html>
