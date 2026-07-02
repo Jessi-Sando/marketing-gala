@@ -19,6 +19,7 @@ const UNITS = [
         { tags: ["contenido"], meta: "30 jun", title: "Ganadores de Castelli y Ruta 11", desc: "Resumen de ganadores · anticipo próxima fecha en Sala Barranqueras · 7 de julio", likes: 14 }
       ],
       julio: [
+        { tags: ["contenido"], meta: "2 jul", title: "Argentina ya está en 16avos", desc: "Anticipo Sala Sáenz Peña · 14 de julio · Moto 110, Smart TV, $300.000 en créditos Boxie" },
         { tags: ["sorteo", "pautar"], meta: "1 jul · Sala Fontana", title: "Sorteo Mundial", desc: "Premios propios de sala · BOXIE" },
         { tags: ["sorteo", "pautar"], meta: "7 jul · Sala Barranqueras", title: "Sorteo Mundial", desc: "Premios propios de sala · BOXIE" },
         { tags: ["sorteo", "pautar"], meta: "14 jul · Sala Sáenz Peña", title: "Sorteo Mundial", desc: "Premios propios de sala · BOXIE" },
