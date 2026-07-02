@@ -1,4 +1,28 @@
-// Render del dashboard a partir de UNITS (data.js). Sin backend, sin build step.
+// Render del dashboard a partir de UNITS (data.js). Panel colaborativo sincronizado con Firestore.
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  onSnapshot,
+  query,
+  where,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCisQKYV9V1nZUIOqYguSgwY8V50HzLMZc",
+  authDomain: "planificacion-mkt-gala.firebaseapp.com",
+  projectId: "planificacion-mkt-gala",
+  storageBucket: "planificacion-mkt-gala.firebasestorage.app",
+  messagingSenderId: "432195342946",
+  appId: "1:432195342946:web:9f60a12f79f116decbb73b"
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
 
 const MONTH_LABELS = { junio: "Junio", julio: "Julio", agosto: "Agosto", septiembre: "Septiembre" };
 const MONTH_ORDER = ["junio", "julio", "agosto", "septiembre"];
@@ -13,26 +37,53 @@ function slugify(str) {
     .replace(/(^-|-$)/g, "");
 }
 
-// ---------- Panel colaborativo (prototipo, guardado local en el navegador) ----------
+// ---------- Panel colaborativo (sincronizado en tiempo real con Firestore) ----------
 
-const PANEL_STORAGE_PREFIX = "galaDashboardPanel::";
 const PANEL_DEFAULT_STATE = { copy: "", drive: "", tasks: [], terminado: false, publicado: false, pautado: false, sugerencia: "" };
 
 function panelKey(unitId, monthKey, item) {
   return unitId + "::" + monthKey + "::" + slugify(item.title + "-" + (item.meta || ""));
 }
 
-function loadPanelState(key) {
-  try {
-    const raw = localStorage.getItem(PANEL_STORAGE_PREFIX + key);
-    return raw ? Object.assign({}, PANEL_DEFAULT_STATE, JSON.parse(raw)) : Object.assign({}, PANEL_DEFAULT_STATE);
-  } catch (e) {
-    return Object.assign({}, PANEL_DEFAULT_STATE);
-  }
+let panelCache = {};
+let unsubscribePanels = null;
+
+function getPanelState(key) {
+  return Object.assign({}, PANEL_DEFAULT_STATE, panelCache[key] || {});
 }
 
-function savePanelState(key, state) {
-  localStorage.setItem(PANEL_STORAGE_PREFIX + key, JSON.stringify(state));
+function subscribeToUnitPanels(unitId) {
+  if (unsubscribePanels) {
+    unsubscribePanels();
+    unsubscribePanels = null;
+  }
+  panelCache = {};
+  const q = query(collection(db, "panels"), where("unitId", "==", unitId));
+  unsubscribePanels = onSnapshot(
+    q,
+    (snapshot) => {
+      const next = {};
+      snapshot.forEach((docSnap) => {
+        next[docSnap.id] = docSnap.data();
+      });
+      panelCache = next;
+      if (currentUnitId === unitId) {
+        const unit = UNITS.find((u) => u.id === unitId);
+        if (unit) renderUnit(unit);
+      }
+    },
+    (err) => {
+      console.error("Error al sincronizar el panel colaborativo:", err);
+    }
+  );
+}
+
+async function savePanelToFirestore(key, unitId, monthKey, state) {
+  await setDoc(
+    doc(db, "panels", key),
+    Object.assign({}, state, { unitId, monthKey, updatedAt: serverTimestamp() }),
+    { merge: true }
+  );
 }
 
 function renderTags(tags) {
@@ -63,7 +114,7 @@ function renderItem(unitId, monthKey, item) {
     : "";
 
   const key = panelKey(unitId, monthKey, item);
-  const panel = loadPanelState(key);
+  const panel = getPanelState(key);
   const taskTotal = (panel.tasks || []).length;
   const taskDone = (panel.tasks || []).filter((t) => t.done).length;
   const badges = [
@@ -82,7 +133,7 @@ function renderItem(unitId, monthKey, item) {
       ${descHtml}
       ${statsHtml}
       ${badgesHtml}
-      <button type="button" class="card-item__manage" data-panel-key="${key}" data-panel-title="${item.title.replace(/"/g, "&quot;")}" data-panel-subtitle="${(item.meta || "").replace(/"/g, "&quot;")}">⚙ Gestionar</button>
+      <button type="button" class="card-item__manage" data-panel-key="${key}" data-panel-unit="${unitId}" data-panel-month="${monthKey}" data-panel-title="${item.title.replace(/"/g, "&quot;")}" data-panel-subtitle="${(item.meta || "").replace(/"/g, "&quot;")}">⚙ Gestionar</button>
     </li>
   `;
 }
@@ -150,6 +201,7 @@ function setActiveTab(unitId) {
   if (unit) {
     currentUnitId = unitId;
     renderUnit(unit);
+    subscribeToUnitPanels(unitId);
     history.replaceState(null, "", `#${unitId}`);
   }
 }
@@ -157,6 +209,8 @@ function setActiveTab(unitId) {
 // ---------- Modal del panel colaborativo ----------
 
 let activePanelKey = null;
+let activePanelUnitId = null;
+let activePanelMonthKey = null;
 let currentTasks = [];
 
 function renderTaskList() {
@@ -189,9 +243,11 @@ function addTask() {
   renderTaskList();
 }
 
-function openPanelModal(key, title, subtitle) {
-  const state = loadPanelState(key);
+function openPanelModal(key, unitId, monthKey, title, subtitle) {
+  const state = getPanelState(key);
   activePanelKey = key;
+  activePanelUnitId = unitId;
+  activePanelMonthKey = monthKey;
   currentTasks = (state.tasks || []).map((t) => Object.assign({}, t));
   document.getElementById("panel-modal-title").textContent = title;
   document.getElementById("panel-modal-subtitle").textContent = subtitle || "";
@@ -202,18 +258,23 @@ function openPanelModal(key, title, subtitle) {
   document.getElementById("panel-pautado").checked = state.pautado;
   document.getElementById("panel-sugerencia").value = state.sugerencia;
   renderTaskList();
+  const errorEl = document.getElementById("panel-modal-error");
+  errorEl.hidden = true;
+  errorEl.textContent = "";
   document.getElementById("panel-modal").hidden = false;
 }
 
 function closePanelModal() {
   document.getElementById("panel-modal").hidden = true;
   activePanelKey = null;
+  activePanelUnitId = null;
+  activePanelMonthKey = null;
   currentTasks = [];
 }
 
-function savePanelModal() {
+async function savePanelModal() {
   if (!activePanelKey) return;
-  savePanelState(activePanelKey, {
+  const state = {
     copy: document.getElementById("panel-copy").value,
     drive: document.getElementById("panel-drive").value,
     tasks: currentTasks,
@@ -221,11 +282,21 @@ function savePanelModal() {
     publicado: document.getElementById("panel-publicado").checked,
     pautado: document.getElementById("panel-pautado").checked,
     sugerencia: document.getElementById("panel-sugerencia").value
-  });
-  closePanelModal();
-  if (currentUnitId) {
-    const unit = UNITS.find((u) => u.id === currentUnitId);
-    if (unit) renderUnit(unit);
+  };
+  const saveBtn = document.getElementById("panel-save");
+  const errorEl = document.getElementById("panel-modal-error");
+  saveBtn.disabled = true;
+  saveBtn.textContent = "Guardando...";
+  try {
+    await savePanelToFirestore(activePanelKey, activePanelUnitId, activePanelMonthKey, state);
+    closePanelModal();
+  } catch (err) {
+    console.error("Error al guardar el panel:", err);
+    errorEl.textContent = "No se pudo guardar. Revisá tu conexión e intentá de nuevo.";
+    errorEl.hidden = false;
+  } finally {
+    saveBtn.disabled = false;
+    saveBtn.textContent = "Guardar";
   }
 }
 
@@ -233,7 +304,7 @@ function initPanelModal() {
   document.getElementById("content").addEventListener("click", (e) => {
     const btn = e.target.closest(".card-item__manage");
     if (!btn) return;
-    openPanelModal(btn.dataset.panelKey, btn.dataset.panelTitle, btn.dataset.panelSubtitle);
+    openPanelModal(btn.dataset.panelKey, btn.dataset.panelUnit, btn.dataset.panelMonth, btn.dataset.panelTitle, btn.dataset.panelSubtitle);
   });
 
   document.querySelectorAll("[data-close]").forEach((el) => {

@@ -536,6 +536,12 @@ main#content {
   font-style: italic;
 }
 
+.panel-modal__error {
+  margin: 0.7rem 0 0;
+  font-size: 0.8rem;
+  color: #7A2130;
+}
+
 .panel-btn {
   font-family: var(--font-body);
   font-size: 0.86rem;

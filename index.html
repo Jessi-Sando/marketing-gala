@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
   <header class="topbar">
@@ -61,13 +61,14 @@
       </label>
 
       <div class="panel-modal__actions">
-        <span class="panel-modal__hint">Se guarda en este navegador (prototipo, todavía no es colaborativo)</span>
+        <span class="panel-modal__hint">Se guarda en la nube · lo ve todo el equipo en tiempo real</span>
         <button type="button" id="panel-save" class="panel-btn panel-btn--primary">Guardar</button>
       </div>
+      <p class="panel-modal__error" id="panel-modal-error" hidden></p>
     </div>
   </div>
 
-  <script src="data.js?v=3"></script>
-  <script src="app.js?v=3"></script>
+  <script src="data.js?v=4"></script>
+  <script type="module" src="app.js?v=4"></script>
 </body>
 </html>
