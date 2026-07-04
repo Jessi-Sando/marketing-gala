@@ -160,18 +160,6 @@ function renderInfoBlock(unit) {
   return `<div class="info-block">${rows.join("")}</div>`;
 }
 
-function renderPendientesGenerales(list) {
-  if (!list || list.length === 0) return "";
-  return `
-    <section class="pendientes-generales">
-      <h3 class="pendientes-generales__label">Pendientes</h3>
-      <ul>
-        ${list.map((text) => `<li>${text}</li>`).join("")}
-      </ul>
-    </section>
-  `;
-}
-
 function renderUnit(unit) {
   const content = document.getElementById("content");
   document.documentElement.style.setProperty("--accent", unit.accent);
@@ -187,7 +175,6 @@ function renderUnit(unit) {
     <div class="months-grid">
       ${MONTH_ORDER.map((m) => renderMonthCard(unit.id, m, unit.months[m])).join("")}
     </div>
-    ${renderPendientesGenerales(unit.pendientesGenerales)}
   `;
 }
 

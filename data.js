@@ -47,11 +47,7 @@ const UNITS = [
         { tags: ["contenido"], meta: "Todo septiembre", title: "BOXIE · pozos · Premium Martes", desc: "Contenido de fidelización permanente" },
         { tags: ["pendiente"], meta: "", title: "Nueva campaña masiva Q4", desc: "Diseñar en septiembre para lanzar en octubre" }
       ]
-    },
-    pendientesGenerales: [
-      "Confirmar premios exactos por sala (Fontana, Barranqueras, Sáenz Peña)",
-      "Confirmar si habrá evento especial en septiembre (DJ, ambientación)"
-    ]
+    }
   },
   {
     id: "valentino-restaurant",
@@ -129,11 +125,7 @@ const UNITS = [
         { tags: ["canales"], meta: "Septiembre", title: "Recordatorio FUDO + Riservi", desc: "" },
         { tags: ["contenido", "pautar selectivo"], meta: "Septiembre", title: "Contenido behind the scenes", desc: "Cocina · chef en acción · reels cortos" }
       ]
-    },
-    pendientesGenerales: [
-      "Confirmar fecha del Desafío de Sommelier",
-      "Confirmar nombres completos y bodegas de los dos sommeliers"
-    ]
+    }
   },
   {
     id: "amerian-hotel",
@@ -237,9 +229,6 @@ const UNITS = [
         { tags: ["promoción"], meta: "Septiembre", title: "Acción del mes", desc: "A definir. Puede vincularse al BOX o al cierre de pagos." },
         { tags: ["contenido", "pautar"], meta: "Septiembre", title: "Redes · detrás de escena", desc: "Preparativos, salones, detalles de una recepción Gala." }
       ]
-    },
-    pendientesGenerales: [
-      "Junio sin publicaciones en Instagram: el último post antes de julio fue el 8 de mayo. Evaluar si retomar cadencia mensual."
-    ]
+    }
   }
 ];
