@@ -213,6 +213,7 @@ const UNITS = [
     name: "Gala Recepciones",
     subtitle: "17 noches nov–dic · educación ecommerce · acciones mensuales · BOX de comida en septiembre",
     accent: "#72243E",
+    logo: "assets/logos/gala-recepciones.png",
     objective: "Posicionar a Gala como el lugar de referencia para eventos sociales y corporativos, ofreciendo experiencias memorables de principio a fin.",
     pilares: "Eventos realizados · Salones · Montajes y ambientación · Testimonios · Producción integral · Experiencias memorables",
     channels: "WhatsApp (principal) · Redes sociales (novedades) · Ecommerce (eventosgala.com.ar)",

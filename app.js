@@ -181,10 +181,7 @@ function renderUnit(unit) {
   content.innerHTML = `
     <div class="unit-header">
       ${logoHtml}
-      <div class="unit-header__text">
-        <h2 class="unit-title">${unit.name}</h2>
-        <p class="unit-subtitle">${unit.subtitle}</p>
-      </div>
+      <h2 class="unit-title">${unit.name}</h2>
     </div>
     ${renderInfoBlock(unit)}
     <div class="months-grid">
