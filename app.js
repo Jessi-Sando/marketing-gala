@@ -138,16 +138,20 @@ function renderItem(unitId, monthKey, item) {
   `;
 }
 
-function renderMonthCard(unitId, monthKey, items) {
-  if (!items) return "";
-  const body = items.length === 0
-    ? `<p class="month-card__empty">Sin publicaciones registradas este mes.</p>`
-    : `<ul class="item-list">${items.map((item) => renderItem(unitId, monthKey, item)).join("")}</ul>`;
+function renderCardsGrid(unitId, monthKey, items) {
+  if (!items || items.length === 0) {
+    return `<p class="cards-empty">Sin publicaciones registradas este mes.</p>`;
+  }
+  return `<ul class="cards-grid">${items.map((item) => renderItem(unitId, monthKey, item)).join("")}</ul>`;
+}
+
+function renderMonthTabs(unitId) {
   return `
-    <section class="month-card">
-      <h3 class="month-card__label">${MONTH_LABELS[monthKey]}</h3>
-      ${body}
-    </section>
+    <div class="month-tabs" role="tablist" aria-label="Mes">
+      ${MONTH_ORDER.map(
+        (m) => `<button type="button" class="month-tab${m === currentMonthKey ? " month-tab--active" : ""}" role="tab" aria-selected="${m === currentMonthKey}" data-month="${m}">${MONTH_LABELS[m]}</button>`
+      ).join("")}
+    </div>
   `;
 }
 
@@ -172,13 +176,22 @@ function renderUnit(unit) {
       <h2 class="unit-title">${unit.name}</h2>
     </div>
     ${renderInfoBlock(unit)}
-    <div class="months-grid">
-      ${MONTH_ORDER.map((m) => renderMonthCard(unit.id, m, unit.months[m])).join("")}
-    </div>
+    ${renderMonthTabs(unit.id)}
+    ${renderCardsGrid(unit.id, currentMonthKey, unit.months[currentMonthKey])}
   `;
 }
 
 let currentUnitId = null;
+let currentMonthKey = "julio";
+
+function setActiveMonth(monthKey) {
+  if (monthKey === currentMonthKey) return;
+  currentMonthKey = monthKey;
+  if (currentUnitId) {
+    const unit = UNITS.find((u) => u.id === currentUnitId);
+    if (unit) renderUnit(unit);
+  }
+}
 
 function setActiveTab(unitId) {
   document.querySelectorAll(".tab").forEach((btn) => {
@@ -289,6 +302,14 @@ async function savePanelModal() {
   }
 }
 
+function initMonthTabs() {
+  document.getElementById("content").addEventListener("click", (e) => {
+    const monthBtn = e.target.closest(".month-tab");
+    if (!monthBtn) return;
+    setActiveMonth(monthBtn.dataset.month);
+  });
+}
+
 function initPanelModal() {
   document.getElementById("content").addEventListener("click", (e) => {
     const btn = e.target.closest(".card-item__manage");
@@ -344,6 +365,7 @@ function renderTabs() {
 
 function init() {
   renderTabs();
+  initMonthTabs();
   initPanelModal();
   const fromHash = window.location.hash.replace("#", "");
   const initialUnit = UNITS.find((u) => u.id === fromHash) ? fromHash : UNITS[0].id;
