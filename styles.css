@@ -414,7 +414,7 @@ main#content {
   margin-bottom: 1rem;
 }
 
-.panel-field span {
+.panel-field > span {
   display: block;
   font-size: 0.78rem;
   font-weight: 600;
@@ -422,8 +422,8 @@ main#content {
   margin-bottom: 0.35rem;
 }
 
-.panel-field textarea,
-.panel-field input {
+.panel-field > textarea,
+.panel-field > input {
   width: 100%;
   font-family: var(--font-body);
   font-size: 0.88rem;
@@ -435,8 +435,8 @@ main#content {
   resize: vertical;
 }
 
-.panel-field textarea:focus,
-.panel-field input:focus {
+.panel-field > textarea:focus,
+.panel-field > input:focus {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
 }
@@ -473,9 +473,20 @@ main#content {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
   font-size: 0.86rem;
   color: var(--text);
   cursor: pointer;
+}
+
+.panel-tasks__item label input[type="checkbox"] {
+  flex-shrink: 0;
+}
+
+.panel-tasks__text {
+  flex: 1;
+  min-width: 0;
 }
 
 .panel-tasks__item--done .panel-tasks__text {
