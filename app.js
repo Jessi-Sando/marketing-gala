@@ -86,13 +86,21 @@ async function savePanelToFirestore(key, unitId, monthKey, state) {
   );
 }
 
+const TAG_ICONS = {
+  pautar: "📣 ",
+  "auto-detectado": "🔍 ",
+  reel: "🎬 ",
+  flyer: "🖼️ ",
+  carrusel: "📑 "
+};
+
 function renderTags(tags) {
   return tags
     .map((tag) => {
       const slug = slugify(tag);
       const isPendiente = slug === "pendiente";
-      const isPautar = slug.startsWith("pautar");
-      return `<span class="tag tag--${slug}${isPendiente ? " tag--pendiente" : ""}">${isPautar ? "📣 " : ""}${tag}</span>`;
+      const icon = Object.keys(TAG_ICONS).find((key) => slug === key || (key === "pautar" && slug.startsWith("pautar")));
+      return `<span class="tag tag--${slug}${isPendiente ? " tag--pendiente" : ""}">${icon ? TAG_ICONS[icon] : ""}${tag}</span>`;
     })
     .join("");
 }

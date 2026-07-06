@@ -622,6 +622,10 @@ main#content {
 .tag--posicionamiento { background: rgba(12, 68, 124, 0.16); color: #0C447C; }
 .tag--humand { background: rgba(120, 115, 100, 0.18); color: #55524A; }
 .tag--box-de-comida { background: rgba(196, 98, 26, 0.18); color: #8A4413; }
+.tag--reel { background: rgba(108, 92, 231, 0.16); color: #4B3AAE; }
+.tag--flyer { background: rgba(120, 115, 100, 0.18); color: #55524A; }
+.tag--carrusel { background: rgba(24, 140, 138, 0.18); color: #1D6E6C; }
+.tag--auto-detectado { background: transparent; border: 1px solid var(--text-faint); color: var(--text-faint); }
 
 .tag--pautar,
 .tag--pautar-selectivo {
