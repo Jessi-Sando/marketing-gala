@@ -163,6 +163,118 @@ function renderMonthTabs(unitId) {
   `;
 }
 
+// ---------- Métricas por unidad ----------
+
+function computeMetrics(unit) {
+  let totalLikes = 0;
+  let totalViews = 0;
+  let totalShares = 0;
+  let postCount = 0;
+  for (const monthKey of MONTH_ORDER) {
+    for (const item of unit.months[monthKey] || []) {
+      if (typeof item.likes !== "number") continue;
+      postCount += 1;
+      totalLikes += item.likes;
+      if (typeof item.views === "number") totalViews += item.views;
+      if (typeof item.shares === "number") totalShares += item.shares;
+    }
+  }
+  return { totalLikes, totalViews, totalShares, postCount };
+}
+
+function renderMetrics(unit) {
+  const m = computeMetrics(unit);
+  if (m.postCount === 0) return "";
+  return `
+    <section class="metrics-section">
+      <h3 class="metrics-title">Métricas</h3>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span class="metric-value">${m.totalLikes.toLocaleString("es-AR")}</span>
+          <span class="metric-label">❤ Likes totales</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value">${m.totalViews.toLocaleString("es-AR")}</span>
+          <span class="metric-label">▶ Reproducciones totales</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value">${m.totalShares.toLocaleString("es-AR")}</span>
+          <span class="metric-label">↗ Compartidos totales</span>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+// ---------- Home: próximas publicaciones ----------
+
+const MONTH_NUM = { ene: 0, feb: 1, mar: 2, abr: 3, may: 4, jun: 5, jul: 6, ago: 7, sep: 8, oct: 9, nov: 10, dic: 11 };
+
+function parseMetaDate(meta) {
+  const match = /^(\d{1,2})\s+(ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)/i.exec(meta || "");
+  if (!match) return null;
+  const month = MONTH_NUM[match[2].toLowerCase()];
+  if (month === undefined) return null;
+  return new Date(2026, month, parseInt(match[1], 10));
+}
+
+function getUpcomingForUnit(unit, limit) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const upcoming = [];
+  for (const monthKey of MONTH_ORDER) {
+    for (const item of unit.months[monthKey] || []) {
+      if (typeof item.likes === "number") continue; // ya publicado, no es "próxima"
+      const date = parseMetaDate(item.meta);
+      if (!date || date < today) continue;
+      upcoming.push({ item, date });
+    }
+  }
+  upcoming.sort((a, b) => a.date - b.date);
+  return upcoming.slice(0, limit).map((u) => u.item);
+}
+
+function renderHome() {
+  const content = document.getElementById("content");
+  document.documentElement.style.setProperty("--accent", "#C9A84C");
+
+  const cardsHtml = UNITS.map((unit) => {
+    const upcoming = getUpcomingForUnit(unit, 2);
+    const logoHtml = unit.logo ? `<img src="${unit.logo}" alt="${unit.name}" class="home-unit-logo" />` : "";
+    const itemsHtml = upcoming.length
+      ? upcoming
+          .map(
+            (item) => `
+              <li class="home-alert-item">
+                <span class="home-alert-date">${item.meta}</span>
+                <span class="home-alert-title">${item.title}</span>
+                <div class="home-alert-tags">${renderTags(item.tags)}</div>
+              </li>
+            `
+          )
+          .join("")
+      : `<li class="home-alert-empty">Sin próximas publicaciones cargadas.</li>`;
+
+    return `
+      <div class="home-unit-card" style="--accent:${unit.accent}">
+        <div class="home-unit-card__header">
+          ${logoHtml}
+          <span class="home-unit-card__name">${unit.name}</span>
+        </div>
+        <ul class="home-alert-list">${itemsHtml}</ul>
+      </div>
+    `;
+  }).join("");
+
+  content.innerHTML = `
+    <div class="home-header">
+      <h2 class="home-title">Próximas publicaciones</h2>
+      <p class="home-subtitle">Las próximas 2 piezas pendientes de cada unidad</p>
+    </div>
+    <div class="home-grid">${cardsHtml}</div>
+  `;
+}
+
 function renderInfoBlock(unit) {
   const rows = [];
   if (unit.objective) rows.push(`<div class="info-row"><span class="info-label">Objetivo estratégico</span><p class="info-value info-value--objective">“${unit.objective}”</p></div>`);
@@ -186,6 +298,7 @@ function renderUnit(unit) {
     ${renderInfoBlock(unit)}
     ${renderMonthTabs(unit.id)}
     ${renderCardsGrid(unit.id, currentMonthKey, unit.months[currentMonthKey])}
+    ${renderMetrics(unit)}
   `;
 }
 
@@ -207,9 +320,21 @@ function setActiveTab(unitId) {
     btn.classList.toggle("tab--active", active);
     btn.setAttribute("aria-selected", active ? "true" : "false");
   });
+
+  currentUnitId = unitId;
+
+  if (unitId === "inicio") {
+    if (unsubscribePanels) {
+      unsubscribePanels();
+      unsubscribePanels = null;
+    }
+    renderHome();
+    history.replaceState(null, "", "#inicio");
+    return;
+  }
+
   const unit = UNITS.find((u) => u.id === unitId);
   if (unit) {
-    currentUnitId = unitId;
     renderUnit(unit);
     subscribeToUnitPanels(unitId);
     history.replaceState(null, "", `#${unitId}`);
@@ -362,9 +487,11 @@ function initPanelModal() {
 
 function renderTabs() {
   const tabs = document.getElementById("tabs");
-  tabs.innerHTML = UNITS.map(
+  const homeTab = `<button class="tab tab--home" role="tab" data-unit="inicio">Inicio</button>`;
+  const unitTabs = UNITS.map(
     (unit) => `<button class="tab" role="tab" data-unit="${unit.id}" style="--tab-accent:${unit.accent}">${unit.name}</button>`
   ).join("");
+  tabs.innerHTML = homeTab + unitTabs;
 
   tabs.querySelectorAll(".tab").forEach((btn) => {
     btn.addEventListener("click", () => setActiveTab(btn.dataset.unit));
@@ -376,7 +503,8 @@ function init() {
   initMonthTabs();
   initPanelModal();
   const fromHash = window.location.hash.replace("#", "");
-  const initialUnit = UNITS.find((u) => u.id === fromHash) ? fromHash : UNITS[0].id;
+  const validIds = ["inicio"].concat(UNITS.map((u) => u.id));
+  const initialUnit = validIds.includes(fromHash) ? fromHash : "inicio";
   setActiveTab(initialUnit);
 }
 

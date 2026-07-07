@@ -60,8 +60,8 @@ const UNITS = [
     channels: "Pedidos Ya · FUDO · Riservi · Teléfono · Recepción hotel · Paquete fidelización (en desarrollo)",
     months: {
       junio: [
-        { tags: ["reel", "auto-detectado"], meta: "4 jun", title: "Así se vivió 𝑺𝒂𝒑𝒐𝒓𝒊 𝒆 𝑽𝒊𝒏𝒐 en Valentino Restaurant", desc: "🇮🇹🍷 Así se vivió 𝑺𝒂𝒑𝒐𝒓𝒊 𝒆 𝑽𝒊𝒏𝒐 en Valentino Restaurant 🇮🇹🍷 . Vivimos una experiencia gastronómica única donde los sabores más auténticos...", likes: 51, igId: "DZKrWGDgkHd" },
-        { tags: ["carrusel", "auto-detectado"], meta: "27 jun", title: "CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores...", desc: "🍷🇦🇷 CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores 🇦🇷⁣⁣⁣⁣ ⁣⁣⁣⁣ Te invitamos a vivir una Cena de Maridaje con Temática...", likes: 17, igId: "DaGa54UH5OC" },
+        { tags: ["reel", "auto-detectado"], meta: "4 jun", title: "Así se vivió 𝑺𝒂𝒑𝒐𝒓𝒊 𝒆 𝑽𝒊𝒏𝒐 en Valentino Restaurant", desc: "🇮🇹🍷 Así se vivió 𝑺𝒂𝒑𝒐𝒓𝒊 𝒆 𝑽𝒊𝒏𝒐 en Valentino Restaurant 🇮🇹🍷 . Vivimos una experiencia gastronómica única donde los sabores más auténticos...", likes: 51, igId: "DZKrWGDgkHd", shares: 20, views: 1918 },
+        { tags: ["carrusel", "auto-detectado"], meta: "27 jun", title: "CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores...", desc: "🍷🇦🇷 CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores 🇦🇷⁣⁣⁣⁣ ⁣⁣⁣⁣ Te invitamos a vivir una Cena de Maridaje con Temática...", likes: 17, igId: "DaGa54UH5OC", shares: 8 },
         { tags: ["contenido"], meta: "1 jun", title: "Sugerencia del Chef", desc: "Solomillo glaseado a la barbacoa con chips de boniato frito · $20.000", likes: 8 },
         { tags: ["colaboración", "contenido"], meta: "8 jun", title: "Sapori e Vino — agradecimiento", desc: "Recap de la cena maridaje italiana junto a Bodega Séptima (evento del 3 de junio)", likes: 24 },
         { tags: ["promoción"], meta: "11 jun", title: "Promo Día del Padre", desc: "2x1 en botellas de Terrazas de los Andes Reserva Malbec", likes: 4 },
@@ -69,8 +69,8 @@ const UNITS = [
         { tags: ["promoción"], meta: "19 jun", title: "Día del Padre", desc: "Papá recibe una copa de vino de regalo con su almuerzo o cena", likes: 4 }
       ],
       julio: [
-        { tags: ["flyer", "auto-detectado"], meta: "6 jul", title: "𝐒𝐮𝐠𝐞𝐫𝐞𝐧𝐜𝐢𝐚 𝐝𝐞𝐥 𝐂𝐡𝐞𝐟 ‍", desc: "✨𝐒𝐮𝐠𝐞𝐫𝐞𝐧𝐜𝐢𝐚 𝐝𝐞𝐥 𝐂𝐡𝐞𝐟 ✨👨‍🍳 . Una propuesta que invita a disfrutar: Trucha Patagónica, sobre cremoso de calabaza, acompañada de papines dor...", likes: 3, comments: 1, igId: "DadEtton1Yn" },
-        { tags: ["carrusel", "auto-detectado"], meta: "6 jul", title: "CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores...", desc: "🍷🇦🇷 CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores 🇦🇷⁣⁣⁣⁣ ⁣⁣⁣⁣. Te invitamos a vivir una Cena de Maridaje con Temátic...", likes: 6, igId: "DadSZYgn3Yn" },
+        { tags: ["flyer", "auto-detectado"], meta: "6 jul", title: "𝐒𝐮𝐠𝐞𝐫𝐞𝐧𝐜𝐢𝐚 𝐝𝐞𝐥 𝐂𝐡𝐞𝐟 ‍", desc: "✨𝐒𝐮𝐠𝐞𝐫𝐞𝐧𝐜𝐢𝐚 𝐝𝐞𝐥 𝐂𝐡𝐞𝐟 ✨👨‍🍳 . Una propuesta que invita a disfrutar: Trucha Patagónica, sobre cremoso de calabaza, acompañada de papines dor...", likes: 3, comments: 1, igId: "DadEtton1Yn", shares: 1 },
+        { tags: ["carrusel", "auto-detectado"], meta: "6 jul", title: "CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores...", desc: "🍷🇦🇷 CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores 🇦🇷⁣⁣⁣⁣ ⁣⁣⁣⁣. Te invitamos a vivir una Cena de Maridaje con Temátic...", likes: 6, igId: "DadSZYgn3Yn", shares: 3 },
         { tags: ["contenido", "pautar"], meta: "28 jun–7 jul", title: "Lanzamiento Cena Temática Argentina", desc: "Flyer feed · historia · copy WhatsApp · carga Riservi · Humand" },
         { tags: ["cena temática", "pautar"], highlight: true, meta: "8 jul", title: "Cena Temática Argentina", desc: "Bodega Terrazas de los Andes · Sommelier Carlos Daownie · menú por pasos · maridaje" },
         { tags: ["contenido"], meta: "Todo julio", title: "Menú ejecutivo · sugerencia del chef", desc: "2–3 piezas semanales · feed e historias" },

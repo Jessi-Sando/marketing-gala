@@ -85,16 +85,23 @@ def fetch_recent_media(ig_id, token):
     return results
 
 
-def fetch_video_views(media_id, token):
-    for metric in ("plays", "video_views"):
-        try:
-            data = api_get(f"{media_id}/insights", token, metric=metric)
-            values = data.get("data", [])
-            if values and values[0].get("values"):
-                return values[0]["values"][0].get("value")
-        except urllib.error.HTTPError:
-            continue
+def fetch_insight_metric(media_id, token, metric):
+    try:
+        data = api_get(f"{media_id}/insights", token, metric=metric)
+        values = data.get("data", [])
+        if values and values[0].get("values"):
+            return values[0]["values"][0].get("value")
+    except urllib.error.HTTPError:
+        pass
     return None
+
+
+def fetch_video_views(media_id, token):
+    return fetch_insight_metric(media_id, token, "views")
+
+
+def fetch_shares(media_id, token):
+    return fetch_insight_metric(media_id, token, "shares")
 
 
 def format_item_js(item):
@@ -110,6 +117,8 @@ def format_item_js(item):
         parts.append(f'comments: {item["comments"]}')
     if item.get("views") is not None:
         parts.append(f'views: {item["views"]}')
+    if item.get("shares") is not None:
+        parts.append(f'shares: {item["shares"]}')
     parts.append(f'igId: "{item["igId"]}"')
     return "{ " + ", ".join(parts) + " }"
 
@@ -152,9 +161,8 @@ def process_unit(unit_id, ig_id, token, text, dry_run):
 
         media_type = media.get("media_type")
         formato = classify_format(media_type)
-        views = None
-        if media_type == "VIDEO":
-            views = fetch_video_views(media["id"], token)
+        views = fetch_video_views(media["id"], token) if media_type == "VIDEO" else None
+        shares = fetch_shares(media["id"], token)
 
         title = derive_title(media.get("caption"))
         desc = derive_desc(media.get("caption"), title)
@@ -164,6 +172,7 @@ def process_unit(unit_id, ig_id, token, text, dry_run):
             "meta": date_meta,
             "title": title,
             "desc": desc,
+            "shares": shares,
             "likes": media.get("like_count"),
             "comments": media.get("comments_count"),
             "views": views,
