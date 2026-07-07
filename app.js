@@ -165,7 +165,15 @@ function renderMonthTabs(unitId) {
 
 // ---------- Métricas por unidad ----------
 
-function computeMetrics(unit) {
+const METRICS_DAYS_OPTIONS = [7, 15, 30, 60, 90];
+let currentMetricsDays = 30;
+
+function computeMetrics(unit, days) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const cutoff = new Date(today);
+  cutoff.setDate(cutoff.getDate() - days);
+
   let totalLikes = 0;
   let totalViews = 0;
   let totalShares = 0;
@@ -173,6 +181,8 @@ function computeMetrics(unit) {
   for (const monthKey of MONTH_ORDER) {
     for (const item of unit.months[monthKey] || []) {
       if (typeof item.likes !== "number") continue;
+      const date = parseMetaDate(item.meta);
+      if (!date || date < cutoff || date > today) continue;
       postCount += 1;
       totalLikes += item.likes;
       if (typeof item.views === "number") totalViews += item.views;
@@ -182,26 +192,53 @@ function computeMetrics(unit) {
   return { totalLikes, totalViews, totalShares, postCount };
 }
 
+function setMetricsDays(days) {
+  days = parseInt(days, 10);
+  if (days === currentMetricsDays) return;
+  currentMetricsDays = days;
+  if (currentUnitId && currentUnitId !== "inicio") {
+    const unit = UNITS.find((u) => u.id === currentUnitId);
+    if (unit) renderUnit(unit);
+  }
+}
+
+function unitHasAnyMetrics(unit) {
+  return MONTH_ORDER.some((monthKey) => (unit.months[monthKey] || []).some((item) => typeof item.likes === "number"));
+}
+
 function renderMetrics(unit) {
-  const m = computeMetrics(unit);
-  if (m.postCount === 0) return "";
+  if (!unitHasAnyMetrics(unit)) return "";
+  const m = computeMetrics(unit, currentMetricsDays);
+  const filterHtml = `
+    <div class="metrics-filter" role="tablist" aria-label="Rango de días">
+      ${METRICS_DAYS_OPTIONS.map(
+        (days) => `<button type="button" class="metrics-filter__btn${days === currentMetricsDays ? " metrics-filter__btn--active" : ""}" data-days="${days}">${days} días</button>`
+      ).join("")}
+    </div>
+  `;
   return `
     <section class="metrics-section">
-      <h3 class="metrics-title">Métricas</h3>
-      <div class="metrics-grid">
-        <div class="metric-card">
-          <span class="metric-value">${m.totalLikes.toLocaleString("es-AR")}</span>
-          <span class="metric-label">❤ Likes totales</span>
-        </div>
-        <div class="metric-card">
-          <span class="metric-value">${m.totalViews.toLocaleString("es-AR")}</span>
-          <span class="metric-label">▶ Reproducciones totales</span>
-        </div>
-        <div class="metric-card">
-          <span class="metric-value">${m.totalShares.toLocaleString("es-AR")}</span>
-          <span class="metric-label">↗ Compartidos totales</span>
-        </div>
+      <div class="metrics-header">
+        <h3 class="metrics-title">Métricas</h3>
+        ${filterHtml}
       </div>
+      ${m.postCount === 0
+        ? `<p class="metrics-empty">Sin publicaciones registradas en los últimos ${currentMetricsDays} días.</p>`
+        : `<div class="metrics-grid">
+            <div class="metric-card">
+              <span class="metric-value">${m.totalLikes.toLocaleString("es-AR")}</span>
+              <span class="metric-label">❤ Likes totales</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-value">${m.totalViews.toLocaleString("es-AR")}</span>
+              <span class="metric-label">▶ Reproducciones totales</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-value">${m.totalShares.toLocaleString("es-AR")}</span>
+              <span class="metric-label">↗ Compartidos totales</span>
+            </div>
+          </div>`
+      }
     </section>
   `;
 }
@@ -438,8 +475,14 @@ async function savePanelModal() {
 function initMonthTabs() {
   document.getElementById("content").addEventListener("click", (e) => {
     const monthBtn = e.target.closest(".month-tab");
-    if (!monthBtn) return;
-    setActiveMonth(monthBtn.dataset.month);
+    if (monthBtn) {
+      setActiveMonth(monthBtn.dataset.month);
+      return;
+    }
+    const metricsBtn = e.target.closest(".metrics-filter__btn");
+    if (metricsBtn) {
+      setMetricsDays(metricsBtn.dataset.days);
+    }
   });
 }
 
