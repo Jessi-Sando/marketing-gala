@@ -236,3 +236,10 @@ const UNITS = [
     }
   }
 ];
+
+// Tareas de desarrollo interno (no son publicaciones de redes, comparten el mismo panel colaborativo)
+const DEV_TASKS = [
+  { tags: [], meta: "", title: "CRM Valentino", desc: "Implementación del CRM para Valentino Restaurant." },
+  { tags: [], meta: "", title: "CRM Ruta 11", desc: "Implementación del CRM para Resto Ruta 11." },
+  { tags: [], meta: "", title: "Página web Casino", desc: "Desarrollo de la página web de Casino Gala." }
+];

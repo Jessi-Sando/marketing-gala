@@ -531,6 +531,21 @@ main#content {
   color: #3D5F16;
 }
 
+.item-drive-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.6rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
+.item-drive-link:hover {
+  text-decoration: underline;
+}
+
 .card-item__manage {
   display: inline-flex;
   align-items: center;
@@ -648,6 +663,42 @@ main#content {
 .panel-field > input:focus {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
+}
+
+.panel-drive-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.panel-drive-row > input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.7rem;
+}
+
+.panel-drive-row > input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.panel-drive-open {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.panel-drive-open:hover {
+  text-decoration: underline;
 }
 
 /* ---------- Panel colaborativo: lista de tareas ---------- */

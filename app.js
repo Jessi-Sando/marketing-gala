@@ -37,6 +37,14 @@ function slugify(str) {
     .replace(/(^-|-$)/g, "");
 }
 
+function isValidUrl(value) {
+  return typeof value === "string" && /^https?:\/\/\S+/i.test(value.trim());
+}
+
+function escapeAttr(value) {
+  return String(value).replace(/"/g, "&quot;");
+}
+
 // ---------- Panel colaborativo (sincronizado en tiempo real con Firestore) ----------
 
 const PANEL_DEFAULT_STATE = { copy: "", drive: "", tasks: [], terminado: false, publicado: false, pautado: false, sugerencia: "" };
@@ -68,6 +76,10 @@ function subscribeToUnitPanels(unitId) {
       });
       panelCache = next;
       if (currentUnitId === unitId) {
+        if (unitId === "desarrollo") {
+          renderDevelopment();
+          return;
+        }
         const unit = UNITS.find((u) => u.id === unitId);
         if (unit) renderUnit(unit);
       }
@@ -132,6 +144,9 @@ function renderItem(unitId, monthKey, item) {
     taskTotal > 0 ? `<span class="status-badge status-badge--tasks${taskDone === taskTotal ? " status-badge--tasks-complete" : ""}">☑ ${taskDone}/${taskTotal} tareas</span>` : ""
   ].filter(Boolean).join("");
   const badgesHtml = badges ? `<div class="status-badges">${badges}</div>` : "";
+  const driveHtml = isValidUrl(panel.drive)
+    ? `<a href="${escapeAttr(panel.drive)}" target="_blank" rel="noopener noreferrer" class="item-drive-link">📁 Ver en Drive ↗</a>`
+    : "";
 
   return `
     <li class="${classes}">
@@ -141,6 +156,7 @@ function renderItem(unitId, monthKey, item) {
       ${descHtml}
       ${statsHtml}
       ${badgesHtml}
+      ${driveHtml}
       <button type="button" class="card-item__manage" data-panel-key="${key}" data-panel-unit="${unitId}" data-panel-month="${monthKey}" data-panel-title="${item.title.replace(/"/g, "&quot;")}" data-panel-subtitle="${(item.meta || "").replace(/"/g, "&quot;")}">⚙ Gestionar</button>
     </li>
   `;
@@ -339,6 +355,20 @@ function renderUnit(unit) {
   `;
 }
 
+const DEV_MONTH_KEY = "general";
+
+function renderDevelopment() {
+  const content = document.getElementById("content");
+  document.documentElement.style.setProperty("--accent", "#C9A84C");
+
+  content.innerHTML = `
+    <div class="unit-header">
+      <h2 class="unit-title">Desarrollo</h2>
+    </div>
+    ${renderCardsGrid("desarrollo", DEV_MONTH_KEY, DEV_TASKS)}
+  `;
+}
+
 let currentUnitId = null;
 let currentMonthKey = "julio";
 
@@ -367,6 +397,13 @@ function setActiveTab(unitId) {
     }
     renderHome();
     history.replaceState(null, "", "#inicio");
+    return;
+  }
+
+  if (unitId === "desarrollo") {
+    renderDevelopment();
+    subscribeToUnitPanels(unitId);
+    history.replaceState(null, "", "#desarrollo");
     return;
   }
 
@@ -415,6 +452,18 @@ function addTask() {
   renderTaskList();
 }
 
+function updateDriveOpenLink() {
+  const input = document.getElementById("panel-drive");
+  const link = document.getElementById("panel-drive-open");
+  if (isValidUrl(input.value)) {
+    link.href = input.value.trim();
+    link.hidden = false;
+  } else {
+    link.hidden = true;
+    link.removeAttribute("href");
+  }
+}
+
 function openPanelModal(key, unitId, monthKey, title, subtitle) {
   const state = getPanelState(key);
   activePanelKey = key;
@@ -425,6 +474,7 @@ function openPanelModal(key, unitId, monthKey, title, subtitle) {
   document.getElementById("panel-modal-subtitle").textContent = subtitle || "";
   document.getElementById("panel-copy").value = state.copy;
   document.getElementById("panel-drive").value = state.drive;
+  updateDriveOpenLink();
   document.getElementById("panel-terminado").checked = state.terminado;
   document.getElementById("panel-publicado").checked = state.publicado;
   document.getElementById("panel-pautado").checked = state.pautado;
@@ -498,6 +548,7 @@ function initPanelModal() {
   });
 
   document.getElementById("panel-save").addEventListener("click", savePanelModal);
+  document.getElementById("panel-drive").addEventListener("input", updateDriveOpenLink);
 
   document.getElementById("panel-task-add").addEventListener("click", addTask);
   document.getElementById("panel-task-input").addEventListener("keydown", (e) => {
@@ -534,7 +585,8 @@ function renderTabs() {
   const unitTabs = UNITS.map(
     (unit) => `<button class="tab" role="tab" data-unit="${unit.id}" style="--tab-accent:${unit.accent}">${unit.name}</button>`
   ).join("");
-  tabs.innerHTML = homeTab + unitTabs;
+  const devTab = `<button class="tab" role="tab" data-unit="desarrollo">Desarrollo</button>`;
+  tabs.innerHTML = homeTab + unitTabs + devTab;
 
   tabs.querySelectorAll(".tab").forEach((btn) => {
     btn.addEventListener("click", () => setActiveTab(btn.dataset.unit));
@@ -546,7 +598,7 @@ function init() {
   initMonthTabs();
   initPanelModal();
   const fromHash = window.location.hash.replace("#", "");
-  const validIds = ["inicio"].concat(UNITS.map((u) => u.id));
+  const validIds = ["inicio"].concat(UNITS.map((u) => u.id), ["desarrollo"]);
   const initialUnit = validIds.includes(fromHash) ? fromHash : "inicio";
   setActiveTab(initialUnit);
 }
