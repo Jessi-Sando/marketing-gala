@@ -430,6 +430,126 @@ main#content {
   color: var(--text-muted);
 }
 
+/* ---------- Rendimiento: gráfico, seguidores, contenido destacado ---------- */
+
+.rendimiento-chart {
+  margin-top: 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem 1rem 0.6rem;
+}
+
+.rendimiento-chart svg {
+  width: 100%;
+  height: 140px;
+  display: block;
+}
+
+.rendimiento-chart__area {
+  fill: color-mix(in srgb, var(--accent) 18%, transparent);
+  stroke: none;
+}
+
+.rendimiento-chart__line {
+  fill: none;
+  stroke: var(--accent-ink);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.rendimiento-chart__dot {
+  fill: var(--accent-ink);
+}
+
+.rendimiento-followers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.rendimiento-followers__item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.rendimiento-followers__label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.rendimiento-followers__value {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.rendimiento-followers__growth {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.rendimiento-followers__growth--up {
+  color: #3D5F16;
+}
+
+.rendimiento-followers__growth--down {
+  color: #A3342A;
+}
+
+.rendimiento-top {
+  margin-top: 1.5rem;
+}
+
+.rendimiento-top__title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.7rem;
+  color: var(--text);
+}
+
+.rendimiento-top__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+.rendimiento-top__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 0.85rem;
+}
+
+.rendimiento-top__meta {
+  font-size: 0.72rem;
+  color: var(--text-faint);
+}
+
+.rendimiento-top__post-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.rendimiento-top__stats {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.2rem;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
 /* ---------- Card items ---------- */
 
 .card-item {

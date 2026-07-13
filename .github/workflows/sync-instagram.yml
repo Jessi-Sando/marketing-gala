@@ -27,6 +27,11 @@ jobs:
           IG_LONG_LIVED_TOKEN: ${{ secrets.IG_LONG_LIVED_TOKEN }}
         run: python automation/sync_instagram.py
 
+      - name: Traer rendimiento diario (Instagram + Facebook)
+        env:
+          IG_LONG_LIVED_TOKEN: ${{ secrets.IG_LONG_LIVED_TOKEN }}
+        run: python automation/fetch_performance.py
+
       - name: Commitear y subir cambios (si los hay)
         run: |
           git config user.name "github-actions[bot]"

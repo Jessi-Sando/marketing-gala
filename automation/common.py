@@ -12,6 +12,17 @@ IG_ACCOUNTS = {
     "gala-recepciones": "17841478182049079",
 }
 
+# Pagina de Facebook vinculada a cada cuenta de Instagram (resuelto una vez via
+# GET /me/accounts, cruzando por instagram_business_account.id).
+FB_PAGES = {
+    "casino-gala": "552980788076666",
+    "valentino-restaurant": "1688104454804654",
+    "resto-ruta-11": "114210835030746",
+    "amerian-hotel": "138987339506328",
+    "gala-hotel-convenciones": "282617875222553",
+    "gala-recepciones": "870129206190356",
+}
+
 MONTH_ABBR_ES = {6: "jun", 7: "jul", 8: "ago", 9: "sep"}
 MONTH_KEY_ES = {6: "junio", 7: "julio", 8: "agosto", 9: "septiembre"}
 

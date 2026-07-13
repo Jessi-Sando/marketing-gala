@@ -179,52 +179,136 @@ function renderMonthTabs(unitId) {
   `;
 }
 
-// ---------- Métricas por unidad ----------
+// ---------- Rendimiento por unidad (Facebook + Instagram, orgánico) ----------
 
 const METRICS_DAYS_OPTIONS = [7, 15, 30, 60, 90];
 let currentMetricsDays = 30;
-
-function computeMetrics(unit, days) {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const cutoff = new Date(today);
-  cutoff.setDate(cutoff.getDate() - days);
-
-  let totalLikes = 0;
-  let totalViews = 0;
-  let totalShares = 0;
-  let postCount = 0;
-  for (const monthKey of MONTH_ORDER) {
-    for (const item of unit.months[monthKey] || []) {
-      if (typeof item.likes !== "number") continue;
-      const date = parseMetaDate(item.meta);
-      if (!date || date < cutoff || date > today) continue;
-      postCount += 1;
-      totalLikes += item.likes;
-      if (typeof item.views === "number") totalViews += item.views;
-      if (typeof item.shares === "number") totalShares += item.shares;
-    }
-  }
-  return { totalLikes, totalViews, totalShares, postCount };
-}
 
 function setMetricsDays(days) {
   days = parseInt(days, 10);
   if (days === currentMetricsDays) return;
   currentMetricsDays = days;
-  if (currentUnitId && currentUnitId !== "inicio") {
+  if (currentUnitId && currentUnitId !== "inicio" && currentUnitId !== "desarrollo") {
     const unit = UNITS.find((u) => u.id === currentUnitId);
     if (unit) renderUnit(unit);
   }
 }
 
-function unitHasAnyMetrics(unit) {
-  return MONTH_ORDER.some((monthKey) => (unit.months[monthKey] || []).some((item) => typeof item.likes === "number"));
+function unitHasPerformanceHistory(unit) {
+  return Boolean(unit.performance && unit.performance.history && unit.performance.history.length > 0);
+}
+
+function historyInRange(unit, days) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const cutoff = new Date(today);
+  cutoff.setDate(cutoff.getDate() - days);
+  return (unit.performance.history || [])
+    .filter((day) => {
+      const d = new Date(day.date + "T00:00:00");
+      return d >= cutoff && d <= today;
+    })
+    .sort((a, b) => (a.date < b.date ? -1 : 1));
+}
+
+function computePerformance(unit, days) {
+  const days_ = historyInRange(unit, days);
+  const sum = (key) => days_.reduce((acc, d) => acc + (typeof d[key] === "number" ? d[key] : 0), 0);
+  const latest = days_[days_.length - 1];
+  const earliest = days_[0];
+  const followersGrowth = latest && earliest && typeof latest.followers === "number" && typeof earliest.followers === "number"
+    ? latest.followers - earliest.followers
+    : null;
+  return {
+    days: days_,
+    totalViews: sum("views"),
+    totalInteractions: sum("interactions"),
+    totalReach: sum("reach"),
+    totalProfileViews: sum("profileViews"),
+    igFollowers: latest ? latest.followers : null,
+    fbFollowers: latest ? latest.fbFollowers : null,
+    followersGrowth
+  };
+}
+
+function getTopContent(unit, days) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const cutoff = new Date(today);
+  cutoff.setDate(cutoff.getDate() - days);
+  const posts = [];
+  for (const monthKey of MONTH_ORDER) {
+    for (const item of unit.months[monthKey] || []) {
+      if (typeof item.likes !== "number") continue;
+      const date = parseMetaDate(item.meta);
+      if (!date || date < cutoff || date > today) continue;
+      posts.push(item);
+    }
+  }
+  return posts
+    .sort((a, b) => (b.views || 0) - (a.views || 0) || (b.likes || 0) - (a.likes || 0))
+    .slice(0, 5);
+}
+
+function renderPerformanceChart(days_) {
+  if (days_.length === 0) return "";
+  const width = 600;
+  const height = 160;
+  const padding = 10;
+  const maxViews = Math.max(1, ...days_.map((d) => d.views || 0));
+  const points = days_.map((d, i) => {
+    const x = days_.length === 1 ? width / 2 : padding + (i / (days_.length - 1)) * (width - padding * 2);
+    const y = height - padding - ((d.views || 0) / maxViews) * (height - padding * 2);
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  });
+  const polyline = points.join(" ");
+  const areaPath = `M${padding},${height - padding} L${points.join(" L")} L${width - padding},${height - padding} Z`;
+  const dots = days_
+    .map((d, i) => {
+      const [x, y] = points[i].split(",");
+      return `<circle cx="${x}" cy="${y}" r="3" class="rendimiento-chart__dot"><title>${d.date}: ${(d.views || 0).toLocaleString("es-AR")} visualizaciones</title></circle>`;
+    })
+    .join("");
+  return `
+    <div class="rendimiento-chart">
+      <svg viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" role="img" aria-label="Visualizaciones por día">
+        <path d="${areaPath}" class="rendimiento-chart__area"></path>
+        <polyline points="${polyline}" class="rendimiento-chart__line"></polyline>
+        ${dots}
+      </svg>
+    </div>
+  `;
+}
+
+function renderTopContent(unit, days) {
+  const top = getTopContent(unit, days);
+  if (top.length === 0) return "";
+  return `
+    <div class="rendimiento-top">
+      <h4 class="rendimiento-top__title">Contenido destacado</h4>
+      <ul class="rendimiento-top__list">
+        ${top
+          .map(
+            (item) => `
+              <li class="rendimiento-top__item">
+                <span class="rendimiento-top__meta">${item.meta || ""}</span>
+                <span class="rendimiento-top__post-title">${item.title}</span>
+                <div class="rendimiento-top__stats">
+                  ${typeof item.views === "number" ? `<span>▶ ${item.views.toLocaleString("es-AR")}</span>` : ""}
+                  <span>❤ ${item.likes.toLocaleString("es-AR")}</span>
+                  ${typeof item.comments === "number" ? `<span>💬 ${item.comments.toLocaleString("es-AR")}</span>` : ""}
+                  ${typeof item.shares === "number" ? `<span>↗ ${item.shares.toLocaleString("es-AR")}</span>` : ""}
+                </div>
+              </li>
+            `
+          )
+          .join("")}
+      </ul>
+    </div>
+  `;
 }
 
 function renderMetrics(unit) {
-  if (!unitHasAnyMetrics(unit)) return "";
-  const m = computeMetrics(unit, currentMetricsDays);
   const filterHtml = `
     <div class="metrics-filter" role="tablist" aria-label="Rango de días">
       ${METRICS_DAYS_OPTIONS.map(
@@ -232,29 +316,54 @@ function renderMetrics(unit) {
       ).join("")}
     </div>
   `;
+
+  if (!unitHasPerformanceHistory(unit)) {
+    return `
+      <section class="metrics-section">
+        <div class="metrics-header">
+          <h3 class="metrics-title">Rendimiento</h3>
+          ${filterHtml}
+        </div>
+        <p class="metrics-empty">Todavía no hay datos de rendimiento — se empieza a acumular desde hoy.</p>
+      </section>
+    `;
+  }
+
+  const p = computePerformance(unit, currentMetricsDays);
+  const followersGrowthHtml = p.followersGrowth === null
+    ? ""
+    : `<span class="rendimiento-followers__growth${p.followersGrowth >= 0 ? " rendimiento-followers__growth--up" : " rendimiento-followers__growth--down"}">${p.followersGrowth >= 0 ? "↑" : "↓"} ${Math.abs(p.followersGrowth).toLocaleString("es-AR")}</span>`;
+
   return `
     <section class="metrics-section">
       <div class="metrics-header">
-        <h3 class="metrics-title">Métricas</h3>
+        <h3 class="metrics-title">Rendimiento</h3>
         ${filterHtml}
       </div>
-      ${m.postCount === 0
-        ? `<p class="metrics-empty">Sin publicaciones registradas en los últimos ${currentMetricsDays} días.</p>`
-        : `<div class="metrics-grid">
-            <div class="metric-card">
-              <span class="metric-value">${m.totalLikes.toLocaleString("es-AR")}</span>
-              <span class="metric-label">❤ Likes totales</span>
-            </div>
-            <div class="metric-card">
-              <span class="metric-value">${m.totalViews.toLocaleString("es-AR")}</span>
-              <span class="metric-label">▶ Reproducciones totales</span>
-            </div>
-            <div class="metric-card">
-              <span class="metric-value">${m.totalShares.toLocaleString("es-AR")}</span>
-              <span class="metric-label">↗ Compartidos totales</span>
-            </div>
-          </div>`
-      }
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span class="metric-value">${p.totalViews.toLocaleString("es-AR")}</span>
+          <span class="metric-label">▶ Visualizaciones</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value">${p.totalInteractions.toLocaleString("es-AR")}</span>
+          <span class="metric-label">💬 Interacciones con el contenido</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value">${p.totalReach.toLocaleString("es-AR")}</span>
+          <span class="metric-label">👁 Alcance</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value">${p.totalProfileViews.toLocaleString("es-AR")}</span>
+          <span class="metric-label">👤 Visitas al perfil</span>
+        </div>
+      </div>
+      ${renderPerformanceChart(p.days)}
+      <div class="rendimiento-followers">
+        ${typeof p.igFollowers === "number" ? `<div class="rendimiento-followers__item"><span class="rendimiento-followers__label">Instagram</span><span class="rendimiento-followers__value">${p.igFollowers.toLocaleString("es-AR")}</span>${followersGrowthHtml}</div>` : ""}
+        ${typeof p.fbFollowers === "number" ? `<div class="rendimiento-followers__item"><span class="rendimiento-followers__label">Facebook</span><span class="rendimiento-followers__value">${p.fbFollowers.toLocaleString("es-AR")}</span></div>` : ""}
+      </div>
+      ${renderTopContent(unit, currentMetricsDays)}
     </section>
   `;
 }

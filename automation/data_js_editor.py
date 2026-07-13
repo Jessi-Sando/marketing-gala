@@ -106,3 +106,37 @@ def insert_item(text, unit_id, month_key, item_js_text):
         insertion = f"\n        {item_js_text},"
 
     return text[:insert_at] + insertion + text[insert_at:]
+
+
+def _performance_history_insert_point(text, unit_start, unit_end):
+    marker = re.search(r"performance:\s*\{\s*history:\s*\[", text[unit_start:unit_end])
+    if not marker:
+        raise ValueError(f"No se encontro 'performance: {{ history: [' en la unidad")
+    return unit_start + marker.end()
+
+
+def upsert_performance_day(text, unit_id, date_str, day_js_text):
+    """Reemplaza la entrada de performance.history con ese 'date' si ya existe
+    (permite reintentos el mismo dia); si no existe, la agrega al final (orden
+    cronologico ascendente, mas simple para graficar)."""
+    unit_start, unit_end = _unit_block_bounds(text, unit_id)
+    insert_at = _performance_history_insert_point(text, unit_start, unit_end)
+    close_bracket = _matching_close_bracket(text, insert_at)
+    block = text[insert_at:close_bracket]
+
+    items = _split_items(block)
+    replaced = False
+    new_items = []
+    for item_text in items:
+        date_match = re.search(r'date:\s*"([^"]*)"', item_text)
+        if date_match and date_match.group(1) == date_str:
+            new_items.append(day_js_text)
+            replaced = True
+        else:
+            new_items.append(item_text)
+    if not replaced:
+        new_items.append(day_js_text)
+
+    inner = ",\n        ".join(new_items)
+    new_block = f"\n        {inner}\n      "
+    return text[:insert_at] + new_block + text[close_bracket:]

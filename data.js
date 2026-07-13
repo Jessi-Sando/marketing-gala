@@ -50,7 +50,10 @@ const UNITS = [
         { tags: ["contenido"], meta: "Todo septiembre", title: "BOXIE · pozos · Premium Martes", desc: "Contenido de fidelización permanente" },
         { tags: ["pendiente"], meta: "", title: "Nueva campaña masiva Q4", desc: "Diseñar en septiembre para lanzar en octubre" }
       ]
-    }
+    },
+    performance: { history: [
+        { date: "2026-07-12", views: 94, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 19, profileViews: 10, followers: 3625, followersDelta: 0, fbFollowers: 3088 }
+      ] }
   },
   {
     id: "valentino-restaurant",
@@ -92,7 +95,10 @@ const UNITS = [
         { tags: ["canales"], meta: "Septiembre", title: "Recordatorio canales digitales", desc: "" },
         { tags: ["fidelización", "pautar"], meta: "Septiembre", title: "Lanzamiento paquete fidelización", desc: "Si diseño listo en agosto · comunicación a base de clientes" }
       ]
-    }
+    },
+    performance: { history: [
+        { date: "2026-07-12", views: 365, likes: 4, comments: 0, shares: 0, saves: 0, interactions: 4, reach: 113, profileViews: 15, followers: 6447, followersDelta: 0, fbFollowers: 7096 }
+      ] }
   },
   {
     id: "resto-ruta-11",
@@ -136,7 +142,10 @@ const UNITS = [
         { tags: ["canales"], meta: "Septiembre", title: "Recordatorio FUDO + Riservi", desc: "" },
         { tags: ["contenido", "pautar selectivo"], meta: "Septiembre", title: "Contenido behind the scenes", desc: "Cocina · chef en acción · reels cortos" }
       ]
-    }
+    },
+    performance: { history: [
+        { date: "2026-07-12", views: 322, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 137, profileViews: 7, followers: 1184, followersDelta: 0, fbFollowers: 134 }
+      ] }
   },
   {
     id: "amerian-hotel",
@@ -173,7 +182,10 @@ const UNITS = [
         { tags: ["contenido"], meta: "Septiembre", title: "Valentino + hotel", desc: "Cruce gastronómico como parte de la estadía." },
         { tags: ["Humand"], meta: "Septiembre", title: "Novedades del hotel para colaboradores Gala SA", desc: "" }
       ]
-    }
+    },
+    performance: { history: [
+        { date: "2026-07-12", views: 164, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 7, profileViews: 12, followers: 8799, followersDelta: 0, fbFollowers: 15650 }
+      ] }
   },
   {
     id: "gala-hotel-convenciones",
@@ -209,7 +221,10 @@ const UNITS = [
         { tags: ["contenido", "pautar"], meta: "Septiembre", title: "Anticipo temporada alta", desc: "Disponibilidad de salones para recepciones nov–dic." },
         { tags: ["Humand"], meta: "Septiembre", title: "Novedades del hotel para colaboradores Gala SA", desc: "" }
       ]
-    }
+    },
+    performance: { history: [
+        { date: "2026-07-12", views: 624, likes: 6, comments: 0, shares: 1, saves: 2, interactions: 10, reach: 9, profileViews: 43, followers: 19533, followersDelta: 0, fbFollowers: 17824 }
+      ] }
   },
   {
     id: "gala-recepciones",
@@ -240,7 +255,10 @@ const UNITS = [
         { tags: ["promoción"], meta: "Septiembre", title: "Acción del mes", desc: "A definir. Puede vincularse al BOX o al cierre de pagos." },
         { tags: ["contenido", "pautar"], meta: "Septiembre", title: "Redes · detrás de escena", desc: "Preparativos, salones, detalles de una recepción Gala." }
       ]
-    }
+    },
+    performance: { history: [
+        { date: "2026-07-12", views: 32, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 3, profileViews: 1, followers: 506, followersDelta: 0, fbFollowers: 1 }
+      ] }
   }
 ];
 
