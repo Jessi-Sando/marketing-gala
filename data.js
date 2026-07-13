@@ -22,6 +22,9 @@ const UNITS = [
         { tags: ["contenido"], meta: "30 jun", title: "Ganadores de Castelli y Ruta 11", desc: "Resumen de ganadores · anticipo próxima fecha en Sala Barranqueras · 7 de julio", likes: 14 }
       ],
       julio: [
+        { tags: ["reel", "auto-detectado"], meta: "7 jul", title: "EL PRIMER GANADOR YA HIZO HISTORIA.", desc: "🏆 EL PRIMER GANADOR YA HIZO HISTORIA. Así se vivió el debut de El Mundial de la Suerte en Sala Castelli. La emoción ya empezó a recorrer...", likes: 6, views: 595, shares: 2, igId: "DafpzyhiREF" },
+        { tags: ["flyer", "auto-detectado"], meta: "8 jul", title: "EL MOMENTO QUE TODOS ESTABAN ESPERANDO ESTÁ CADA VEZ MÁS CERCA.", desc: "🏆 EL MOMENTO QUE TODOS ESTABAN ESPERANDO ESTÁ CADA VEZ MÁS CERCA. Durante semanas recorrimos nuestras salas, vivimos noches inolvidables...", likes: 4, shares: 0, igId: "DaifIR7HNt5" },
+        { tags: ["reel", "auto-detectado"], meta: "10 jul", title: "¡QUÉ PARTIDO, ARGENTINA!", desc: "🇦🇷🔥 ¡QUÉ PARTIDO, ARGENTINA! 🔥🇦🇷 Cuando parecía imposible, apareció el corazón de un equipo que nunca dejó de creer. Del 0-2 al 3-2. Una...", likes: 11, views: 624, shares: 4, igId: "Dan2IALCj91" },
         { tags: ["contenido"], meta: "2 jul", title: "Argentina ya está en 16avos", desc: "Anticipo Sala Sáenz Peña · 14 de julio · Moto 110, Smart TV, $300.000 en créditos Boxie" },
         { tags: ["contenido", "pautar"], meta: "3 jul", title: "Carrusel ganadores Sala Güemes", desc: "Resultados y ganadores del sorteo del 26 de junio" },
         { tags: ["contenido", "pautar"], meta: "6 jul · lunes", title: "Reel — lo que vamos viviendo", desc: "Clima y ambiente de campaña del Mundial de la Suerte" },
@@ -69,6 +72,7 @@ const UNITS = [
         { tags: ["promoción"], meta: "19 jun", title: "Día del Padre", desc: "Papá recibe una copa de vino de regalo con su almuerzo o cena", likes: 4 }
       ],
       julio: [
+        { tags: ["carrusel", "auto-detectado"], meta: "11 jul", title: "𝑼𝒏𝒂 𝒏𝒐𝒄𝒉𝒆 𝒃𝒊𝒆𝒏 𝑨𝒓𝒈𝒆𝒏𝒕𝒊𝒏𝒂 𝒑𝒂𝒓𝒂 𝒓𝒆𝒄𝒐𝒓𝒅𝒂𝒓", desc: "🇦🇷𝑼𝒏𝒂 𝒏𝒐𝒄𝒉𝒆 𝒃𝒊𝒆𝒏 𝑨𝒓𝒈𝒆𝒏𝒕𝒊𝒏𝒂 𝒑𝒂𝒓𝒂 𝒓𝒆𝒄𝒐𝒓𝒅𝒂𝒓🇦🇷✨🇦🇷 . Así vivimos nuestra Cena Temática, una experiencia donde la tradición, los sabores y los...", likes: 26, comments: 1, shares: 2, igId: "DaqBcqRH-aF" },
         { tags: ["flyer", "auto-detectado"], meta: "6 jul", title: "𝐒𝐮𝐠𝐞𝐫𝐞𝐧𝐜𝐢𝐚 𝐝𝐞𝐥 𝐂𝐡𝐞𝐟 ‍", desc: "✨𝐒𝐮𝐠𝐞𝐫𝐞𝐧𝐜𝐢𝐚 𝐝𝐞𝐥 𝐂𝐡𝐞𝐟 ✨👨‍🍳 . Una propuesta que invita a disfrutar: Trucha Patagónica, sobre cremoso de calabaza, acompañada de papines dor...", likes: 3, comments: 1, igId: "DadEtton1Yn", shares: 1 },
         { tags: ["carrusel", "auto-detectado"], meta: "6 jul", title: "CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores...", desc: "🍷🇦🇷 CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores 🇦🇷⁣⁣⁣⁣ ⁣⁣⁣⁣. Te invitamos a vivir una Cena de Maridaje con Temátic...", likes: 6, igId: "DadSZYgn3Yn", shares: 3 },
         { tags: ["contenido", "pautar"], meta: "28 jun–7 jul", title: "Lanzamiento Cena Temática Argentina", desc: "Flyer feed · historia · copy WhatsApp · carga Riservi · Humand" },
@@ -109,6 +113,9 @@ const UNITS = [
         { tags: ["contenido"], meta: "25 jun", title: "Sugerencia del Chef", desc: "Suprema a la Riojana con papas cuñas · $19.000", likes: 13, comments: 1 }
       ],
       julio: [
+        { tags: ["reel", "auto-detectado"], meta: "7 jul", title: "️𝐖𝐈𝐍𝐄 𝐎𝐅𝐅 – La Batalla de Copas en Restó Ruta 11 ️", desc: "🍷⚔️𝐖𝐈𝐍𝐄 𝐎𝐅𝐅 – La Batalla de Copas en Restó Ruta 11 ⚔️🍷 . Una experiencia donde cada plato tiene dos historias y vos decidís cuál se lleva...", likes: 19, views: 1084, shares: 7, igId: "DagOAQWibPv" },
+        { tags: ["flyer", "auto-detectado"], meta: "11 jul", title: "️𝐒𝐔𝐆𝐄𝐑𝐄𝐍𝐂𝐈𝐀 𝐃𝐄𝐋 𝐂𝐇𝐄𝐅 ️", desc: "🍽️✨𝐒𝐔𝐆𝐄𝐑𝐄𝐍𝐂𝐈𝐀 𝐃𝐄𝐋 𝐂𝐇𝐄𝐅 ✨🍽️ . Descubrí la nueva sugerencia de nuestro chef, una propuesta que combina tradición y calidad desde el primer...", likes: 5, shares: 5, igId: "Dap5zchH0dA" },
+        { tags: ["carrusel", "auto-detectado"], meta: "11 jul", title: "️ 𝐖𝐈𝐍𝐄 𝐎𝐅𝐅 – La Batalla de Copas en Restó Ruta 11 ️", desc: "🍷⚔️ 𝐖𝐈𝐍𝐄 𝐎𝐅𝐅 – La Batalla de Copas en Restó Ruta 11 ⚔️🍷 . Una experiencia donde cada plato tiene dos historias... y vos decidís cuál se l...", likes: 27, shares: 12, igId: "DaqDGp0Hz-6" },
         { tags: ["cena maridaje", "evento especial", "pautar"], meta: "Fecha a confirmar · julio", title: "Desafío de Sommelier", desc: "2 sommeliers (Juan Chichizola y El Tano) · 2 vinos · cata a ciegas · los clientes votan al ganador" },
         { tags: ["contenido"], meta: "10 días antes del evento", title: "Presentación Juan Chichizola", desc: "Quién es · su propuesta · generar expectativa" },
         { tags: ["contenido"], meta: "10 días antes del evento", title: "Presentación El Tano", desc: "Quién es · su propuesta · el duelo está servido" },
