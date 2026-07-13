@@ -22,15 +22,15 @@ const UNITS = [
         { tags: ["contenido"], meta: "30 jun", title: "Ganadores de Castelli y Ruta 11", desc: "Resumen de ganadores · anticipo próxima fecha en Sala Barranqueras · 7 de julio", likes: 14 }
       ],
       julio: [
-        { tags: ["reel", "auto-detectado"], meta: "7 jul", title: "EL PRIMER GANADOR YA HIZO HISTORIA.", desc: "🏆 EL PRIMER GANADOR YA HIZO HISTORIA. Así se vivió el debut de El Mundial de la Suerte en Sala Castelli. La emoción ya empezó a recorrer...", likes: 6, views: 595, shares: 2, igId: "DafpzyhiREF" },
-        { tags: ["flyer", "auto-detectado"], meta: "8 jul", title: "EL MOMENTO QUE TODOS ESTABAN ESPERANDO ESTÁ CADA VEZ MÁS CERCA.", desc: "🏆 EL MOMENTO QUE TODOS ESTABAN ESPERANDO ESTÁ CADA VEZ MÁS CERCA. Durante semanas recorrimos nuestras salas, vivimos noches inolvidables...", likes: 4, shares: 0, igId: "DaifIR7HNt5" },
-        { tags: ["reel", "auto-detectado"], meta: "10 jul", title: "¡QUÉ PARTIDO, ARGENTINA!", desc: "🇦🇷🔥 ¡QUÉ PARTIDO, ARGENTINA! 🔥🇦🇷 Cuando parecía imposible, apareció el corazón de un equipo que nunca dejó de creer. Del 0-2 al 3-2. Una...", likes: 11, views: 624, shares: 4, igId: "Dan2IALCj91" },
         { tags: ["auto-detectado", "contenido"], meta: "2 jul", title: "Argentina ya está en 16avos", desc: "Anticipo Sala Sáenz Peña · 14 de julio · Moto 110, Smart TV, $300.000 en créditos Boxie", likes: 2, shares: 0, igId: "DaSoOAQE2Qw" },
         { tags: ["auto-detectado", "contenido", "pautar"], meta: "3 jul", title: "Carrusel ganadores Sala Güemes", desc: "Resultados y ganadores del sorteo del 26 de junio", likes: 8, shares: 2, igId: "DaVcNQ3jOI_" },
         { tags: ["contenido", "pautar"], meta: "6 jul · lunes", title: "Reel — lo que vamos viviendo", desc: "Clima y ambiente de campaña del Mundial de la Suerte" },
+        { tags: ["reel", "auto-detectado"], meta: "7 jul", title: "EL PRIMER GANADOR YA HIZO HISTORIA.", desc: "🏆 EL PRIMER GANADOR YA HIZO HISTORIA. Así se vivió el debut de El Mundial de la Suerte en Sala Castelli. La emoción ya empezó a recorrer...", likes: 6, views: 595, shares: 2, igId: "DafpzyhiREF" },
         { tags: ["sorteo"], meta: "7 jul · Sala Barranqueras", title: "Sorteo Mundial", desc: "Premios propios de sala · BOXIE · feed publicado, resta solo historia" },
+        { tags: ["flyer", "auto-detectado"], meta: "8 jul", title: "EL MOMENTO QUE TODOS ESTABAN ESPERANDO ESTÁ CADA VEZ MÁS CERCA.", desc: "🏆 EL MOMENTO QUE TODOS ESTABAN ESPERANDO ESTÁ CADA VEZ MÁS CERCA. Durante semanas recorrimos nuestras salas, vivimos noches inolvidables...", likes: 4, shares: 0, igId: "DaifIR7HNt5" },
         { tags: ["sorteo", "campaña", "pautar"], meta: "8 jul · martes", title: "Anuncio Sorteo Final", desc: "Comunicación del Gran Sorteo Final en Sala Central" },
         { tags: ["sorteo", "pautar"], meta: "9 jul · jueves", title: "Ganadores Sala Barranqueras", desc: "Publicación de los ganadores del sorteo del 7 de julio" },
+        { tags: ["reel", "auto-detectado"], meta: "10 jul", title: "¡QUÉ PARTIDO, ARGENTINA!", desc: "🇦🇷🔥 ¡QUÉ PARTIDO, ARGENTINA! 🔥🇦🇷 Cuando parecía imposible, apareció el corazón de un equipo que nunca dejó de creer. Del 0-2 al 3-2. Una...", likes: 11, views: 624, shares: 4, igId: "Dan2IALCj91" },
         { tags: ["sorteo"], meta: "14 jul · Sala Sáenz Peña", title: "Sorteo Mundial", desc: "Premios propios de sala · BOXIE · feed publicado, resta solo historia" },
         { tags: ["sorteo", "campaña", "pautar"], highlight: true, meta: "19 jul · Sala Central 21:00 hs", title: "Gran Sorteo Final", desc: "Cierre Mundial de la Suerte · anuncio sorpresa La Experiencia al final de la noche" },
         { tags: ["sorteo", "campaña", "pautar"], meta: "21 jul", title: "Resumen Sorteo Final", desc: "Recap del Gran Sorteo Final en Sala Central" },
@@ -66,22 +66,21 @@ const UNITS = [
     channels: "Pedidos Ya · FUDO · Riservi · Teléfono · Recepción hotel · Paquete fidelización (en desarrollo)",
     months: {
       junio: [
-        { tags: ["reel", "auto-detectado"], meta: "4 jun", title: "Así se vivió 𝑺𝒂𝒑𝒐𝒓𝒊 𝒆 𝑽𝒊𝒏𝒐 en Valentino Restaurant", desc: "🇮🇹🍷 Así se vivió 𝑺𝒂𝒑𝒐𝒓𝒊 𝒆 𝑽𝒊𝒏𝒐 en Valentino Restaurant 🇮🇹🍷 . Vivimos una experiencia gastronómica única donde los sabores más auténticos...", likes: 51, igId: "DZKrWGDgkHd", shares: 20, views: 1918 },
-        { tags: ["carrusel", "auto-detectado"], meta: "27 jun", title: "CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores...", desc: "🍷🇦🇷 CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores 🇦🇷⁣⁣⁣⁣ ⁣⁣⁣⁣ Te invitamos a vivir una Cena de Maridaje con Temática...", likes: 17, igId: "DaGa54UH5OC", shares: 8 },
         { tags: ["contenido"], meta: "1 jun", title: "Sugerencia del Chef", desc: "Solomillo glaseado a la barbacoa con chips de boniato frito · $20.000", likes: 8 },
+        { tags: ["reel", "auto-detectado"], meta: "4 jun", title: "Así se vivió 𝑺𝒂𝒑𝒐𝒓𝒊 𝒆 𝑽𝒊𝒏𝒐 en Valentino Restaurant", desc: "🇮🇹🍷 Así se vivió 𝑺𝒂𝒑𝒐𝒓𝒊 𝒆 𝑽𝒊𝒏𝒐 en Valentino Restaurant 🇮🇹🍷 . Vivimos una experiencia gastronómica única donde los sabores más auténticos...", likes: 51, igId: "DZKrWGDgkHd", shares: 20, views: 1918 },
         { tags: ["colaboración", "contenido"], meta: "8 jun", title: "Sapori e Vino — agradecimiento", desc: "Recap de la cena maridaje italiana junto a Bodega Séptima (evento del 3 de junio)", likes: 24 },
         { tags: ["promoción"], meta: "11 jun", title: "Promo Día del Padre", desc: "2x1 en botellas de Terrazas de los Andes Reserva Malbec", likes: 4 },
         { tags: ["contenido"], meta: "12 jun", title: "Sugerencia del Chef", desc: "Lomo braseado con risotto de hongos y nueces · $28.700", likes: 5 },
-        { tags: ["promoción"], meta: "19 jun", title: "Día del Padre", desc: "Papá recibe una copa de vino de regalo con su almuerzo o cena", likes: 4 }
+        { tags: ["promoción"], meta: "19 jun", title: "Día del Padre", desc: "Papá recibe una copa de vino de regalo con su almuerzo o cena", likes: 4 },
+        { tags: ["carrusel", "auto-detectado"], meta: "27 jun", title: "CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores...", desc: "🍷🇦🇷 CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores 🇦🇷⁣⁣⁣⁣ ⁣⁣⁣⁣ Te invitamos a vivir una Cena de Maridaje con Temática...", likes: 17, igId: "DaGa54UH5OC", shares: 8 }
       ],
       julio: [
-        { tags: ["carrusel", "auto-detectado"], meta: "11 jul", title: "𝑼𝒏𝒂 𝒏𝒐𝒄𝒉𝒆 𝒃𝒊𝒆𝒏 𝑨𝒓𝒈𝒆𝒏𝒕𝒊𝒏𝒂 𝒑𝒂𝒓𝒂 𝒓𝒆𝒄𝒐𝒓𝒅𝒂𝒓", desc: "🇦🇷𝑼𝒏𝒂 𝒏𝒐𝒄𝒉𝒆 𝒃𝒊𝒆𝒏 𝑨𝒓𝒈𝒆𝒏𝒕𝒊𝒏𝒂 𝒑𝒂𝒓𝒂 𝒓𝒆𝒄𝒐𝒓𝒅𝒂𝒓🇦🇷✨🇦🇷 . Así vivimos nuestra Cena Temática, una experiencia donde la tradición, los sabores y los...", likes: 26, comments: 1, shares: 2, igId: "DaqBcqRH-aF" },
+        { tags: ["contenido", "pautar"], meta: "28 jun–7 jul", title: "Lanzamiento Cena Temática Argentina", desc: "Flyer feed · historia · copy WhatsApp · carga Riservi · Humand" },
         { tags: ["flyer", "auto-detectado"], meta: "6 jul", title: "𝐒𝐮𝐠𝐞𝐫𝐞𝐧𝐜𝐢𝐚 𝐝𝐞𝐥 𝐂𝐡𝐞𝐟 ‍", desc: "✨𝐒𝐮𝐠𝐞𝐫𝐞𝐧𝐜𝐢𝐚 𝐝𝐞𝐥 𝐂𝐡𝐞𝐟 ✨👨‍🍳 . Una propuesta que invita a disfrutar: Trucha Patagónica, sobre cremoso de calabaza, acompañada de papines dor...", likes: 3, comments: 1, igId: "DadEtton1Yn", shares: 1 },
         { tags: ["carrusel", "auto-detectado"], meta: "6 jul", title: "CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores...", desc: "🍷🇦🇷 CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores 🇦🇷⁣⁣⁣⁣ ⁣⁣⁣⁣. Te invitamos a vivir una Cena de Maridaje con Temátic...", likes: 6, igId: "DadSZYgn3Yn", shares: 3 },
+        { tags: ["cena temática", "pautar", "auto-detectado"], highlight: true, meta: "11 jul", title: "Cena Temática Argentina", desc: "Bodega Terrazas de los Andes · Sommelier Carlos Daownie · menú por pasos · maridaje (evento 8 jul, recap publicado 11 jul)", likes: 26, comments: 1, shares: 2, igId: "DaqBcqRH-aF" },
         { tags: ["contenido"], meta: "Todo julio", title: "Menú ejecutivo · sugerencia del chef", desc: "2–3 piezas semanales · feed e historias" },
-        { tags: ["canales", "pautar"], meta: "Julio", title: "Lanzamiento Pedidos Ya · FUDO · Riservi", desc: "Comunicar canales digitales en redes y WhatsApp" },
-        { tags: ["planificado, no publicado", "contenido", "pautar"], meta: "28 jun–7 jul", title: "Lanzamiento Cena Temática Argentina", desc: "Flyer feed · historia · copy WhatsApp · carga Riservi · Humand" },
-        { tags: ["planificado, no publicado", "cena temática", "pautar"], highlight: true, meta: "8 jul", title: "Cena Temática Argentina", desc: "Bodega Terrazas de los Andes · Sommelier Carlos Daownie · menú por pasos · maridaje" }
+        { tags: ["canales", "pautar"], meta: "Julio", title: "Lanzamiento Pedidos Ya · FUDO · Riservi", desc: "Comunicar canales digitales en redes y WhatsApp" }
       ],
       agosto: [
         { tags: ["pendiente"], meta: "", title: "Cena temática agosto", desc: "Fecha y concepto a confirmar 10 días antes" },

@@ -13,7 +13,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from common import parse_meta_date  # noqa: E402
+from common import MONTH_ABBR_TO_NUM, parse_meta_date  # noqa: E402
 from data_js_editor import get_month_items, replace_month_items  # noqa: E402
 
 TRACKED_YEAR = 2026
@@ -49,8 +49,18 @@ def _published_dates(items):
     return dates
 
 
+def _is_date_range(meta):
+    """Los rangos tipo '28 jun-7 jul' o '1-7 ago' describen una ventana de
+    campana (varios posts posibles), no una publicacion puntual verificable
+    -> nunca se marcan como 'no publicado' automaticamente."""
+    return "–" in meta or "-" in meta
+
+
 def _is_overdue_unpublished(item_text, today, published_dates):
     if re.search(r"\blikes:\s*\d", item_text):
+        return False
+    meta_match = re.search(r'meta:\s*"([^"]*)"', item_text)
+    if meta_match and _is_date_range(meta_match.group(1)):
         return False
     date = _item_date(item_text)
     if not date:
@@ -74,6 +84,38 @@ def _add_overdue_tag(item_text):
     return re.sub(r"tags:\s*\[", f'tags: ["{OVERDUE_TAG}", ', item_text, count=1)
 
 
+_LENIENT_DATE_RE = re.compile(
+    r"(\d{1,2}).*?(ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)", re.IGNORECASE
+)
+
+
+def _lenient_date_for_sort(meta):
+    """Para ordenar (no para decidir si algo esta 'vencido'): a diferencia de
+    parse_meta_date, esto tambien entiende rangos como '1-17 jul' o
+    '28 jun-7 jul', tomando el primer numero de dia y el primer mes que
+    encuentra como fecha de inicio aproximada."""
+    match = _LENIENT_DATE_RE.search(meta.strip())
+    if not match:
+        return None
+    month = MONTH_ABBR_TO_NUM.get(match.group(2).lower())
+    if not month:
+        return None
+    try:
+        return datetime.date(TRACKED_YEAR, month, int(match.group(1)))
+    except ValueError:
+        return None
+
+
+def _sort_key(item_text):
+    """Los items sin ninguna fecha reconocible (ej. 'Todo julio', placeholders
+    'pendiente') quedan al final de su grupo, pero mantienen su orden
+    relativo original entre si (sort estable)."""
+    meta_match = re.search(r'meta:\s*"([^"]*)"', item_text)
+    meta = meta_match.group(1) if meta_match else ""
+    date = _lenient_date_for_sort(meta) if meta else None
+    return date or datetime.date.max
+
+
 def reconcile_month(text, unit_id, month_key, today, dry_run):
     items = get_month_items(text, unit_id, month_key)
     published_dates = _published_dates(items)
@@ -93,6 +135,9 @@ def reconcile_month(text, unit_id, month_key, today, dry_run):
             flagged_items.append(item_text)
         else:
             keep.append(item_text)
+
+    keep.sort(key=_sort_key)
+    flagged_items.sort(key=_sort_key)
 
     new_items = keep + flagged_items
     if new_items == items:

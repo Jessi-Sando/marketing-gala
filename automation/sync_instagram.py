@@ -262,7 +262,8 @@ def main():
         print("Falta IG_LONG_LIVED_TOKEN (variable de entorno o automation/.env).")
         return
 
-    text = read_data_js(DATA_JS_PATH)
+    original_text = read_data_js(DATA_JS_PATH)
+    text = original_text
     total_added = 0
     total_enriched = 0
     total_flagged = 0
@@ -277,10 +278,12 @@ def main():
     print(f"Total de items enriquecidos (se publicaron): {total_enriched}")
     print(f"Total de items marcados 'planificado, no publicado': {total_flagged}")
 
-    total_changed = total_added + total_enriched + total_flagged
+    # Se compara el texto completo (no solo los contadores) porque el
+    # reordenamiento cronologico puede cambiar data.js sin sumar a ningun
+    # contador (ej. una corrida que solo reordena items ya existentes).
     if dry_run:
         print("(--dry-run: no se modifico data.js)")
-    elif total_changed > 0:
+    elif text != original_text:
         write_data_js(DATA_JS_PATH, text)
         print("data.js actualizado.")
     else:
