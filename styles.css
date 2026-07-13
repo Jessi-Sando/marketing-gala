@@ -576,6 +576,13 @@ main#content {
   border-left: 3px solid #6C5CE7;
 }
 
+.card-item--no-publicado {
+  border-style: dashed;
+  border-color: var(--text-faint);
+  background: transparent;
+  opacity: 0.75;
+}
+
 .item-tags {
   display: flex;
   flex-wrap: wrap;
@@ -1003,6 +1010,13 @@ main#content {
   background: transparent;
   border: 1px dashed var(--text-faint);
   color: var(--text-faint);
+}
+
+.tag--no-publicado {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px dashed var(--text-faint);
+  color: var(--text-faint);
+  font-style: italic;
 }
 
 /* ---------- Footer ---------- */

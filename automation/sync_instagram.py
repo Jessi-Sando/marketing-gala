@@ -11,6 +11,7 @@ Uso:
 import datetime
 import json
 import os
+import re
 import sys
 import urllib.error
 import urllib.parse
@@ -32,9 +33,11 @@ from data_js_editor import (  # noqa: E402
     extract_tracked_signatures,
     insert_item,
     read_data_js,
+    replace_item,
     write_data_js,
 )
 from exchange_token import ENV_PATH, load_env  # noqa: E402
+from flag_overdue import reconcile_unit  # noqa: E402
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -104,6 +107,34 @@ def fetch_shares(media_id, token):
     return fetch_insight_metric(media_id, token, "shares")
 
 
+def enrich_legacy_item_text(item_text, enrich):
+    """Toma el texto de un item planificado a mano (sin likes/igId) y le
+    agrega los datos reales del post que resulto ser, preservando el resto
+    del item (tags propios, meta, titulo, desc) tal cual estaba."""
+    parts = []
+    if enrich.get("likes") is not None:
+        parts.append(f'likes: {enrich["likes"]}')
+    if enrich.get("comments"):
+        parts.append(f'comments: {enrich["comments"]}')
+    if enrich.get("views") is not None:
+        parts.append(f'views: {enrich["views"]}')
+    if enrich.get("shares") is not None:
+        parts.append(f'shares: {enrich["shares"]}')
+    parts.append(f'igId: "{enrich["igId"]}"')
+
+    new_text = item_text[:-2].rstrip() + ", " + ", ".join(parts) + " }"
+
+    # Si se habia marcado como vencido sin publicar y recien ahora se publico,
+    # se saca esa leyenda (ya no aplica).
+    new_text = re.sub(r'"planificado, no publicado",\s*', "", new_text)
+    new_text = re.sub(r',\s*"planificado, no publicado"', "", new_text)
+
+    if not re.search(r'"auto-detectado"', new_text):
+        new_text = re.sub(r"tags:\s*\[", 'tags: ["auto-detectado", ', new_text, count=1)
+
+    return new_text
+
+
 def format_item_js(item):
     tags_js = ", ".join(f'"{t}"' for t in item["tags"])
     parts = [f'tags: [{tags_js}]', f'meta: "{js_escape(item["meta"])}"', f'title: "{js_escape(item["title"])}"']
@@ -127,6 +158,7 @@ def process_unit(unit_id, ig_id, token, text, dry_run):
     print(f"\n{unit_id}:")
     media_list = fetch_recent_media(ig_id, token)
     added = 0
+    enriched = 0
     original_text = text  # snapshot fijo: los duplicados se chequean contra lo
     # que ya existia ANTES de esta corrida, no contra lo que se va insertando
     # ahora mismo (dos posts distintos pueden compartir el mismo dia).
@@ -149,18 +181,45 @@ def process_unit(unit_id, ig_id, token, text, dry_run):
         date_meta_prev = format_date_meta(dt - datetime.timedelta(days=1))
         date_meta_next = format_date_meta(dt + datetime.timedelta(days=1))
 
-        igids, legacy_dates = extract_tracked_signatures(original_text, unit_id, month_key)
-        already_tracked = (
-            (shortcode and shortcode in igids)
-            or date_meta in legacy_dates
-            or date_meta_prev in legacy_dates
-            or date_meta_next in legacy_dates
+        igids, legacy_dates, legacy_items_by_date = extract_tracked_signatures(original_text, unit_id, month_key)
+
+        if shortcode and shortcode in igids:
+            continue  # ya enriquecido en una corrida anterior
+
+        matched_legacy_text = (
+            legacy_items_by_date.get(date_meta)
+            or legacy_items_by_date.get(date_meta_prev)
+            or legacy_items_by_date.get(date_meta_next)
         )
-        if already_tracked:
-            continue
+        already_tracked = (
+            date_meta in legacy_dates or date_meta_prev in legacy_dates or date_meta_next in legacy_dates
+        )
 
         media_type = media.get("media_type")
         formato = classify_format(media_type)
+
+        if matched_legacy_text:
+            # Habia un item planificado a mano para esta fecha: se enriquece
+            # con los datos reales en vez de agregar uno nuevo duplicado.
+            views = fetch_video_views(media["id"], token) if media_type == "VIDEO" else None
+            shares = fetch_shares(media["id"], token)
+            enrich = {
+                "likes": media.get("like_count"),
+                "comments": media.get("comments_count"),
+                "views": views,
+                "shares": shares,
+                "igId": shortcode or media["id"],
+            }
+            print(f"  ~ [{month_key}] {date_meta} · se publico un item planificado, enriqueciendo")
+            enriched += 1
+            if not dry_run:
+                new_text = enrich_legacy_item_text(matched_legacy_text, enrich)
+                text = replace_item(text, matched_legacy_text, new_text)
+            continue
+
+        if already_tracked:
+            continue
+
         views = fetch_video_views(media["id"], token) if media_type == "VIDEO" else None
         shares = fetch_shares(media["id"], token)
 
@@ -186,9 +245,14 @@ def process_unit(unit_id, ig_id, token, text, dry_run):
         if not dry_run:
             text = insert_item(text, unit_id, month_key, item_js)
 
-    if added == 0:
+    if added == 0 and enriched == 0:
         print("  (sin novedades)")
-    return text, added
+
+    text, flagged = reconcile_unit(text, unit_id, dry_run=dry_run)
+    if flagged:
+        print(f"  ⏳ {flagged} item(s) marcados como 'planificado, no publicado'")
+
+    return text, added, enriched, flagged
 
 
 def main():
@@ -200,16 +264,23 @@ def main():
 
     text = read_data_js(DATA_JS_PATH)
     total_added = 0
+    total_enriched = 0
+    total_flagged = 0
 
     for unit_id, ig_id in IG_ACCOUNTS.items():
-        text, added = process_unit(unit_id, ig_id, token, text, dry_run)
+        text, added, enriched, flagged = process_unit(unit_id, ig_id, token, text, dry_run)
         total_added += added
+        total_enriched += enriched
+        total_flagged += flagged
 
     print(f"\nTotal de publicaciones nuevas: {total_added}")
+    print(f"Total de items enriquecidos (se publicaron): {total_enriched}")
+    print(f"Total de items marcados 'planificado, no publicado': {total_flagged}")
 
+    total_changed = total_added + total_enriched + total_flagged
     if dry_run:
         print("(--dry-run: no se modifico data.js)")
-    elif total_added > 0:
+    elif total_changed > 0:
         write_data_js(DATA_JS_PATH, text)
         print("data.js actualizado.")
     else:

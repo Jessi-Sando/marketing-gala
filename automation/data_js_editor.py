@@ -2,7 +2,12 @@
 bloques por unidad y por mes. Evita parsear todo el JS: solo ubica
 `id: "unit-id"` y luego `monthKey: [` dentro de ese bloque."""
 
+import os
 import re
+import sys
+
+sys.path.insert(0, os.path.dirname(__file__))
+from common import extract_day_month  # noqa: E402
 
 
 def read_data_js(path):
@@ -69,10 +74,12 @@ def _split_items(block):
 
 
 def extract_tracked_signatures(text, unit_id, month_key):
-    """Devuelve (igids_vistos, fechas_de_items_sin_igid) para ese mes.
-    Los items que ya tienen igId solo se chequean por igId (para permitir
-    varias publicaciones reales el mismo dia); los items viejos cargados a
-    mano (sin igId) se chequean por fecha, como respaldo."""
+    """Devuelve (igids_vistos, fechas_de_items_sin_igid, item_por_fecha) para
+    ese mes. Los items que ya tienen igId solo se chequean por igId (para
+    permitir varias publicaciones reales el mismo dia); los items viejos
+    cargados a mano (sin igId) se chequean por fecha, como respaldo, y se
+    guarda su texto completo en item_por_fecha para poder enriquecerlos si
+    resulta que el post ya se publico."""
     unit_start, unit_end = _unit_block_bounds(text, unit_id)
     insert_at = _month_array_insert_point(text, unit_start, unit_end, month_key)
     close_bracket = _matching_close_bracket(text, insert_at)
@@ -80,6 +87,7 @@ def extract_tracked_signatures(text, unit_id, month_key):
 
     igids = set()
     legacy_dates = set()
+    legacy_items_by_date = {}
     for item_text in _split_items(block):
         ig_match = re.search(r'igId:\s*"([^"]*)"', item_text)
         if ig_match:
@@ -87,8 +95,46 @@ def extract_tracked_signatures(text, unit_id, month_key):
             continue
         meta_match = re.search(r'meta:\s*"([^"]*)"', item_text)
         if meta_match and meta_match.group(1).strip():
-            legacy_dates.add(meta_match.group(1).strip())
-    return igids, legacy_dates
+            # Se usa solo el 'D mon' inicial (ignorando sufijos como "· Sala
+            # X" o "· jueves") para poder cruzar contra la fecha real del
+            # post, que siempre viene en formato liso "D mon".
+            date = extract_day_month(meta_match.group(1))
+            if date:
+                legacy_dates.add(date)
+                # Solo se ofrece para enriquecer si todavia no tiene datos
+                # reales propios (un item con likes ya es un dato final).
+                if not re.search(r"\blikes:\s*\d", item_text):
+                    legacy_items_by_date.setdefault(date, item_text)
+    return igids, legacy_dates, legacy_items_by_date
+
+
+def get_month_items(text, unit_id, month_key):
+    """Devuelve la lista de textos de item (nivel superior) del mes indicado."""
+    unit_start, unit_end = _unit_block_bounds(text, unit_id)
+    insert_at = _month_array_insert_point(text, unit_start, unit_end, month_key)
+    close_bracket = _matching_close_bracket(text, insert_at)
+    return _split_items(text[insert_at:close_bracket])
+
+
+def replace_month_items(text, unit_id, month_key, new_items_texts):
+    """Reescribe el array del mes indicado con una lista de textos de item
+    ya dada (permite reordenar y/o reemplazar items en un solo paso)."""
+    unit_start, unit_end = _unit_block_bounds(text, unit_id)
+    insert_at = _month_array_insert_point(text, unit_start, unit_end, month_key)
+    close_bracket = _matching_close_bracket(text, insert_at)
+
+    if not new_items_texts:
+        new_block = "\n      "
+    else:
+        inner = ",\n        ".join(new_items_texts)
+        new_block = f"\n        {inner}\n      "
+    return text[:insert_at] + new_block + text[close_bracket:]
+
+
+def replace_item(text, old_item_text, new_item_text):
+    """Reemplaza la primera ocurrencia exacta de old_item_text por
+    new_item_text en todo el documento."""
+    return text.replace(old_item_text, new_item_text, 1)
 
 
 def insert_item(text, unit_id, month_key, item_js_text):

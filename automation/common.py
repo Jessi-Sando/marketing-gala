@@ -1,5 +1,6 @@
 """Constantes y utilidades compartidas por los scripts de automatizacion."""
 
+import datetime
 import os
 import re
 
@@ -25,6 +26,14 @@ FB_PAGES = {
 
 MONTH_ABBR_ES = {6: "jun", 7: "jul", 8: "ago", 9: "sep"}
 MONTH_KEY_ES = {6: "junio", 7: "julio", 8: "agosto", 9: "septiembre"}
+
+MONTH_ABBR_TO_NUM = {
+    "ene": 1, "feb": 2, "mar": 3, "abr": 4, "may": 5, "jun": 6,
+    "jul": 7, "ago": 8, "sep": 9, "oct": 10, "nov": 11, "dic": 12,
+}
+_DAY_MONTH_RE = re.compile(
+    r"^(\d{1,2})\s+(ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)", re.IGNORECASE
+)
 
 DATA_JS_PATH = os.path.join(os.path.dirname(__file__), "..", "data.js")
 
@@ -59,6 +68,32 @@ def format_date_meta(dt):
 
 def month_key_for(dt):
     return MONTH_KEY_ES.get(dt.month)
+
+
+def extract_day_month(meta):
+    """Extrae el 'D mon' inicial de un texto de meta libre (ej. '7 jul ·
+    Sala Barranqueras' -> '7 jul'), ignorando cualquier sufijo. Devuelve None
+    si el texto no empieza con una fecha reconocible (ej. 'Todo julio',
+    'Fecha a confirmar', '')."""
+    match = _DAY_MONTH_RE.match(meta.strip())
+    if not match:
+        return None
+    return f"{int(match.group(1))} {match.group(2).lower()}"
+
+
+def parse_meta_date(meta, year):
+    """Devuelve un datetime.date a partir de un texto de meta libre, o None
+    si no tiene una fecha 'D mon' reconocible al principio."""
+    match = _DAY_MONTH_RE.match(meta.strip())
+    if not match:
+        return None
+    month = MONTH_ABBR_TO_NUM.get(match.group(2).lower())
+    if not month:
+        return None
+    try:
+        return datetime.date(year, month, int(match.group(1)))
+    except ValueError:
+        return None
 
 
 def derive_title(caption):

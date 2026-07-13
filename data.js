@@ -25,18 +25,18 @@ const UNITS = [
         { tags: ["reel", "auto-detectado"], meta: "7 jul", title: "EL PRIMER GANADOR YA HIZO HISTORIA.", desc: "🏆 EL PRIMER GANADOR YA HIZO HISTORIA. Así se vivió el debut de El Mundial de la Suerte en Sala Castelli. La emoción ya empezó a recorrer...", likes: 6, views: 595, shares: 2, igId: "DafpzyhiREF" },
         { tags: ["flyer", "auto-detectado"], meta: "8 jul", title: "EL MOMENTO QUE TODOS ESTABAN ESPERANDO ESTÁ CADA VEZ MÁS CERCA.", desc: "🏆 EL MOMENTO QUE TODOS ESTABAN ESPERANDO ESTÁ CADA VEZ MÁS CERCA. Durante semanas recorrimos nuestras salas, vivimos noches inolvidables...", likes: 4, shares: 0, igId: "DaifIR7HNt5" },
         { tags: ["reel", "auto-detectado"], meta: "10 jul", title: "¡QUÉ PARTIDO, ARGENTINA!", desc: "🇦🇷🔥 ¡QUÉ PARTIDO, ARGENTINA! 🔥🇦🇷 Cuando parecía imposible, apareció el corazón de un equipo que nunca dejó de creer. Del 0-2 al 3-2. Una...", likes: 11, views: 624, shares: 4, igId: "Dan2IALCj91" },
-        { tags: ["contenido"], meta: "2 jul", title: "Argentina ya está en 16avos", desc: "Anticipo Sala Sáenz Peña · 14 de julio · Moto 110, Smart TV, $300.000 en créditos Boxie" },
-        { tags: ["contenido", "pautar"], meta: "3 jul", title: "Carrusel ganadores Sala Güemes", desc: "Resultados y ganadores del sorteo del 26 de junio" },
+        { tags: ["auto-detectado", "contenido"], meta: "2 jul", title: "Argentina ya está en 16avos", desc: "Anticipo Sala Sáenz Peña · 14 de julio · Moto 110, Smart TV, $300.000 en créditos Boxie", likes: 2, shares: 0, igId: "DaSoOAQE2Qw" },
+        { tags: ["auto-detectado", "contenido", "pautar"], meta: "3 jul", title: "Carrusel ganadores Sala Güemes", desc: "Resultados y ganadores del sorteo del 26 de junio", likes: 8, shares: 2, igId: "DaVcNQ3jOI_" },
         { tags: ["contenido", "pautar"], meta: "6 jul · lunes", title: "Reel — lo que vamos viviendo", desc: "Clima y ambiente de campaña del Mundial de la Suerte" },
         { tags: ["sorteo"], meta: "7 jul · Sala Barranqueras", title: "Sorteo Mundial", desc: "Premios propios de sala · BOXIE · feed publicado, resta solo historia" },
         { tags: ["sorteo", "campaña", "pautar"], meta: "8 jul · martes", title: "Anuncio Sorteo Final", desc: "Comunicación del Gran Sorteo Final en Sala Central" },
         { tags: ["sorteo", "pautar"], meta: "9 jul · jueves", title: "Ganadores Sala Barranqueras", desc: "Publicación de los ganadores del sorteo del 7 de julio" },
-        { tags: ["lanzamiento", "pautar"], meta: "12 jul", title: "Lanzamiento La Experiencia", desc: "Imagen ruleta EGT · crédito promo en ruleta · tragos en blackjack con dealer" },
         { tags: ["sorteo"], meta: "14 jul · Sala Sáenz Peña", title: "Sorteo Mundial", desc: "Premios propios de sala · BOXIE · feed publicado, resta solo historia" },
         { tags: ["sorteo", "campaña", "pautar"], highlight: true, meta: "19 jul · Sala Central 21:00 hs", title: "Gran Sorteo Final", desc: "Cierre Mundial de la Suerte · anuncio sorpresa La Experiencia al final de la noche" },
         { tags: ["sorteo", "campaña", "pautar"], meta: "21 jul", title: "Resumen Sorteo Final", desc: "Recap del Gran Sorteo Final en Sala Central" },
         { tags: ["La Experiencia", "contenido", "pautar"], meta: "22 jul · miércoles", title: "Recordamos el primer día de La Experiencia", desc: "Recap de la primera noche · recordatorio: La Experiencia es todos los miércoles" },
-        { tags: ["contenido"], meta: "Todo julio", title: "Publicación casi diaria", desc: "Sala → premios → ganadores al día siguiente → próximo sorteo → BOXIE" }
+        { tags: ["contenido"], meta: "Todo julio", title: "Publicación casi diaria", desc: "Sala → premios → ganadores al día siguiente → próximo sorteo → BOXIE" },
+        { tags: ["planificado, no publicado", "lanzamiento", "pautar"], meta: "12 jul", title: "Lanzamiento La Experiencia", desc: "Imagen ruleta EGT · crédito promo en ruleta · tragos en blackjack con dealer" }
       ],
       agosto: [
         { tags: ["La Experiencia", "contenido", "pautar"], meta: "1–7 ago", title: "Reel ruleta EGT en acción", desc: "Mostrar la máquina funcionando · ambiente · jugadores" },
@@ -78,10 +78,10 @@ const UNITS = [
         { tags: ["carrusel", "auto-detectado"], meta: "11 jul", title: "𝑼𝒏𝒂 𝒏𝒐𝒄𝒉𝒆 𝒃𝒊𝒆𝒏 𝑨𝒓𝒈𝒆𝒏𝒕𝒊𝒏𝒂 𝒑𝒂𝒓𝒂 𝒓𝒆𝒄𝒐𝒓𝒅𝒂𝒓", desc: "🇦🇷𝑼𝒏𝒂 𝒏𝒐𝒄𝒉𝒆 𝒃𝒊𝒆𝒏 𝑨𝒓𝒈𝒆𝒏𝒕𝒊𝒏𝒂 𝒑𝒂𝒓𝒂 𝒓𝒆𝒄𝒐𝒓𝒅𝒂𝒓🇦🇷✨🇦🇷 . Así vivimos nuestra Cena Temática, una experiencia donde la tradición, los sabores y los...", likes: 26, comments: 1, shares: 2, igId: "DaqBcqRH-aF" },
         { tags: ["flyer", "auto-detectado"], meta: "6 jul", title: "𝐒𝐮𝐠𝐞𝐫𝐞𝐧𝐜𝐢𝐚 𝐝𝐞𝐥 𝐂𝐡𝐞𝐟 ‍", desc: "✨𝐒𝐮𝐠𝐞𝐫𝐞𝐧𝐜𝐢𝐚 𝐝𝐞𝐥 𝐂𝐡𝐞𝐟 ✨👨‍🍳 . Una propuesta que invita a disfrutar: Trucha Patagónica, sobre cremoso de calabaza, acompañada de papines dor...", likes: 3, comments: 1, igId: "DadEtton1Yn", shares: 1 },
         { tags: ["carrusel", "auto-detectado"], meta: "6 jul", title: "CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores...", desc: "🍷🇦🇷 CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores 🇦🇷⁣⁣⁣⁣ ⁣⁣⁣⁣. Te invitamos a vivir una Cena de Maridaje con Temátic...", likes: 6, igId: "DadSZYgn3Yn", shares: 3 },
-        { tags: ["contenido", "pautar"], meta: "28 jun–7 jul", title: "Lanzamiento Cena Temática Argentina", desc: "Flyer feed · historia · copy WhatsApp · carga Riservi · Humand" },
-        { tags: ["cena temática", "pautar"], highlight: true, meta: "8 jul", title: "Cena Temática Argentina", desc: "Bodega Terrazas de los Andes · Sommelier Carlos Daownie · menú por pasos · maridaje" },
         { tags: ["contenido"], meta: "Todo julio", title: "Menú ejecutivo · sugerencia del chef", desc: "2–3 piezas semanales · feed e historias" },
-        { tags: ["canales", "pautar"], meta: "Julio", title: "Lanzamiento Pedidos Ya · FUDO · Riservi", desc: "Comunicar canales digitales en redes y WhatsApp" }
+        { tags: ["canales", "pautar"], meta: "Julio", title: "Lanzamiento Pedidos Ya · FUDO · Riservi", desc: "Comunicar canales digitales en redes y WhatsApp" },
+        { tags: ["planificado, no publicado", "contenido", "pautar"], meta: "28 jun–7 jul", title: "Lanzamiento Cena Temática Argentina", desc: "Flyer feed · historia · copy WhatsApp · carga Riservi · Humand" },
+        { tags: ["planificado, no publicado", "cena temática", "pautar"], highlight: true, meta: "8 jul", title: "Cena Temática Argentina", desc: "Bodega Terrazas de los Andes · Sommelier Carlos Daownie · menú por pasos · maridaje" }
       ],
       agosto: [
         { tags: ["pendiente"], meta: "", title: "Cena temática agosto", desc: "Fecha y concepto a confirmar 10 días antes" },
@@ -165,8 +165,8 @@ const UNITS = [
         { tags: ["producción"], meta: "Todo julio", title: "Sesión de fotos y video", desc: "Habitaciones · piscina · spa · bar · lobby · Valentino · exteriores. Banco para los 3 meses." },
         { tags: ["contenido", "pautar"], meta: "Julio", title: "Presentación del hotel", desc: "Serie de piezas por espacio. Con fotos existentes mientras llega el material nuevo." },
         { tags: ["contenido", "pautar"], meta: "Julio", title: "¿Por qué Resistencia?", desc: "Ciudad + hotel como base ideal. Atractivos locales, conectividad, centro." },
-        { tags: ["colaboración", "pautar"], meta: "8 jul", title: "Cena Temática Argentina · Valentino", desc: "Post en colaboración desde cuenta del hotel." },
-        { tags: ["Humand"], meta: "Julio", title: "Novedades del hotel para colaboradores Gala SA", desc: "" }
+        { tags: ["Humand"], meta: "Julio", title: "Novedades del hotel para colaboradores Gala SA", desc: "" },
+        { tags: ["planificado, no publicado", "colaboración", "pautar"], meta: "8 jul", title: "Cena Temática Argentina · Valentino", desc: "Post en colaboración desde cuenta del hotel." }
       ],
       agosto: [
         { tags: ["contenido", "pautar"], meta: "Agosto", title: "Reels de espacios", desc: "Habitación · piscina · spa · bar. Un reel por espacio, aspiracionales." },

@@ -103,7 +103,8 @@ const TAG_ICONS = {
   "auto-detectado": "🔍 ",
   reel: "🎬 ",
   flyer: "🖼️ ",
-  carrusel: "📑 "
+  carrusel: "📑 ",
+  "planificado-no-publicado": "⏳ "
 };
 
 function renderTags(tags) {
@@ -111,8 +112,9 @@ function renderTags(tags) {
     .map((tag) => {
       const slug = slugify(tag);
       const isPendiente = slug === "pendiente";
+      const isNoPublicado = slug === "planificado-no-publicado";
       const icon = Object.keys(TAG_ICONS).find((key) => slug === key || (key === "pautar" && slug.startsWith("pautar")));
-      return `<span class="tag tag--${slug}${isPendiente ? " tag--pendiente" : ""}">${icon ? TAG_ICONS[icon] : ""}${tag}</span>`;
+      return `<span class="tag tag--${slug}${isPendiente ? " tag--pendiente" : ""}${isNoPublicado ? " tag--no-publicado" : ""}">${icon ? TAG_ICONS[icon] : ""}${tag}</span>`;
     })
     .join("");
 }
@@ -120,10 +122,12 @@ function renderTags(tags) {
 function renderItem(unitId, monthKey, item) {
   const isPendiente = item.tags.includes("pendiente");
   const isColaboracion = item.tags.includes("colaboración");
+  const isNoPublicado = item.tags.includes("planificado, no publicado");
   const classes = [
     "card-item",
     isPendiente ? "card-item--pendiente" : "",
     isColaboracion ? "card-item--colaboracion" : "",
+    isNoPublicado ? "card-item--no-publicado" : "",
     item.highlight ? "card-item--highlight" : ""
   ].filter(Boolean).join(" ");
 
