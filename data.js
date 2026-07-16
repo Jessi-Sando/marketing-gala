@@ -32,6 +32,7 @@ const UNITS = [
         { tags: ["sorteo", "pautar"], meta: "9 jul · jueves", title: "Ganadores Sala Barranqueras", desc: "Publicación de los ganadores del sorteo del 7 de julio" },
         { tags: ["reel", "auto-detectado"], meta: "10 jul", title: "¡QUÉ PARTIDO, ARGENTINA!", desc: "🇦🇷🔥 ¡QUÉ PARTIDO, ARGENTINA! 🔥🇦🇷 Cuando parecía imposible, apareció el corazón de un equipo que nunca dejó de creer. Del 0-2 al 3-2. Una...", likes: 11, views: 624, shares: 4, igId: "Dan2IALCj91" },
         { tags: ["auto-detectado", "sorteo"], meta: "14 jul · Sala Sáenz Peña", title: "Sorteo Mundial", desc: "Premios propios de sala · BOXIE · feed publicado, resta solo historia", likes: 44, comments: 5, views: 1719, shares: 6, igId: "DaxikcGKymY" },
+        { tags: ["carrusel", "auto-detectado"], meta: "15 jul", title: "EN EL MUNDIAL DE LA SUERTE, LOS PREMIOS SIGUEN ENCONTRANDO A SUS GA...", desc: "🏆⚽ EN EL MUNDIAL DE LA SUERTE, LOS PREMIOS SIGUEN ENCONTRANDO A SUS GANADORES ⚽🏆⁣ ⁣ Felicitamos a quienes ya se llevaron sus premios en S...", likes: 6, shares: 1, igId: "Da0Cs3Hn62t" },
         { tags: ["sorteo", "campaña", "pautar"], highlight: true, meta: "19 jul · Sala Central 21:00 hs", title: "Gran Sorteo Final", desc: "Cierre Mundial de la Suerte · anuncio sorpresa La Experiencia al final de la noche" },
         { tags: ["sorteo", "campaña", "pautar"], meta: "21 jul", title: "Resumen Sorteo Final", desc: "Recap del Gran Sorteo Final en Sala Central" },
         { tags: ["La Experiencia", "contenido", "pautar"], meta: "22 jul · miércoles", title: "Recordamos el primer día de La Experiencia", desc: "Recap de la primera noche · recordatorio: La Experiencia es todos los miércoles" },
@@ -54,7 +55,8 @@ const UNITS = [
     performance: { history: [
         { date: "2026-07-12", views: 94, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 19, profileViews: 10, followers: 3625, followersDelta: 0, fbFollowers: 3088 },
         { date: "2026-07-13", views: 678, likes: 6, comments: 0, shares: 0, saves: 0, interactions: 6, reach: 148, profileViews: 19, followers: 3626, followersDelta: 1, fbFollowers: 3090 },
-        { date: "2026-07-14", views: 1801, likes: 45, comments: 5, shares: 5, saves: 1, interactions: 61, reach: 998, profileViews: 26, followers: 3628, followersDelta: 2, fbFollowers: 3090 }
+        { date: "2026-07-14", views: 1801, likes: 45, comments: 5, shares: 5, saves: 1, interactions: 61, reach: 998, profileViews: 26, followers: 3628, followersDelta: 2, fbFollowers: 3090 },
+        { date: "2026-07-15", views: 10893, likes: 32, comments: 0, shares: 3, saves: 0, interactions: 40, reach: 7050, profileViews: 113, followers: 3660, followersDelta: 32, fbFollowers: 3091 }
       ] }
   },
   {
@@ -100,7 +102,8 @@ const UNITS = [
     performance: { history: [
         { date: "2026-07-12", views: 365, likes: 4, comments: 0, shares: 0, saves: 0, interactions: 4, reach: 113, profileViews: 15, followers: 6447, followersDelta: 0, fbFollowers: 7096 },
         { date: "2026-07-13", views: 168, likes: 3, comments: 0, shares: 1, saves: 0, interactions: 5, reach: 58, profileViews: 13, followers: 6449, followersDelta: 2, fbFollowers: 7096 },
-        { date: "2026-07-14", views: 402, likes: 1, comments: 0, shares: 2, saves: 1, interactions: 6, reach: 69, profileViews: 28, followers: 6449, followersDelta: 0, fbFollowers: 7096 }
+        { date: "2026-07-14", views: 402, likes: 1, comments: 0, shares: 2, saves: 1, interactions: 6, reach: 69, profileViews: 28, followers: 6449, followersDelta: 0, fbFollowers: 7096 },
+        { date: "2026-07-15", views: 89, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 27, profileViews: 10, followers: 6449, followersDelta: 0, fbFollowers: 7096 }
       ] }
   },
   {
@@ -149,7 +152,8 @@ const UNITS = [
     performance: { history: [
         { date: "2026-07-12", views: 322, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 137, profileViews: 7, followers: 1184, followersDelta: 0, fbFollowers: 134 },
         { date: "2026-07-13", views: 816, likes: 8, comments: 0, shares: 2, saves: 1, interactions: 13, reach: 300, profileViews: 10, followers: 1186, followersDelta: 2, fbFollowers: 156 },
-        { date: "2026-07-14", views: 1215, likes: 13, comments: 0, shares: 9, saves: 0, interactions: 31, reach: 316, profileViews: 13, followers: 1187, followersDelta: 1, fbFollowers: 169 }
+        { date: "2026-07-14", views: 1215, likes: 13, comments: 0, shares: 9, saves: 0, interactions: 31, reach: 316, profileViews: 13, followers: 1187, followersDelta: 1, fbFollowers: 169 },
+        { date: "2026-07-15", views: 222, likes: 0, comments: 0, shares: 1, saves: 0, interactions: 2, reach: 84, profileViews: 4, followers: 1188, followersDelta: 1, fbFollowers: 169 }
       ] }
   },
   {
@@ -192,7 +196,8 @@ const UNITS = [
     performance: { history: [
         { date: "2026-07-12", views: 164, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 7, profileViews: 12, followers: 8799, followersDelta: 0, fbFollowers: 15650 },
         { date: "2026-07-13", views: 95, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 3, profileViews: 10, followers: 8802, followersDelta: 3, fbFollowers: 15651 },
-        { date: "2026-07-14", views: 954, likes: 5, comments: 0, shares: 3, saves: 1, interactions: 12, reach: 239, profileViews: 18, followers: 8797, followersDelta: -5, fbFollowers: 15650 }
+        { date: "2026-07-14", views: 954, likes: 5, comments: 0, shares: 3, saves: 1, interactions: 12, reach: 239, profileViews: 18, followers: 8797, followersDelta: -5, fbFollowers: 15650 },
+        { date: "2026-07-15", views: 593, likes: 0, comments: 0, shares: 1, saves: 0, interactions: 2, reach: 27, profileViews: 7, followers: 8799, followersDelta: 2, fbFollowers: 15650 }
       ] }
   },
   {
@@ -233,7 +238,8 @@ const UNITS = [
     performance: { history: [
         { date: "2026-07-12", views: 624, likes: 6, comments: 0, shares: 1, saves: 2, interactions: 10, reach: 9, profileViews: 43, followers: 19533, followersDelta: 0, fbFollowers: 17824 },
         { date: "2026-07-13", views: 1379, likes: 9, comments: 0, shares: 7, saves: 1, interactions: 24, reach: 19, profileViews: 50, followers: 19538, followersDelta: 5, fbFollowers: 17829 },
-        { date: "2026-07-14", views: 3171, likes: 22, comments: 0, shares: 14, saves: 0, interactions: 50, reach: 589, profileViews: 35, followers: 19533, followersDelta: -5, fbFollowers: 17831 }
+        { date: "2026-07-14", views: 3171, likes: 22, comments: 0, shares: 14, saves: 0, interactions: 50, reach: 589, profileViews: 35, followers: 19533, followersDelta: -5, fbFollowers: 17831 },
+        { date: "2026-07-15", views: 1142, likes: 0, comments: 0, shares: 3, saves: 0, interactions: 6, reach: 129, profileViews: 25, followers: 19536, followersDelta: 3, fbFollowers: 17831 }
       ] }
   },
   {
@@ -269,7 +275,8 @@ const UNITS = [
     performance: { history: [
         { date: "2026-07-12", views: 32, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 3, profileViews: 1, followers: 506, followersDelta: 0, fbFollowers: 1 },
         { date: "2026-07-13", views: 19, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 4, profileViews: 4, followers: 506, followersDelta: 0, fbFollowers: 1 },
-        { date: "2026-07-14", views: 31, likes: 0, comments: 0, shares: 1, saves: 0, interactions: 2, reach: 2, profileViews: 3, followers: 507, followersDelta: 1, fbFollowers: 1 }
+        { date: "2026-07-14", views: 31, likes: 0, comments: 0, shares: 1, saves: 0, interactions: 2, reach: 2, profileViews: 3, followers: 507, followersDelta: 1, fbFollowers: 1 },
+        { date: "2026-07-15", views: 101, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 4, profileViews: 7, followers: 507, followersDelta: 0, fbFollowers: 1 }
       ] }
   }
 ];
