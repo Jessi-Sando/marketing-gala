@@ -61,7 +61,8 @@ const UNITS = [
         { date: "2026-07-16", views: 6979, likes: 46, comments: 1, shares: 9, saves: 1, interactions: 72, reach: 4607, profileViews: 96, followers: 3684, followersDelta: 24, fbFollowers: 3095 },
         { date: "2026-07-17", views: 3925, likes: 26, comments: 1, shares: 2, saves: 2, interactions: 35, reach: 2363, profileViews: 108, followers: 3708, followersDelta: 24, fbFollowers: 3105 },
         { date: "2026-07-18", views: 4599, likes: 51, comments: 13, shares: 6, saves: 2, interactions: 81, reach: 3206, profileViews: 110, followers: 3763, followersDelta: 55, fbFollowers: 3109 },
-        { date: "2026-07-19", views: 32818, likes: 84, comments: 3, shares: 12, saves: 6, interactions: 120, reach: 27038, profileViews: 232, followers: 3862, followersDelta: 99, fbFollowers: 3111 }
+        { date: "2026-07-19", views: 32818, likes: 84, comments: 3, shares: 12, saves: 6, interactions: 120, reach: 27038, profileViews: 232, followers: 3862, followersDelta: 99, fbFollowers: 3111 },
+        { date: "2026-07-20", views: 11435, likes: 43, comments: 0, shares: 4, saves: 1, interactions: 54, reach: 7771, profileViews: 204, followers: 3912, followersDelta: 50, fbFollowers: 3109 }
       ] }
   },
   {
@@ -88,6 +89,7 @@ const UNITS = [
         { tags: ["flyer", "auto-detectado"], meta: "6 jul", title: "𝐒𝐮𝐠𝐞𝐫𝐞𝐧𝐜𝐢𝐚 𝐝𝐞𝐥 𝐂𝐡𝐞𝐟 ‍", desc: "✨𝐒𝐮𝐠𝐞𝐫𝐞𝐧𝐜𝐢𝐚 𝐝𝐞𝐥 𝐂𝐡𝐞𝐟 ✨👨‍🍳 . Una propuesta que invita a disfrutar: Trucha Patagónica, sobre cremoso de calabaza, acompañada de papines dor...", likes: 3, comments: 1, igId: "DadEtton1Yn", shares: 1 },
         { tags: ["carrusel", "auto-detectado"], meta: "6 jul", title: "CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores...", desc: "🍷🇦🇷 CENA TEMÁTICA ARGENTINA | Una noche para celebrar nuestros sabores 🇦🇷⁣⁣⁣⁣ ⁣⁣⁣⁣. Te invitamos a vivir una Cena de Maridaje con Temátic...", likes: 6, igId: "DadSZYgn3Yn", shares: 3 },
         { tags: ["cena temática", "pautar", "auto-detectado"], highlight: true, meta: "11 jul", title: "Cena Temática Argentina", desc: "Bodega Terrazas de los Andes · Sommelier Carlos Daownie · menú por pasos · maridaje (evento 8 jul, recap publicado 11 jul)", likes: 26, comments: 1, shares: 2, igId: "DaqBcqRH-aF" },
+        { tags: ["flyer", "auto-detectado"], meta: "20 jul", title: "𝐒𝐮𝐠𝐞𝐫𝐞𝐧𝐜𝐢𝐚 𝐝𝐞𝐥 𝐂𝐡𝐞𝐟 ‍", desc: "✨𝐒𝐮𝐠𝐞𝐫𝐞𝐧𝐜𝐢𝐚 𝐝𝐞𝐥 𝐂𝐡𝐞𝐟 ✨👨‍🍳 . Suprema de pollo en salsa de puerros sobre crema de cabutia, garbanzos crocantes y brócoli encurtido. . Una c...", likes: 3, shares: 0, igId: "DbBCMlxH9BY" },
         { tags: ["contenido"], meta: "Todo julio", title: "Menú ejecutivo · sugerencia del chef", desc: "2–3 piezas semanales · feed e historias" },
         { tags: ["canales", "pautar"], meta: "Julio", title: "Lanzamiento Pedidos Ya · FUDO · Riservi", desc: "Comunicar canales digitales en redes y WhatsApp" }
       ],
@@ -112,7 +114,8 @@ const UNITS = [
         { date: "2026-07-16", views: 115, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 23, profileViews: 4, followers: 6450, followersDelta: 1, fbFollowers: 7095 },
         { date: "2026-07-17", views: 88, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 25, profileViews: 11, followers: 6448, followersDelta: -2, fbFollowers: 7095 },
         { date: "2026-07-18", views: 100, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 1, reach: 50, profileViews: 10, followers: 6446, followersDelta: -2, fbFollowers: 7095 },
-        { date: "2026-07-19", views: 127, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 63, profileViews: 5, followers: 6444, followersDelta: -2, fbFollowers: 7095 }
+        { date: "2026-07-19", views: 127, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 63, profileViews: 5, followers: 6444, followersDelta: -2, fbFollowers: 7095 },
+        { date: "2026-07-20", views: 668, likes: 6, comments: 0, shares: 1, saves: 0, interactions: 8, reach: 354, profileViews: 25, followers: 6445, followersDelta: 1, fbFollowers: 7095 }
       ] }
   },
   {
@@ -166,7 +169,8 @@ const UNITS = [
         { date: "2026-07-16", views: 729, likes: 6, comments: 0, shares: 6, saves: -1, interactions: 17, reach: 163, profileViews: 12, followers: 1190, followersDelta: 2, fbFollowers: 169 },
         { date: "2026-07-17", views: 248, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 71, profileViews: 12, followers: 1191, followersDelta: 1, fbFollowers: 169 },
         { date: "2026-07-18", views: 85, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 24, profileViews: 1, followers: 1192, followersDelta: 1, fbFollowers: 169 },
-        { date: "2026-07-19", views: 131, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 31, profileViews: 9, followers: 1194, followersDelta: 2, fbFollowers: 169 }
+        { date: "2026-07-19", views: 131, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 31, profileViews: 9, followers: 1194, followersDelta: 2, fbFollowers: 169 },
+        { date: "2026-07-20", views: 81, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 36, profileViews: 3, followers: 1194, followersDelta: 0, fbFollowers: 169 }
       ] }
   },
   {
@@ -214,7 +218,8 @@ const UNITS = [
         { date: "2026-07-16", views: 832, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 1, reach: 160, profileViews: 21, followers: 8795, followersDelta: -4, fbFollowers: 15650 },
         { date: "2026-07-17", views: 278, likes: 4, comments: 0, shares: 0, saves: 0, interactions: 4, reach: 54, profileViews: 19, followers: 8794, followersDelta: -1, fbFollowers: 15649 },
         { date: "2026-07-18", views: 112, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 1, reach: 14, profileViews: 10, followers: 8796, followersDelta: 2, fbFollowers: 15649 },
-        { date: "2026-07-19", views: 78, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 8, profileViews: 4, followers: 8793, followersDelta: -3, fbFollowers: 15649 }
+        { date: "2026-07-19", views: 78, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 8, profileViews: 4, followers: 8793, followersDelta: -3, fbFollowers: 15649 },
+        { date: "2026-07-20", views: 122, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 1, reach: 12, profileViews: 14, followers: 8791, followersDelta: -2, fbFollowers: 15648 }
       ] }
   },
   {
@@ -260,7 +265,8 @@ const UNITS = [
         { date: "2026-07-16", views: 1793, likes: 8, comments: 0, shares: 2, saves: -1, interactions: 11, reach: 302, profileViews: 40, followers: 19537, followersDelta: 1, fbFollowers: 17831 },
         { date: "2026-07-17", views: 910, likes: 1, comments: 0, shares: 0, saves: 2, interactions: 3, reach: 97, profileViews: 42, followers: 19537, followersDelta: 0, fbFollowers: 17827 },
         { date: "2026-07-18", views: 586, likes: 2, comments: 1, shares: 2, saves: 0, interactions: 7, reach: 17, profileViews: 62, followers: 19543, followersDelta: 6, fbFollowers: 17826 },
-        { date: "2026-07-19", views: 498, likes: 3, comments: 0, shares: 4, saves: 1, interactions: 12, reach: 13, profileViews: 42, followers: 19547, followersDelta: 4, fbFollowers: 17826 }
+        { date: "2026-07-19", views: 498, likes: 3, comments: 0, shares: 4, saves: 1, interactions: 12, reach: 13, profileViews: 42, followers: 19547, followersDelta: 4, fbFollowers: 17826 },
+        { date: "2026-07-20", views: 713, likes: 2, comments: 0, shares: 3, saves: 0, interactions: 8, reach: 19, profileViews: 47, followers: 19549, followersDelta: 2, fbFollowers: 17826 }
       ] }
   },
   {
@@ -301,7 +307,8 @@ const UNITS = [
         { date: "2026-07-16", views: 32, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 3, profileViews: 1, followers: 507, followersDelta: 0, fbFollowers: 1 },
         { date: "2026-07-17", views: 57, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 4, profileViews: 2, followers: 507, followersDelta: 0, fbFollowers: 1 },
         { date: "2026-07-18", views: 43, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 3, profileViews: 2, followers: 507, followersDelta: 0, fbFollowers: 1 },
-        { date: "2026-07-19", views: 71, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 6, profileViews: 2, followers: 507, followersDelta: 0, fbFollowers: 1 }
+        { date: "2026-07-19", views: 71, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 6, profileViews: 2, followers: 507, followersDelta: 0, fbFollowers: 1 },
+        { date: "2026-07-20", views: 14, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 2, profileViews: 0, followers: 507, followersDelta: 0, fbFollowers: 1 }
       ] }
   }
 ];
