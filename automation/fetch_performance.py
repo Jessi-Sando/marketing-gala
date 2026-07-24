@@ -110,6 +110,41 @@ def fetch_fb_followers(page_id, token):
         return None
 
 
+def get_page_access_tokens(user_token):
+    """Resuelve una vez por corrida los access token de cada pagina de
+    Facebook administrada (necesarios para leer los posts de la pagina),
+    via /me/accounts."""
+    try:
+        data = api_get("me/accounts", user_token, fields="id,access_token", limit=100)
+        return {p["id"]: p["access_token"] for p in data.get("data", []) if p.get("access_token")}
+    except (urllib.error.HTTPError, KeyError):
+        return {}
+
+
+def fetch_fb_page_interactions(page_id, page_token, since, until):
+    """Suma likes + comentarios + compartidos de los posts de la pagina de
+    Facebook publicados en el rango de fechas. Usa los campos clasicos del
+    post (likes/comments/shares) en vez del sistema de Page Insights, que
+    Meta viene deprecando por partes (page_post_engagements ya no devuelve
+    datos)."""
+    if not page_id or not page_token:
+        return None
+    try:
+        data = api_get(
+            f"{page_id}/posts", page_token,
+            fields="likes.summary(true),comments.summary(true),shares",
+            since=since, until=until, limit=100,
+        )
+    except urllib.error.HTTPError:
+        return None
+    total = 0
+    for post in data.get("data", []):
+        total += (post.get("likes") or {}).get("summary", {}).get("total_count", 0) or 0
+        total += (post.get("comments") or {}).get("summary", {}).get("total_count", 0) or 0
+        total += (post.get("shares") or {}).get("count", 0) or 0
+    return total
+
+
 def fetch_ig_followers(ig_id, token):
     """Total de seguidores actual (snapshot, no serie historica). El metric
     'follower_count' de insights no es un total sino altas/bajas del dia."""
@@ -139,15 +174,16 @@ def get_last_followers(text, unit_id):
 
 def format_performance_js(entry):
     parts = [f'date: "{entry["date"]}"']
-    for key in ["views", "likes", "comments", "shares", "saves", "interactions", "reach", "profileViews", "followers", "followersDelta", "fbFollowers"]:
+    for key in ["views", "likes", "comments", "shares", "saves", "interactions", "reach", "profileViews", "followers", "followersDelta", "fbFollowers", "fbInteractions"]:
         value = entry.get(key)
         if value is not None:
             parts.append(f"{key}: {value}")
     return "{ " + ", ".join(parts) + " }"
 
 
-def process_unit(unit_id, ig_id, token, text, date_str, since, until, dry_run):
+def process_unit(unit_id, ig_id, token, text, date_str, since, until, dry_run, page_access_tokens):
     page_id = FB_PAGES.get(unit_id)
+    page_token = page_access_tokens.get(page_id)
 
     reach = fetch_ig_time_series(ig_id, token, "reach", since, until)
     followers = fetch_ig_followers(ig_id, token)
@@ -161,6 +197,7 @@ def process_unit(unit_id, ig_id, token, text, date_str, since, until, dry_run):
     profile_views = fetch_ig_total_value(ig_id, token, "profile_views", since, until)
 
     fb_followers = fetch_fb_followers(page_id, token)
+    fb_interactions = fetch_fb_page_interactions(page_id, page_token, since, until)
 
     last_followers = get_last_followers(text, unit_id)
     followers_delta = (followers - last_followers) if (followers is not None and last_followers is not None) else None
@@ -178,9 +215,10 @@ def process_unit(unit_id, ig_id, token, text, date_str, since, until, dry_run):
         "followers": followers,
         "followersDelta": followers_delta,
         "fbFollowers": fb_followers,
+        "fbInteractions": fb_interactions,
     }
 
-    print(f"  {unit_id}: views={views} interactions={interactions} reach={reach} followers={followers} (Δ{followers_delta}) fbFollowers={fb_followers}")
+    print(f"  {unit_id}: views={views} interactions={interactions} reach={reach} followers={followers} (Δ{followers_delta}) fbFollowers={fb_followers} fbInteractions={fb_interactions}")
 
     if dry_run:
         return text
@@ -200,9 +238,10 @@ def main():
     print(f"Trayendo rendimiento del {date_str} (hora Argentina)...\n")
 
     text = read_data_js(DATA_JS_PATH)
+    page_access_tokens = get_page_access_tokens(token)
 
     for unit_id, ig_id in IG_ACCOUNTS.items():
-        text = process_unit(unit_id, ig_id, token, text, date_str, since, until, dry_run)
+        text = process_unit(unit_id, ig_id, token, text, date_str, since, until, dry_run, page_access_tokens)
 
     if dry_run:
         print("\n(--dry-run: no se modifico data.js)")

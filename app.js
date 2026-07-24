@@ -1600,9 +1600,12 @@ function renderMetricas(unit) {
     </div>
   `;
 
+  const fbConnected = history.some((d) => typeof d.fbInteractions === "number");
+  const fbInteractionsTotal = history.reduce((a, d) => a + (d.fbInteractions || 0), 0);
+
   const bars = [
     { label: "Instagram", icon: "📷", value: avgOf(history, "interactions") ? Math.round(history.reduce((a, d) => a + (d.interactions || 0), 0)) : 0, connected: true },
-    { label: "Facebook", icon: "📘", value: 0, connected: false },
+    { label: "Facebook", icon: "📘", value: fbInteractionsTotal, connected: fbConnected },
     { label: "TikTok", icon: "🎵", value: 0, connected: false }
   ];
 
