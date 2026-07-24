@@ -350,7 +350,11 @@ function renderResumen(unit) {
         ${best.length
           ? `<ul class="best-list">${best.map((item) => `
               <li class="best-list__item">
-                <span class="best-list__icon">${thumbFor(item).icon}</span>
+                <div class="best-list__thumb" style="${item.image ? "" : `background:${thumbFor(item).gradient}`}">
+                  ${item.image
+                    ? `<img src="${escapeAttr(item.image)}" alt="" class="best-list__thumb-img" loading="lazy" />`
+                    : `<span class="best-list__icon">${thumbFor(item).icon}</span>`}
+                </div>
                 <div class="best-list__body">
                   <span class="best-list__title">${item.title}</span>
                   <span class="best-list__meta">${item.meta || ""}</span>
