@@ -427,7 +427,7 @@ function renderCalendario(unit) {
         <div class="cal-cell__posts">
           ${dayPosts.slice(0, 3).map((p) => `
             <span class="cal-post-chip" title="${p.title}">
-              <span class="cal-post-chip__thumb" style="background:${thumbFor(p).gradient}">${thumbFor(p).icon}</span>
+              <span class="cal-post-chip__thumb" style="${p.image ? `background-image:url('${escapeAttr(p.image)}')` : `background:${thumbFor(p).gradient}`}">${p.image ? "" : thumbFor(p).icon}</span>
               <span class="cal-post-chip__title">${p.title}</span>
               <span class="cal-post-chip__platform">${PLATFORM_ICONS[p.platform] || PLATFORM_ICONS.instagram}</span>
             </span>
@@ -657,7 +657,7 @@ function renderEditorPanel() {
         <div class="day-panel__posts">
           ${posts.length ? posts.map((p) => `
             <div class="day-panel__post-row">
-              <span class="day-panel__post-thumb" style="background:${thumbFor(p).gradient}">${thumbFor(p).icon}</span>
+              <span class="day-panel__post-thumb" style="${p.image ? `background-image:url('${escapeAttr(p.image)}')` : `background:${thumbFor(p).gradient}`}">${p.image ? "" : thumbFor(p).icon}</span>
               <div class="day-panel__post-body">
                 <span class="day-panel__post-title">${p.title}</span>
                 <span class="day-panel__post-meta">${PLATFORM_ICONS[p.platform] || "📷"} ${PLATFORM_LABELS[p.platform] || "Instagram"} · ${STATUS_LABELS[deriveStatus(p)] || deriveStatus(p)}</span>
@@ -869,10 +869,14 @@ function renderCard(item) {
     status === "no-publicado" ? "post-card--no-publicado" : ""
   ].filter(Boolean).join(" ");
 
+  const thumbInner = item.image
+    ? `<img src="${escapeAttr(item.image)}" alt="" class="post-card__thumb-img" loading="lazy" />`
+    : `<span class="post-card__thumb-icon">${thumb.icon}</span>`;
+
   return `
     <li class="${cardClasses}" data-item-key="${item._panelKey}">
-      <div class="post-card__thumb" style="background:${thumb.gradient}">
-        <span class="post-card__thumb-icon">${thumb.icon}</span>
+      <div class="post-card__thumb" style="${item.image ? "" : `background:${thumb.gradient}`}">
+        ${thumbInner}
         <span class="post-card__badge post-card__platform">${PLATFORM_ICONS[item.platform] || "📷"} ${PLATFORM_LABELS[item.platform] || "Instagram"}</span>
         <span class="post-card__badge post-card__status" style="background:var(--status-${status})">${STATUS_LABELS[status] || status}</span>
       </div>

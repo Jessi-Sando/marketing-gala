@@ -44,7 +44,25 @@ if hasattr(sys.stdout, "reconfigure"):
 
 GRAPH_VERSION = "v21.0"
 TRACKED_YEAR = 2026
-MEDIA_FIELDS = "id,caption,media_type,media_product_type,timestamp,like_count,comments_count,permalink"
+MEDIA_FIELDS = (
+    "id,caption,media_type,media_product_type,timestamp,like_count,comments_count,permalink,"
+    "media_url,thumbnail_url,children{media_url}"
+)
+
+
+def extract_image_url(media):
+    """Devuelve el link a la foto/miniatura real del post, segun el tipo:
+    video -> su miniatura, carrusel -> la primera imagen, foto -> la imagen
+    misma. Es el link que entrega Instagram (puede vencer con el tiempo)."""
+    media_type = media.get("media_type")
+    if media_type == "VIDEO":
+        return media.get("thumbnail_url")
+    if media_type == "CAROUSEL_ALBUM":
+        children = (media.get("children") or {}).get("data") or []
+        if children:
+            return children[0].get("media_url")
+        return media.get("media_url")
+    return media.get("media_url")
 
 
 def get_token():
@@ -120,6 +138,8 @@ def enrich_legacy_item_text(item_text, enrich):
         parts.append(f'views: {enrich["views"]}')
     if enrich.get("shares") is not None:
         parts.append(f'shares: {enrich["shares"]}')
+    if enrich.get("image"):
+        parts.append(f'image: "{js_escape(enrich["image"])}"')
     parts.append(f'igId: "{enrich["igId"]}"')
 
     new_text = item_text[:-2].rstrip() + ", " + ", ".join(parts) + " }"
@@ -150,6 +170,8 @@ def format_item_js(item):
         parts.append(f'views: {item["views"]}')
     if item.get("shares") is not None:
         parts.append(f'shares: {item["shares"]}')
+    if item.get("image"):
+        parts.append(f'image: "{js_escape(item["image"])}"')
     parts.append(f'igId: "{item["igId"]}"')
     return "{ " + ", ".join(parts) + " }"
 
@@ -208,6 +230,7 @@ def process_unit(unit_id, ig_id, token, text, dry_run):
                 "comments": media.get("comments_count"),
                 "views": views,
                 "shares": shares,
+                "image": extract_image_url(media),
                 "igId": shortcode or media["id"],
             }
             print(f"  ~ [{month_key}] {date_meta} · se publico un item planificado, enriqueciendo")
@@ -235,6 +258,7 @@ def process_unit(unit_id, ig_id, token, text, dry_run):
             "likes": media.get("like_count"),
             "comments": media.get("comments_count"),
             "views": views,
+            "image": extract_image_url(media),
             "igId": shortcode or media["id"],
         }
 
