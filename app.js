@@ -931,70 +931,117 @@ function renderContenido(unit) {
 
 // ---------- Sección: Ideas ----------
 
-const MOCK_RECOMMENDATIONS = {
-  "casino-gala": {
-    insights: [
-      "Los reels superan ampliamente a los flyers en visualizaciones (595–624 vs. bajo alcance en imágenes fijas) — el video se lleva la atención.",
-      "\"¡Qué partido, Argentina!\" (gancho futbolero, no un anuncio de marca directo) fue el mejor post del mes — el contenido que conecta con algo que la gente ya está viviendo funciona mejor que el mensaje comercial."
-    ],
-    contentIdeas: [
-      "Reel de la reacción real de un ganador en el momento exacto en que se entera que ganó — cámara en mano, sin guion, buscando la emoción genuina en vez de una recreación prolija.",
-      "Serie \"Así se arma un sorteo\": 15-20 segundos detrás de escena de cómo se preparan los premios en sala antes del evento, para generar expectativa los días previos.",
-      "Aprovechar el folclore del Mundial (como funcionó con la Selección): micro-contenido de \"pronósticos\" o \"quiniela entre jugadores de sala\" que mezcle el clima futbolero con el casino sin vender directamente."
-    ]
-  },
-  "valentino-restaurant": {
-    insights: [
-      "Los carruseles de \"Cena Temática\" acumulan más likes que las piezas de \"Sugerencia del Chef\" — el formato evento/experiencia rinde mejor que mostrar un plato suelto.",
-      "El recap de un evento publicado días después (no el mismo día) sigue generando buen engagement — no hace falta apurar la publicación el día exacto del evento."
-    ],
-    contentIdeas: [
-      "Reel del momento del maridaje en vivo durante una Cena Temática: el sommelier explicando el vino en la mesa, con los comensales de fondo.",
-      "Serie \"De dónde viene\": mini-historia de un ingrediente destacado del menú (ej. la trucha patagónica) antes de mostrar el plato terminado — genera curiosidad antes de la venta.",
-      "Testimonios cortos (10-15 seg) de comensales reales al salir de una cena temática, contando en sus palabras qué les pareció la experiencia."
-    ]
-  },
-  "resto-ruta-11": {
-    insights: [
-      "Todavía no hay suficiente historial de rendimiento acumulado para esta unidad — estas ideas parten de los pilares de contenido definidos, no de datos de performance todavía."
-    ],
-    contentIdeas: [
-      "Reel del cara a cara entre los dos sommeliers del Desafío de Sommelier, mostrando la cata a ciegas en tiempo real — generar expectativa antes de revelar el ganador.",
-      "Serie \"Plato del día\" en formato historia: el chef mostrando el plato recién salido de cocina, sin producción, todos los días a la misma hora.",
-      "Detrás de escena de cocina en hora pico — el ritmo real de un servicio, transmite el volumen y la energía del lugar sin necesidad de un guion armado."
-    ]
-  },
-  "amerian-hotel": {
-    insights: [
-      "Todavía no hay suficiente historial de rendimiento acumulado para esta unidad — estas ideas parten de los pilares de contenido definidos, no de datos de performance todavía."
-    ],
-    contentIdeas: [
-      "Recorrido en un solo plano (walk-through) desde el check-in hasta una habitación, mostrando el trayecto real que hace un huésped — más efectivo que fotos sueltas de cada ambiente.",
-      "Reel \"un día en Amerian\": desayuno, piscina, Valentino, spa, en cortes rápidos con música — pensado para alguien que está decidiendo dónde alojarse en Resistencia.",
-      "Colaboración cruzada con Valentino: mostrar la cena en el restaurante como parte de la experiencia de hospedaje, no como una pieza separada."
-    ]
-  },
-  "gala-hotel-convenciones": {
-    insights: [
-      "Todavía no hay suficiente historial de rendimiento acumulado para esta unidad — estas ideas parten de los pilares de contenido definidos, no de datos de performance todavía."
-    ],
-    contentIdeas: [
-      "Time-lapse del montaje de un salón, desde vacío hasta listo para el evento — el \"antes y después\" suele funcionar bien para vender espacios de eventos.",
-      "Testimonio corto de un organizador de evento real contando por qué eligió Gala Hotel para su convención o celebración.",
-      "Reel mostrando la capacidad real de un salón con gente adentro (no vacío) para que quien busca un lugar para su evento pueda imaginarse el tamaño real."
-    ]
-  },
-  "gala-recepciones": {
-    insights: [
-      "Todavía no hay suficiente historial de rendimiento acumulado para esta unidad — estas ideas parten de los pilares de contenido definidos, no de datos de performance todavía."
-    ],
-    contentIdeas: [
-      "Reel de detrás de escena de una recepción real, desde el salón vacío por la mañana hasta el evento en marcha por la noche.",
-      "Presentación del BOX de comida (producto nuevo) mostrando el unboxing real, no solo fotos del packaging — generar curiosidad antes del lanzamiento de septiembre.",
-      "Testimonios de familias que ya vivieron una recepción en Gala, contando un detalle específico que recuerdan (no un elogio genérico)."
-    ]
+function analysisKey(unitId) {
+  return `gala-panel:ideas-analysis:${unitId}`;
+}
+
+function loadAnalysis(unitId) {
+  try {
+    return JSON.parse(localStorage.getItem(analysisKey(unitId)) || "null");
+  } catch {
+    return null;
   }
-};
+}
+
+function saveAnalysis(unitId, data) {
+  localStorage.setItem(analysisKey(unitId), JSON.stringify(data));
+}
+
+let ideasAnalysisState = { generating: false, error: null };
+
+const IDEAS_ANALYSIS_SYSTEM_PROMPT = `Sos un especialista en redes sociales que analiza el rendimiento real de una unidad de negocio de hotelería, gastronomía y entretenimiento en Argentina, y le da recomendaciones a la persona que gestiona el contenido.
+
+Te dan el objetivo estratégico, los pilares de contenido y una lista de las publicaciones ya realizadas con sus estadísticas reales (likes, visualizaciones, comentarios). Con eso:
+1. Identificá 2-4 patrones concretos de qué está funcionando (comparando formatos, temas o ganchos entre sí, citando siempre los números reales que respaldan cada observación). Si todavía no hay suficientes datos, decilo honestamente en vez de inventar un patrón.
+2. Proponé 3-5 ideas de contenido NUEVAS y concretas (nada genérico) para probar, basadas en lo que ya funcionó y en los pilares de contenido de la unidad.
+
+Tono: directo, profesional, como un colega de marketing que ya miró los números. Nada de lenguaje corporativo genérico.
+
+Devolvé SOLO un JSON válido (sin texto antes ni después, sin bloques de código markdown, sin backticks), con exactamente esta forma:
+{
+  "insights": ["observación 1 con números reales", "observación 2", "..."],
+  "contentIdeas": ["idea concreta 1", "idea concreta 2", "..."]
+}`;
+
+function buildIdeasContext(unit) {
+  const items = getAllItems(unit);
+  const published = items.filter((i) => typeof i.likes === "number");
+  const top = [...published]
+    .sort((a, b) => (b.views || b.likes || 0) - (a.views || a.likes || 0))
+    .slice(0, 10);
+  const lines = top.map((i) => {
+    const format = ["reel", "flyer", "carrusel"].find((k) => (i.tags || []).includes(k)) || "otro";
+    const stats = [`likes: ${i.likes}`];
+    if (typeof i.views === "number") stats.push(`views: ${i.views}`);
+    if (typeof i.comments === "number") stats.push(`comments: ${i.comments}`);
+    return `- [${format}] "${i.title}" (${i.meta || "sin fecha"}) — ${stats.join(", ")}`;
+  }).join("\n");
+  return {
+    publishedCount: published.length,
+    topPostsText: lines || "Todavía no hay publicaciones con datos reales para esta unidad."
+  };
+}
+
+async function callAnthropicIdeas(unit) {
+  const apiKey = loadApiKey();
+  const ctx = buildIdeasContext(unit);
+  const userContent = `Unidad de negocio: ${unit.name}
+Objetivo estratégico: ${unit.objective || ""}
+Pilares de contenido: ${unit.pilares || ""}
+
+Publicaciones ya realizadas (ordenadas por rendimiento):
+${ctx.topPostsText}
+
+Total de publicaciones con datos reales: ${ctx.publishedCount}`;
+
+  const response = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      "x-api-key": apiKey,
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true"
+    },
+    body: JSON.stringify({
+      model: ANTHROPIC_MODEL,
+      max_tokens: 1024,
+      system: IDEAS_ANALYSIS_SYSTEM_PROMPT,
+      messages: [{ role: "user", content: userContent }]
+    })
+  });
+
+  if (!response.ok) {
+    const errBody = await response.json().catch(() => null);
+    const msg = (errBody && errBody.error && errBody.error.message) || `Error ${response.status}`;
+    throw new Error(msg);
+  }
+
+  const data = await response.json();
+  const text = data.content && data.content[0] && data.content[0].text;
+  if (!text) throw new Error("Respuesta vacía de la API.");
+
+  const cleaned = text.trim().replace(/^```(json)?/i, "").replace(/```$/, "").trim();
+  const parsed = JSON.parse(cleaned);
+  if (!Array.isArray(parsed.insights) || !Array.isArray(parsed.contentIdeas)) {
+    throw new Error("La respuesta no tiene el formato esperado.");
+  }
+  return parsed;
+}
+
+async function handleGenerateIdeasAnalysis(unit) {
+  ideasAnalysisState.generating = true;
+  ideasAnalysisState.error = null;
+  renderUnit(unit);
+
+  try {
+    const result = await callAnthropicIdeas(unit);
+    saveAnalysis(unit.id, Object.assign({}, result, { generatedAt: Date.now() }));
+  } catch (err) {
+    ideasAnalysisState.error = err.message || "No se pudo generar el análisis. Revisá tu clave de API y probá de nuevo.";
+  }
+  ideasAnalysisState.generating = false;
+  renderUnit(unit);
+}
 
 function ideasKey(unitId) {
   return `gala-panel:ideas:${unitId}`;
@@ -1014,23 +1061,32 @@ function saveIdeas(unitId, ideas) {
 
 function renderIdeas(unit) {
   const ideas = loadIdeas(unit.id);
-  const recs = MOCK_RECOMMENDATIONS[unit.id] || { insights: [], contentIdeas: [] };
+  const apiKey = loadApiKey();
+  const analysis = loadAnalysis(unit.id);
 
   return `
     <div class="section-block">
+      ${renderApiKeyPanel(apiKey)}
+
       <div class="panel">
         <div class="panel__title-row">
           <h3 class="panel__title">Especialista automático de RRSS</h3>
-          <span class="preview-badge">Vista previa · análisis manual, no automatizado todavía</span>
+          ${analysis ? `<span class="preview-badge">🤖 Analizado el ${new Date(analysis.generatedAt).toLocaleDateString("es-AR")}</span>` : ""}
         </div>
-        <h4 class="rec-group__title">📊 Qué está funcionando</h4>
-        <ul class="rec-list">
-          ${recs.insights.map((r) => `<li class="rec-list__item"><span class="rec-list__icon">🤖</span><span>${r}</span></li>`).join("")}
-        </ul>
-        <h4 class="rec-group__title">💡 Ideas de contenido para probar</h4>
-        <ul class="rec-list">
-          ${recs.contentIdeas.map((r) => `<li class="rec-list__item rec-list__item--idea"><span class="rec-list__icon">✏️</span><span>${r}</span></li>`).join("")}
-        </ul>
+        ${analysis ? `
+          <h4 class="rec-group__title">📊 Qué está funcionando</h4>
+          <ul class="rec-list">
+            ${analysis.insights.map((r) => `<li class="rec-list__item"><span class="rec-list__icon">🤖</span><span>${r}</span></li>`).join("")}
+          </ul>
+          <h4 class="rec-group__title">💡 Ideas de contenido para probar</h4>
+          <ul class="rec-list">
+            ${analysis.contentIdeas.map((r) => `<li class="rec-list__item rec-list__item--idea"><span class="rec-list__icon">✏️</span><span>${r}</span></li>`).join("")}
+          </ul>
+        ` : `<p class="empty-note">${apiKey ? `Todavía no generaste un análisis para ${unit.name}.` : "Configurá tu clave de Anthropic arriba para poder generar el análisis."}</p>`}
+        ${ideasAnalysisState.error ? `<p class="guion-error">${ideasAnalysisState.error}</p>` : ""}
+        <button type="button" class="guion-generate-btn" id="ideas-analysis-btn" ${ideasAnalysisState.generating || !apiKey ? "disabled" : ""}>
+          ${ideasAnalysisState.generating ? "Analizando..." : (analysis ? "🔄 Actualizar análisis" : "✨ Generar análisis")}
+        </button>
       </div>
 
       <div class="panel">
@@ -1770,6 +1826,7 @@ function setActiveTab(unitId) {
     guionState = { generating: false, result: null, error: null, topic: "" };
     guionExpandedId = null;
     carruselState = { generating: false, error: null, topic: "", slides: null, style: carruselState.style };
+    ideasAnalysisState = { generating: false, error: null };
     renderUnit(unit);
     subscribeToUnitPanels(unitId);
     subscribeToUnitPosts(unitId);
@@ -1845,6 +1902,11 @@ function initContentEvents() {
       saveIdeas(currentUnitId, ideas);
       const unit = UNITS.find((u) => u.id === currentUnitId);
       if (unit) renderUnit(unit);
+      return;
+    }
+    if (e.target.id === "ideas-analysis-btn") {
+      const unit = UNITS.find((u) => u.id === currentUnitId);
+      if (unit) handleGenerateIdeasAnalysis(unit);
       return;
     }
     if (e.target.id === "guion-apikey-save") {
