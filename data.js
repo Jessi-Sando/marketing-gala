@@ -36,6 +36,7 @@ const UNITS = [
         { tags: ["reel", "auto-detectado"], meta: "16 jul", title: "Muy pronto vas a descubrir que jugar también puede ser una experien...", desc: "✨ Muy pronto vas a descubrir que jugar también puede ser una experiencia. Ruleta tradicional, Blackjack y Ruleta Electrónica se unen en u...", likes: 23, views: 939, shares: 8, igId: "Da20poNK1Xd", image: "https://scontent.cdninstagram.com/v/t51.82787-15/728167531_18331689904264153_378565290578457818_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeH-ED8gNrj4UY0_QEZgk7QchayNaOez9UuFrI1o57P1S5TovoMhwwBIRjjj3OSAVbO5PH_I1bSGRgppaSXA6VkG&_nc_ohc=rOpgXwlRrbAQ7kNvwHALfxY&_nc_oc=AdoL9GYoyBcKf1M8oaf1Dp67_Gc6QJtPGiPOqBEVkHQ9oBRR5Of2osRqfBOV6myy21M&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=VM3mKZPG2WhtYIKDKc3bWw&_nc_tpa=Q5bMBQEpADEdB42zaWtpDviT0mHm1cIIEjCPydQlnojEUvvMTL_BK65qFnCHW-EWT-3nPvQ5KMJzDqPjgg&oh=00_AQAGtjpX8muxBZ7mV4dbrfYBlueonQUGp9PEiuP_61-TmA&oe=6A6935B7" },
         { tags: ["auto-detectado", "sorteo", "campaña", "pautar"], highlight: true, meta: "19 jul · Sala Central 21:00 hs", title: "Gran Sorteo Final", desc: "Cierre Mundial de la Suerte · anuncio sorpresa La Experiencia al final de la noche", likes: 15, views: 760, shares: 2, igId: "Da9X4kRAL7G", image: "https://scontent.cdninstagram.com/v/t51.82787-15/750016175_18332175055264153_6224591803184469110_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeGHZSppbZqZFScvKVHJQxJ4HsGcCdG-HXQewZwJ0b4ddLzDbxhBdID5bPdVSfo6QJAHusF13bz6mfEyMQ6aQtvD&_nc_ohc=BQEEmK27-p8Q7kNvwFtiXS_&_nc_oc=AdrcnuFDBZG7PVbmH2Oc_V5rj8YgfSeIoVh3TG0B9aTbEALarw5Ny08eTHlamIfXD4A&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=GUmK2D9X1IAS33-ll3xc6Q&_nc_tpa=Q5bMBQHuivXgiFXERf-6pCvH-bEPmlMdfyjx0iixP9UnDD1Blcty90_pFShImRpkXRZDPXyWq8w4xYB1kA&oh=00_AQB-U2xWMFUVtrKCOcM9DXrrhYRdX1hUmJTTroJBgHNZyQ&oe=6A6940D8" },
         { tags: ["reel", "auto-detectado"], meta: "24 jul", title: "El broche de oro del Mundial de la Suerte", desc: "🏆 El broche de oro del Mundial de la Suerte Vivimos una noche inolvidable, llena de emoción, grandes premios y muchísimos ganadores que h...", likes: 0, views: 30, shares: 0, image: "https://scontent-atl3-3.cdninstagram.com/v/t51.82787-15/755130073_18332843878264153_6639621156888641800_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeGbFoWIzSnnv96rvxPv5-hNf0lMJ9Kiq59_SUwn0qKrn6W_G5kRPugkC9eWrsuJQYZlpgU2kEiLnJqzWx5LIj_d&_nc_ohc=gtFg3xvur54Q7kNvwGVz78z&_nc_oc=Adqz3f0FMl8iyMe0JO9b98_f7WBVlGnkUK8WQDmK_pXSC5V56yOXpnC0hS8sGusZ9qA&_nc_zt=23&_nc_ht=scontent-atl3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=deAkJnRk8pRYoj4sw7t30Q&_nc_tpa=Q5bMBQHem7aoR46bu9WgZqfn2KCBkFRX088nY3TybAanD8fRTTSrFMlofshd7T15TFwNXRQurALwZY7LVQ&oh=00_AQC8LEnACVwi-qtAIDDdl5Nl3P1mD1GglVcLuciDZ5uQhQ&oe=6A691921", igId: "DbLL6zPEjP6" },
+        { tags: ["carrusel", "auto-detectado"], meta: "27 jul", title: "SE TERMINÓ EL MUNDIAL… Y TAMBIÉN NUESTRO MUNDIAL DE LA SUERTE. ⁣", desc: "🏆🇦🇷 SE TERMINÓ EL MUNDIAL… Y TAMBIÉN NUESTRO MUNDIAL DE LA SUERTE. 🇦🇷🏆⁣ ⁣ Durante semanas vivimos cada fecha con la misma pasión que mill...", likes: 8, shares: 3, image: "https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/756038941_18333333340264153_6460843486390212303_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeF1ebxa5Aluh9RR2KGF3ptba40jYE-BQ1drjSNgT4FDV4kX12kRxXCqO9BKamwLDlEYd-2uYAU0zxOs_b8RKjiB&_nc_ohc=1F-_N-vLaW0Q7kNvwHPRHSc&_nc_oc=AdoXkHSjk7J2FYgvSQ1D3WINYwYadZ0xaF6uypLWavdRj879YS7pl238yvnF5MljMcw&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=NXsRQDKJmy5KhZ3l4dpSbg&oh=00_AQA6yutgrrgfjMqH-WzwlEVlDd9PS2fiRUgXmqa11QxEiw&oe=6A6E7BCE", igId: "DbTnrXrFsfB" },
         { tags: ["contenido"], meta: "Todo julio", title: "Publicación casi diaria", desc: "Sala → premios → ganadores al día siguiente → próximo sorteo → BOXIE" },
         { tags: ["planificado, no publicado", "lanzamiento", "pautar"], meta: "12 jul", title: "Lanzamiento La Experiencia", desc: "Imagen ruleta EGT · crédito promo en ruleta · tragos en blackjack con dealer" },
         { tags: ["planificado, no publicado", "sorteo", "campaña", "pautar"], meta: "21 jul", title: "Resumen Sorteo Final", desc: "Recap del Gran Sorteo Final en Sala Central" },
@@ -69,7 +70,8 @@ const UNITS = [
         { date: "2026-07-23", views: 342, likes: 2, comments: 0, shares: 1, saves: 0, interactions: 4, reach: 136, profileViews: 15, followers: 3913, followersDelta: 0, fbFollowers: 3111, fbInteractions: 0 },
         { date: "2026-07-24", views: 599, likes: 10, comments: 0, shares: 4, saves: 0, interactions: 19, reach: 296, profileViews: 21, followers: 3914, followersDelta: 1, fbFollowers: 3112, fbInteractions: 2 },
         { date: "2026-07-25", views: 151, likes: 0, comments: 0, shares: 0, saves: -1, interactions: -1, reach: 91, profileViews: 6, followers: 3914, followersDelta: 0, fbFollowers: 3111, fbInteractions: 0 },
-        { date: "2026-07-26", views: 62, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 2, reach: 34, profileViews: 7, followers: 3915, followersDelta: 1, fbFollowers: 3110, fbInteractions: 0 }
+        { date: "2026-07-26", views: 62, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 2, reach: 34, profileViews: 7, followers: 3915, followersDelta: 1, fbFollowers: 3110, fbInteractions: 0 },
+        { date: "2026-07-27", views: 2150, likes: 14, comments: 0, shares: 4, saves: 1, interactions: 25, reach: 557, profileViews: 42, followers: 3916, followersDelta: 1, fbFollowers: 3109, fbInteractions: 4 }
       ] }
   },
   {
@@ -129,7 +131,8 @@ const UNITS = [
         { date: "2026-07-23", views: 655, likes: 16, comments: 0, shares: 4, saves: 0, interactions: 24, reach: 367, profileViews: 15, followers: 6444, followersDelta: 0, fbFollowers: 7096, fbInteractions: 3 },
         { date: "2026-07-24", views: 190, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 75, profileViews: 9, followers: 6444, followersDelta: 0, fbFollowers: 7096, fbInteractions: 0 },
         { date: "2026-07-25", views: 119, likes: 1, comments: 0, shares: 0, saves: 1, interactions: 2, reach: 34, profileViews: 11, followers: 6443, followersDelta: -1, fbFollowers: 7095, fbInteractions: 0 },
-        { date: "2026-07-26", views: 67, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 1, reach: 35, profileViews: 9, followers: 6441, followersDelta: -2, fbFollowers: 7095, fbInteractions: 0 }
+        { date: "2026-07-26", views: 67, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 1, reach: 35, profileViews: 9, followers: 6441, followersDelta: -2, fbFollowers: 7095, fbInteractions: 0 },
+        { date: "2026-07-27", views: 68, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 31, profileViews: 6, followers: 6439, followersDelta: -2, fbFollowers: 7094, fbInteractions: 0 }
       ] }
   },
   {
@@ -192,7 +195,8 @@ const UNITS = [
         { date: "2026-07-23", views: 122, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 1, reach: 50, profileViews: 1, followers: 1195, followersDelta: 0, fbFollowers: 170, fbInteractions: 0 },
         { date: "2026-07-24", views: 149, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 45, profileViews: 2, followers: 1195, followersDelta: 0, fbFollowers: 170, fbInteractions: 0 },
         { date: "2026-07-25", views: 388, likes: 5, comments: 0, shares: 0, saves: 1, interactions: 7, reach: 190, profileViews: 15, followers: 1195, followersDelta: 0, fbFollowers: 170 },
-        { date: "2026-07-26", views: 241, likes: 0, comments: 0, shares: 1, saves: 0, interactions: 2, reach: 62, profileViews: 2, followers: 1194, followersDelta: -1, fbFollowers: 170, fbInteractions: 0 }
+        { date: "2026-07-26", views: 241, likes: 0, comments: 0, shares: 1, saves: 0, interactions: 2, reach: 62, profileViews: 2, followers: 1194, followersDelta: -1, fbFollowers: 170, fbInteractions: 0 },
+        { date: "2026-07-27", views: 272, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 1, reach: 41, profileViews: 2, followers: 1194, followersDelta: 0, fbFollowers: 170, fbInteractions: 0 }
       ] }
   },
   {
@@ -247,7 +251,8 @@ const UNITS = [
         { date: "2026-07-23", views: 167, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 12, profileViews: 16, followers: 8794, followersDelta: -1, fbFollowers: 15647, fbInteractions: 0 },
         { date: "2026-07-24", views: 105, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 3, profileViews: 15, followers: 8794, followersDelta: 0, fbFollowers: 15649, fbInteractions: 0 },
         { date: "2026-07-25", views: 117, likes: 0, comments: 0, shares: 0, saves: 1, interactions: 1, reach: 9, profileViews: 17, followers: 8793, followersDelta: -1, fbFollowers: 15650, fbInteractions: 0 },
-        { date: "2026-07-26", views: 119, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 9, profileViews: 10, followers: 8789, followersDelta: -4, fbFollowers: 15651, fbInteractions: 0 }
+        { date: "2026-07-26", views: 119, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 9, profileViews: 10, followers: 8789, followersDelta: -4, fbFollowers: 15651, fbInteractions: 0 },
+        { date: "2026-07-27", views: 199, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 10, profileViews: 20, followers: 8791, followersDelta: 2, fbFollowers: 15652, fbInteractions: 0 }
       ] }
   },
   {
@@ -300,7 +305,8 @@ const UNITS = [
         { date: "2026-07-23", views: 730, likes: 4, comments: 0, shares: 1, saves: 1, interactions: 7, reach: 12, profileViews: 59, followers: 19566, followersDelta: 0, fbFollowers: 17825, fbInteractions: 0 },
         { date: "2026-07-24", views: 977, likes: 2, comments: 0, shares: 3, saves: 0, interactions: 8, reach: 31, profileViews: 63, followers: 19566, followersDelta: 0, fbFollowers: 17824, fbInteractions: 0 },
         { date: "2026-07-25", views: 827, likes: 5, comments: 0, shares: 1, saves: 2, interactions: 9, reach: 34, profileViews: 84, followers: 19568, followersDelta: 2, fbFollowers: 17819, fbInteractions: 0 },
-        { date: "2026-07-26", views: 679, likes: 3, comments: 0, shares: 2, saves: 2, interactions: 9, reach: 21, profileViews: 54, followers: 19570, followersDelta: 2, fbFollowers: 17820, fbInteractions: 0 }
+        { date: "2026-07-26", views: 679, likes: 3, comments: 0, shares: 2, saves: 2, interactions: 9, reach: 21, profileViews: 54, followers: 19570, followersDelta: 2, fbFollowers: 17820, fbInteractions: 0 },
+        { date: "2026-07-27", views: 1554, likes: 6, comments: 0, shares: 8, saves: 1, interactions: 23, reach: 37, profileViews: 81, followers: 19573, followersDelta: 3, fbFollowers: 17821, fbInteractions: 0 }
       ] }
   },
   {
@@ -348,7 +354,8 @@ const UNITS = [
         { date: "2026-07-23", views: 22, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 2, profileViews: 1, followers: 507, followersDelta: 0, fbFollowers: 1, fbInteractions: 0 },
         { date: "2026-07-24", views: 98, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 6, profileViews: 1, followers: 507, followersDelta: 0, fbFollowers: 1, fbInteractions: 0 },
         { date: "2026-07-25", views: 40, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 3, profileViews: 0, followers: 507, followersDelta: 0, fbFollowers: 1, fbInteractions: 0 },
-        { date: "2026-07-26", views: 19, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 3, profileViews: 0, followers: 507, followersDelta: 0, fbFollowers: 1, fbInteractions: 0 }
+        { date: "2026-07-26", views: 19, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 3, profileViews: 0, followers: 507, followersDelta: 0, fbFollowers: 1, fbInteractions: 0 },
+        { date: "2026-07-27", views: 83, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 6, profileViews: 2, followers: 507, followersDelta: 0, fbFollowers: 1, fbInteractions: 0 }
       ] }
   }
 ];
