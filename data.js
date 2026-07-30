@@ -73,7 +73,8 @@ const UNITS = [
         { date: "2026-07-25", views: 151, likes: 0, comments: 0, shares: 0, saves: -1, interactions: -1, reach: 91, profileViews: 6, followers: 3914, followersDelta: 0, fbFollowers: 3111, fbInteractions: 0 },
         { date: "2026-07-26", views: 62, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 2, reach: 34, profileViews: 7, followers: 3915, followersDelta: 1, fbFollowers: 3110, fbInteractions: 0 },
         { date: "2026-07-27", views: 2150, likes: 14, comments: 0, shares: 4, saves: 1, interactions: 25, reach: 557, profileViews: 42, followers: 3916, followersDelta: 1, fbFollowers: 3109, fbInteractions: 4 },
-        { date: "2026-07-28", views: 827, likes: 5, comments: 0, shares: 1, saves: 0, interactions: 7, reach: 301, profileViews: 5, followers: 3914, followersDelta: -2, fbFollowers: 3111, fbInteractions: 1 }
+        { date: "2026-07-28", views: 827, likes: 5, comments: 0, shares: 1, saves: 0, interactions: 7, reach: 301, profileViews: 5, followers: 3914, followersDelta: -2, fbFollowers: 3111, fbInteractions: 1 },
+        { date: "2026-07-29", views: 207, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 1, reach: 96, profileViews: 4, followers: 3913, followersDelta: -1, fbFollowers: 3111, fbInteractions: 0 }
       ] }
   },
   {
@@ -135,7 +136,8 @@ const UNITS = [
         { date: "2026-07-25", views: 119, likes: 1, comments: 0, shares: 0, saves: 1, interactions: 2, reach: 34, profileViews: 11, followers: 6443, followersDelta: -1, fbFollowers: 7095, fbInteractions: 0 },
         { date: "2026-07-26", views: 67, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 1, reach: 35, profileViews: 9, followers: 6441, followersDelta: -2, fbFollowers: 7095, fbInteractions: 0 },
         { date: "2026-07-27", views: 68, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 31, profileViews: 6, followers: 6439, followersDelta: -2, fbFollowers: 7094, fbInteractions: 0 },
-        { date: "2026-07-28", views: 129, likes: 11, comments: 0, shares: 0, saves: 0, interactions: 11, reach: 38, profileViews: 8, followers: 6439, followersDelta: 0, fbFollowers: 7094, fbInteractions: 0 }
+        { date: "2026-07-28", views: 129, likes: 11, comments: 0, shares: 0, saves: 0, interactions: 11, reach: 38, profileViews: 8, followers: 6439, followersDelta: 0, fbFollowers: 7094, fbInteractions: 0 },
+        { date: "2026-07-29", views: 112, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 1, reach: 30, profileViews: 10, followers: 6441, followersDelta: 2, fbFollowers: 7094, fbInteractions: 0 }
       ] }
   },
   {
@@ -200,7 +202,8 @@ const UNITS = [
         { date: "2026-07-25", views: 388, likes: 5, comments: 0, shares: 0, saves: 1, interactions: 7, reach: 190, profileViews: 15, followers: 1195, followersDelta: 0, fbFollowers: 170 },
         { date: "2026-07-26", views: 241, likes: 0, comments: 0, shares: 1, saves: 0, interactions: 2, reach: 62, profileViews: 2, followers: 1194, followersDelta: -1, fbFollowers: 170, fbInteractions: 0 },
         { date: "2026-07-27", views: 272, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 1, reach: 41, profileViews: 2, followers: 1194, followersDelta: 0, fbFollowers: 170, fbInteractions: 0 },
-        { date: "2026-07-28", views: 95, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 30, profileViews: 2, followers: 1194, followersDelta: 0, fbFollowers: 170, fbInteractions: 0 }
+        { date: "2026-07-28", views: 95, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 30, profileViews: 2, followers: 1194, followersDelta: 0, fbFollowers: 170, fbInteractions: 0 },
+        { date: "2026-07-29", views: 91, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 25, profileViews: 1, followers: 1195, followersDelta: 1, fbFollowers: 170, fbInteractions: 0 }
       ] }
   },
   {
@@ -257,7 +260,8 @@ const UNITS = [
         { date: "2026-07-25", views: 117, likes: 0, comments: 0, shares: 0, saves: 1, interactions: 1, reach: 9, profileViews: 17, followers: 8793, followersDelta: -1, fbFollowers: 15650, fbInteractions: 0 },
         { date: "2026-07-26", views: 119, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 9, profileViews: 10, followers: 8789, followersDelta: -4, fbFollowers: 15651, fbInteractions: 0 },
         { date: "2026-07-27", views: 199, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 10, profileViews: 20, followers: 8791, followersDelta: 2, fbFollowers: 15652, fbInteractions: 0 },
-        { date: "2026-07-28", views: 1083, likes: 24, comments: 0, shares: 0, saves: 1, interactions: 25, reach: 10, profileViews: 18, followers: 8797, followersDelta: 6, fbFollowers: 15653, fbInteractions: 0 }
+        { date: "2026-07-28", views: 1083, likes: 24, comments: 0, shares: 0, saves: 1, interactions: 25, reach: 10, profileViews: 18, followers: 8797, followersDelta: 6, fbFollowers: 15653, fbInteractions: 0 },
+        { date: "2026-07-29", views: 296, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 1, reach: 4, profileViews: 11, followers: 8796, followersDelta: -1, fbFollowers: 15654, fbInteractions: 0 }
       ] }
   },
   {
@@ -312,7 +316,8 @@ const UNITS = [
         { date: "2026-07-25", views: 827, likes: 5, comments: 0, shares: 1, saves: 2, interactions: 9, reach: 34, profileViews: 84, followers: 19568, followersDelta: 2, fbFollowers: 17819, fbInteractions: 0 },
         { date: "2026-07-26", views: 679, likes: 3, comments: 0, shares: 2, saves: 2, interactions: 9, reach: 21, profileViews: 54, followers: 19570, followersDelta: 2, fbFollowers: 17820, fbInteractions: 0 },
         { date: "2026-07-27", views: 1554, likes: 6, comments: 0, shares: 8, saves: 1, interactions: 23, reach: 37, profileViews: 81, followers: 19573, followersDelta: 3, fbFollowers: 17821, fbInteractions: 0 },
-        { date: "2026-07-28", views: 837, likes: 6, comments: 0, shares: 2, saves: 2, interactions: 12, reach: 22, profileViews: 58, followers: 19576, followersDelta: 3, fbFollowers: 17820, fbInteractions: 0 }
+        { date: "2026-07-28", views: 837, likes: 6, comments: 0, shares: 2, saves: 2, interactions: 12, reach: 22, profileViews: 58, followers: 19576, followersDelta: 3, fbFollowers: 17820, fbInteractions: 0 },
+        { date: "2026-07-29", views: 881, likes: 3, comments: 0, shares: 10, saves: 0, interactions: 23, reach: 25, profileViews: 63, followers: 19578, followersDelta: 2, fbFollowers: 17819, fbInteractions: 0 }
       ] }
   },
   {
@@ -362,7 +367,8 @@ const UNITS = [
         { date: "2026-07-25", views: 40, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 3, profileViews: 0, followers: 507, followersDelta: 0, fbFollowers: 1, fbInteractions: 0 },
         { date: "2026-07-26", views: 19, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 3, profileViews: 0, followers: 507, followersDelta: 0, fbFollowers: 1, fbInteractions: 0 },
         { date: "2026-07-27", views: 83, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 6, profileViews: 2, followers: 507, followersDelta: 0, fbFollowers: 1, fbInteractions: 0 },
-        { date: "2026-07-28", views: 78, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 8, profileViews: 6, followers: 508, followersDelta: 1, fbFollowers: 1, fbInteractions: 0 }
+        { date: "2026-07-28", views: 78, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 8, profileViews: 6, followers: 508, followersDelta: 1, fbFollowers: 1, fbInteractions: 0 },
+        { date: "2026-07-29", views: 38, likes: 0, comments: 0, shares: 1, saves: 0, interactions: 2, reach: 9, profileViews: 0, followers: 508, followersDelta: 0, fbFollowers: 1, fbInteractions: 0 }
       ] }
   }
 ];
