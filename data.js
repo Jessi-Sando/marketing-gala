@@ -40,16 +40,8 @@ const UNITS = [
         { tags: ["carrusel", "auto-detectado"], meta: "28 jul", title: "𝗖𝗢𝗠𝗨𝗡𝗜𝗖𝗔𝗗𝗢 𝗢𝗙𝗜𝗖𝗜𝗔𝗟 – 𝗖𝗔𝗦𝗜𝗡𝗢𝗦 𝗚𝗔𝗟𝗔 ⁣⁣⁣", desc: "🎰 𝗖𝗢𝗠𝗨𝗡𝗜𝗖𝗔𝗗𝗢 𝗢𝗙𝗜𝗖𝗜𝗔𝗟 – 𝗖𝗔𝗦𝗜𝗡𝗢𝗦 𝗚𝗔𝗟𝗔 🎰⁣⁣⁣ .⁣⁣⁣ Desde 𝐆𝐚𝐥𝐚 𝐒.𝐀. se informa a toda la comunidad que la empresa NO ofrece ninguna modalidad d...", likes: 5, shares: 1, image: "https://scontent-sjc6-1.cdninstagram.com/v/t39.30808-6/758518264_1947489856392807_1797926126275508034_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeGR8oNAW9_jlJuoMyzxFoQG2r6VGQCuCrjavpUZAK4KuM5dO53GT1K7FSgSLJdKJEvcumYErFbAVNQ5B8e08oc0&_nc_ohc=ByKL3UsehWIQ7kNvwHVSBPn&_nc_oc=Adrsb7ULTMlwcnNchoEASjtzCgnF2lvVZfoCH_ye5WDkD9VoJ8hFhw68RFqyTrEfKpo&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=m4oiI7W-0y6iXiMnneUbhg&oh=00_AQBQBIAxHzOCgwYWPUi9tMYSdhwCqJi6qRACbKMWchjiVQ&oe=6A6FD94B", igId: "DbWq4D5lhtd" }
       ],
       agosto: [
-        { tags: ["La Experiencia", "contenido", "pautar"], meta: "1–7 ago", title: "Reel ruleta EGT en acción", desc: "Mostrar la máquina funcionando · ambiente · jugadores" },
-        { tags: ["La Experiencia", "contenido"], meta: "Agosto", title: "Blackjack con dealer", desc: "Contenido del dealer en mesa · ambiente social · tragos incluidos" },
-        { tags: ["La Experiencia", "acción"], meta: "Agosto", title: "BOXIE + ruleta electrónica", desc: "Vincular puntos BOXIE al juego en ruleta EGT · crédito promocional" },
-        { tags: ["contenido", "pautar selectivo"], meta: "Todo agosto", title: "BOXIE · Hora BOXIE · Premium Martes", desc: "Pozos activos · reels de pozos · fidelización" }
       ],
       septiembre: [
-        { tags: ["La Experiencia", "contenido", "pautar"], meta: "Septiembre", title: "Contenido de ambiente y jugadores", desc: "Testimonios · noche en sala · dealer en acción" },
-        { tags: ["La Experiencia", "acción", "pautar"], meta: "Septiembre", title: "Noche especial La Experiencia", desc: "Evento puntual en Sala Central · reforzar concepto de noche diferente" },
-        { tags: ["contenido"], meta: "Todo septiembre", title: "BOXIE · pozos · Premium Martes", desc: "Contenido de fidelización permanente" },
-        { tags: ["pendiente"], meta: "", title: "Nueva campaña masiva Q4", desc: "Diseñar en septiembre para lanzar en octubre" }
       ]
     },
     performance: { history: [
@@ -101,16 +93,8 @@ const UNITS = [
         { tags: ["reel", "auto-detectado"], meta: "23 jul", title: "Así vivimos nuestra Cena Temática Argentina", desc: "🇦🇷Así vivimos nuestra Cena Temática Argentina 🇦🇷 -Compartimos imágenes de una noche inolvidable, celebrando los sabores que nos identific...", likes: 14, views: 486, shares: 4, image: "https://scontent-atl3-3.cdninstagram.com/v/t51.82787-15/755867848_18382587184163917_3138971558790925511_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_eui2=AeHlAWTdC_QLPDVTIKgkEmdfZws6fRIJdQJnCzp9Egl1AmAQJw5hxhZP9LXiqjWYVquvYAH-SKpEidxUcTGKTaFE&_nc_ohc=dFcKqY7qWSIQ7kNvwFkSNFb&_nc_oc=Ado3pCWfYGx394CYT6gAOi8Ew0Klv-D2p8EhfTY-h0uEzdEpXnfFcuhWIc55pR7sDoQ&_nc_zt=23&_nc_ht=scontent-atl3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=tYxD5iC2kjoMHNYoTQYvfg&_nc_tpa=Q5bMBQGTd2Ei9YzkwnYm7CjW1muVBZzV6ECC43u-uicPlnfgMfRvRJZd9vxnLbI4GMDWNp9n_J3rPl5w0g&oh=00_AQAy0YRl4XHW-J7DqzHegYMzKohWbeHJIbd6IDnflhAcDA&oe=6A691FF7", igId: "DbJXKiSEbQH" }
       ],
       agosto: [
-        { tags: ["pendiente"], meta: "", title: "Cena temática agosto", desc: "Fecha y concepto a confirmar 10 días antes" },
-        { tags: ["contenido"], meta: "Agosto", title: "Menú ejecutivo · sugerencia del chef", desc: "2–3 piezas semanales" },
-        { tags: ["canales"], meta: "Agosto", title: "Recordatorio canales digitales", desc: "Pedidos Ya · FUDO · Riservi" },
-        { tags: ["fidelización"], meta: "Agosto", title: "Paquete de fidelización", desc: "Diseño del concepto · definir beneficios · canal de activación" }
       ],
       septiembre: [
-        { tags: ["pendiente"], meta: "", title: "Cena temática septiembre", desc: "Fecha y concepto a confirmar 10 días antes" },
-        { tags: ["contenido"], meta: "Septiembre", title: "Menú ejecutivo · sugerencia del chef", desc: "2–3 piezas semanales" },
-        { tags: ["canales"], meta: "Septiembre", title: "Recordatorio canales digitales", desc: "" },
-        { tags: ["fidelización", "pautar"], meta: "Septiembre", title: "Lanzamiento paquete fidelización", desc: "Si diseño listo en agosto · comunicación a base de clientes" }
       ]
     },
     performance: { history: [
@@ -160,16 +144,8 @@ const UNITS = [
         { tags: ["flyer", "auto-detectado"], meta: "25 jul", title: "️𝐒𝐔𝐆𝐄𝐑𝐄𝐍𝐂𝐈𝐀 𝐃𝐄𝐋 𝐂𝐇𝐄𝐅 ️", desc: "🍽️✨𝐒𝐔𝐆𝐄𝐑𝐄𝐍𝐂𝐈𝐀 𝐃𝐄𝐋 𝐂𝐇𝐄𝐅 ✨🍽️ . Te invitamos a descubrir una propuesta que combina sabor, color y calidad en cada bocado. . 🥟Capeletis de re...", likes: 2, shares: 0, image: "https://scontent-hkg1-1.cdninstagram.com/v/t39.30808-6/754936082_919485811170602_1088662190242723188_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeFs0BrjB1jSRfZLONUvtpfBDluO7BwrEUIOW47sHCsRQvMyIWmQwmGJ8rw1eUL5QtgGaPgzIu3UyVr4uIohEsA7&_nc_ohc=3k5yk1ZYzuYQ7kNvwHGDuOO&_nc_oc=Adp7sjL5cjYNBpKVdXV3ZxubuUG62ES80OUtbY_A8okIZbdZfNHjIsNYWTERts5W2-4&_nc_zt=23&_nc_ht=scontent-hkg1-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ixMoG55_WB95dq4Bw3pKpw&oh=00_AQBdZ1qv2M4YikAxQvoPcvASW-han9QAlP-7sIdxXdA28A&oe=6A6BB208", igId: "DbOG9lBH-WM" }
       ],
       agosto: [
-        { tags: ["pendiente"], meta: "", title: "Cena especial agosto", desc: "Slot reservado, formato y fecha a confirmar" },
-        { tags: ["contenido"], meta: "Agosto", title: "Sugerencia del chef", desc: "2 piezas semanales" },
-        { tags: ["canales"], meta: "Agosto", title: "Recordatorio FUDO + Riservi", desc: "" },
-        { tags: ["a evaluar"], meta: "Agosto", title: "¿Desafío de Sommelier Ronda 2?", desc: "Si el evento de julio funciona, evaluar repetir" }
       ],
       septiembre: [
-        { tags: ["pendiente"], meta: "", title: "Cena especial septiembre", desc: "Slot reservado, formato y fecha a confirmar" },
-        { tags: ["contenido"], meta: "Septiembre", title: "Sugerencia del chef", desc: "2 piezas semanales" },
-        { tags: ["canales"], meta: "Septiembre", title: "Recordatorio FUDO + Riservi", desc: "" },
-        { tags: ["contenido", "pautar selectivo"], meta: "Septiembre", title: "Contenido behind the scenes", desc: "Cocina · chef en acción · reels cortos" }
       ]
     },
     performance: { history: [
@@ -211,18 +187,8 @@ const UNITS = [
         { tags: ["carrusel", "auto-detectado"], meta: "14 jul", title: "️𝐖𝐈𝐍𝐄 𝐎𝐅𝐅 – La Batalla de Copas en Restó Ruta 11 ️", desc: "🍷⚔️𝐖𝐈𝐍𝐄 𝐎𝐅𝐅 – La Batalla de Copas en Restó Ruta 11 ⚔️🍷 . Una experiencia donde cada plato tiene dos historias... y vos decidís cuál se ll...", likes: 4, shares: 2, igId: "DayQ9nnn17D", image: "https://scontent.cdninstagram.com/v/t39.30808-6/747290153_1478219667667011_2472122607639105411_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeHat4d1ES3dDt-hMoUWMGo6QBS4-cgaTWVAFLj5yBpNZdhbUZJd5lsaw3yZ_opygwuf9O3ixmrwH1Ta9LSazbm6&_nc_ohc=3YITYZr9R14Q7kNvwHWcSLZ&_nc_oc=AdoH_rQMITAhhZSkxJcb-tagP6MwnNi2G-Xr_QlWKYXOMMf8ssP03Ls9Rgiiv-ZXod8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=zcEvyaE3E4BRMx1hC-I1Dg&oh=00_AQDqtS82IExenQvvcm-YbBub8OjV5E9Hcpqkg3wGNqiX5w&oe=6A691A0F" }
       ],
       agosto: [
-        { tags: ["contenido", "pautar"], meta: "Agosto", title: "Reels de espacios", desc: "Habitación · piscina · spa · bar. Un reel por espacio, aspiracionales." },
-        { tags: ["contenido", "pautar"], meta: "Agosto", title: "Experiencia completa", desc: "Check-in → habitación → Valentino → piscina → check-out." },
-        { tags: ["posicionamiento", "pautar"], meta: "Agosto", title: "El mejor hotel de Resistencia", desc: "Mensaje directo. Para quien viene por negocios, turismo o eventos." },
-        { tags: ["colaboración"], meta: "Agosto", title: "Cena temática agosto · Valentino", desc: "Post en colaboración cuando se confirme." },
-        { tags: ["Humand"], meta: "Agosto", title: "Novedades del hotel para colaboradores Gala SA", desc: "" }
       ],
       septiembre: [
-        { tags: ["posicionamiento", "pautar"], meta: "Septiembre", title: "Campaña de posicionamiento", desc: "“Si venís a Resistencia, acá es.”" },
-        { tags: ["contenido", "pautar selectivo"], meta: "Septiembre", title: "Corporativo y eventos", desc: "Salones, reuniones, servicios para grupos." },
-        { tags: ["colaboración"], meta: "Septiembre", title: "Cena temática septiembre · Valentino", desc: "Post en colaboración cuando se confirme." },
-        { tags: ["contenido"], meta: "Septiembre", title: "Valentino + hotel", desc: "Cruce gastronómico como parte de la estadía." },
-        { tags: ["Humand"], meta: "Septiembre", title: "Novedades del hotel para colaboradores Gala SA", desc: "" }
       ]
     },
     performance: { history: [
@@ -257,23 +223,13 @@ const UNITS = [
     months: {
       junio: [
         { tags: ["colaboración"], meta: "17 jun", title: "Mención en Ciudad TV Chaco", desc: "Nota sobre la Cena Maridaje de Resto Ruta 11 con el sommelier Carlos Downie", likes: 18 },
-        { tags: ["colaboración"], meta: "18 jun", title: "Evento — boda", desc: "Fotógrafo de bodas etiqueta al hotel como sede del evento", likes: 59 },
-        { tags: ["pendiente"], meta: "", title: "Cuenta propia con poca publicación directa", desc: "En junio casi todo el contenido llegó por etiquetas de proveedores/prensa, no publicaciones propias" }
+        { tags: ["colaboración"], meta: "18 jun", title: "Evento — boda", desc: "Fotógrafo de bodas etiqueta al hotel como sede del evento", likes: 59 }
       ],
       julio: [
       ],
       agosto: [
-        { tags: ["contenido", "pautar"], meta: "Agosto", title: "Reels de salones y espacios", desc: "Salón montado · detalles · capacidad. Para organizadores de eventos." },
-        { tags: ["contenido", "pautar"], meta: "Agosto", title: "Experiencia de estadía", desc: "Habitaciones · servicios · confort." },
-        { tags: ["colaboración"], meta: "Agosto", title: "Cena especial agosto · Ruta 11", desc: "Post en colaboración cuando se confirme." },
-        { tags: ["Humand"], meta: "Agosto", title: "Novedades del hotel para colaboradores Gala SA", desc: "" }
       ],
       septiembre: [
-        { tags: ["posicionamiento", "pautar"], meta: "Septiembre", title: "Campaña de posicionamiento", desc: "“El lugar de Resistencia donde pasan los eventos que importan.”" },
-        { tags: ["contenido", "pautar selectivo"], meta: "Septiembre", title: "Corporativo y convenciones", desc: "Empresas, instituciones, servicios para grupos." },
-        { tags: ["colaboración"], meta: "Septiembre", title: "Cena especial septiembre · Ruta 11", desc: "Post en colaboración cuando se confirme." },
-        { tags: ["contenido", "pautar"], meta: "Septiembre", title: "Anticipo temporada alta", desc: "Disponibilidad de salones para recepciones nov–dic." },
-        { tags: ["Humand"], meta: "Septiembre", title: "Novedades del hotel para colaboradores Gala SA", desc: "" }
       ]
     },
     performance: { history: [
@@ -311,16 +267,8 @@ const UNITS = [
       julio: [
       ],
       agosto: [
-        { tags: ["pendiente"], meta: "", title: "Acción de agosto", desc: "Incentivo mensual a confirmar. Puede ser sorteo, beneficio o nuevo descuento." },
-        { tags: ["ecommerce", "WhatsApp"], meta: "Agosto", title: "Recordatorio plataforma", desc: "Para padres que no ingresaron. “Todavía estás a tiempo.”" },
-        { tags: ["contenido", "pautar selectivo"], meta: "Agosto", title: "Novedades en redes", desc: "Detrás de escena de una recepción Gala." },
-        { tags: ["contenido"], meta: "Agosto", title: "Anticipo BOX de comida", desc: "“Algo nuevo llega en septiembre.” Generar intriga." }
       ],
       septiembre: [
-        { tags: ["BOX de comida", "pautar"], meta: "Septiembre", title: "Lanzamiento BOX Clásico y BOX Gourmet", desc: "Nuevo producto de Gala Recepciones. “Tenés todo con nosotros.”" },
-        { tags: ["contenido", "WhatsApp"], meta: "Septiembre", title: "17 noches · nov–dic", desc: "Recordar a padres que completen pagos antes de la temporada." },
-        { tags: ["promoción"], meta: "Septiembre", title: "Acción del mes", desc: "A definir. Puede vincularse al BOX o al cierre de pagos." },
-        { tags: ["contenido", "pautar"], meta: "Septiembre", title: "Redes · detrás de escena", desc: "Preparativos, salones, detalles de una recepción Gala." }
       ]
     },
     performance: { history: [
