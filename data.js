@@ -77,7 +77,8 @@ const UNITS = [
         { date: "2026-08-10", views: 167, likes: 0, comments: 0, shares: 1, saves: 0, interactions: 2, reach: 76, profileViews: 9, followers: 3916, followersDelta: 1, fbFollowers: 3115, fbInteractions: 0 },
         { date: "2026-08-11", views: 118, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 1, reach: 61, profileViews: 9, followers: 3915, followersDelta: -1, fbFollowers: 3117, fbInteractions: 0 },
         { date: "2026-08-12", views: 13, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 4, profileViews: 4, followers: 3915, followersDelta: 0, fbFollowers: 3116, fbInteractions: 0 },
-        { date: "2026-08-13", views: 21, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 6, profileViews: 7, followers: 3914, followersDelta: -1, fbFollowers: 3116, fbInteractions: 0 }
+        { date: "2026-08-13", views: 21, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 6, profileViews: 7, followers: 3914, followersDelta: -1, fbFollowers: 3116, fbInteractions: 0 },
+        { date: "2026-08-14", views: 39, likes: 0, comments: 0, shares: 2, saves: 0, interactions: 4, reach: 10, profileViews: 10, followers: 3912, followersDelta: -2, fbFollowers: 3116, fbInteractions: 0 }
       ] }
   },
   {
@@ -147,7 +148,8 @@ const UNITS = [
         { date: "2026-08-10", views: 302, likes: 2, comments: 0, shares: 0, saves: 0, interactions: 2, reach: 210, profileViews: 13, followers: 6447, followersDelta: 2, fbFollowers: 7092, fbInteractions: 0 },
         { date: "2026-08-11", views: 276, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 193, profileViews: 8, followers: 6446, followersDelta: -1, fbFollowers: 7091, fbInteractions: 0 },
         { date: "2026-08-12", views: 468, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 1, reach: 197, profileViews: 42, followers: 6444, followersDelta: -2, fbFollowers: 7091, fbInteractions: 0 },
-        { date: "2026-08-13", views: 279, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 167, profileViews: 19, followers: 6443, followersDelta: -1, fbFollowers: 7092, fbInteractions: 0 }
+        { date: "2026-08-13", views: 279, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 167, profileViews: 19, followers: 6443, followersDelta: -1, fbFollowers: 7092, fbInteractions: 0 },
+        { date: "2026-08-14", views: 325, likes: 4, comments: 0, shares: 0, saves: 0, interactions: 4, reach: 176, profileViews: 16, followers: 6441, followersDelta: -2, fbFollowers: 7092, fbInteractions: 0 }
       ] }
   },
   {
@@ -215,7 +217,8 @@ const UNITS = [
         { date: "2026-08-10", views: 77, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 20, profileViews: 3, followers: 1195, followersDelta: 1, fbFollowers: 170, fbInteractions: 0 },
         { date: "2026-08-11", views: 85, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 27, profileViews: 2, followers: 1196, followersDelta: 1, fbFollowers: 170, fbInteractions: 0 },
         { date: "2026-08-12", views: 79, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 27, profileViews: 2, followers: 1196, followersDelta: 0, fbFollowers: 170, fbInteractions: 0 },
-        { date: "2026-08-13", views: 91, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 31, profileViews: 0, followers: 1196, followersDelta: 0, fbFollowers: 170, fbInteractions: 0 }
+        { date: "2026-08-13", views: 91, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 31, profileViews: 0, followers: 1196, followersDelta: 0, fbFollowers: 170, fbInteractions: 0 },
+        { date: "2026-08-14", views: 219, likes: 2, comments: 0, shares: 0, saves: 0, interactions: 2, reach: 55, profileViews: 2, followers: 1197, followersDelta: 1, fbFollowers: 169, fbInteractions: 0 }
       ] }
   },
   {
@@ -236,8 +239,8 @@ const UNITS = [
         { tags: ["carrusel", "auto-detectado"], meta: "14 jul", title: "️𝐖𝐈𝐍𝐄 𝐎𝐅𝐅 – La Batalla de Copas en Restó Ruta 11 ️", desc: "🍷⚔️𝐖𝐈𝐍𝐄 𝐎𝐅𝐅 – La Batalla de Copas en Restó Ruta 11 ⚔️🍷 . Una experiencia donde cada plato tiene dos historias... y vos decidís cuál se ll...", likes: 4, shares: 2, igId: "DayQ9nnn17D", image: "https://scontent.cdninstagram.com/v/t39.30808-6/747290153_1478219667667011_2472122607639105411_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeHat4d1ES3dDt-hMoUWMGo6QBS4-cgaTWVAFLj5yBpNZdhbUZJd5lsaw3yZ_opygwuf9O3ixmrwH1Ta9LSazbm6&_nc_ohc=3YITYZr9R14Q7kNvwHWcSLZ&_nc_oc=AdoH_rQMITAhhZSkxJcb-tagP6MwnNi2G-Xr_QlWKYXOMMf8ssP03Ls9Rgiiv-ZXod8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=zcEvyaE3E4BRMx1hC-I1Dg&oh=00_AQDqtS82IExenQvvcm-YbBub8OjV5E9Hcpqkg3wGNqiX5w&oe=6A691A0F" }
       ],
       agosto: [
-        { tags: ["carrusel", "auto-detectado"], meta: "13 ago", title: "Hay estadías que son mucho más que un lugar donde dormir. Son parte...", desc: "✨ Hay estadías que son mucho más que un lugar donde dormir. Son parte del viaje, de los momentos que elegimos disfrutar y de la ciudad qu...", likes: 17, shares: 3, image: "https://scontent-dfw5-1.cdninstagram.com/v/t39.30808-6/773403018_1503864251769219_3910170251254306058_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeGlaknrGfViqQryD2CiULliB8dBAvlPJpAHx0EC-U8mkMGD2OjXLv_EXMKFTT5UiE_awloEZ4UEzRm4X_bnBLhF&_nc_ohc=a3blZ7aIfB4Q7kNvwE4zu3W&_nc_oc=Adqi8_izlhxfEJ7c1FYZbayB8e43a9hb8VhV8pNlbexyGKjcVO9TcSkk8ukTbhOmbEM&_nc_zt=23&_nc_ht=scontent-dfw5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=VJynxKFb2280sD7FgIiMKg&oh=00_AQEBoWPskmTHDLxGVomBdZyRJz_EJRA9asZ9wHVM_fKehQ&oe=6A84BFDE", igId: "Db-7fIVn2T4" }
-      
+        { tags: ["carrusel", "auto-detectado"], meta: "13 ago", title: "Hay estadías que son mucho más que un lugar donde dormir. Son parte...", desc: "✨ Hay estadías que son mucho más que un lugar donde dormir. Son parte del viaje, de los momentos que elegimos disfrutar y de la ciudad qu...", likes: 17, shares: 3, image: "https://scontent-dfw5-1.cdninstagram.com/v/t39.30808-6/773403018_1503864251769219_3910170251254306058_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeGlaknrGfViqQryD2CiULliB8dBAvlPJpAHx0EC-U8mkMGD2OjXLv_EXMKFTT5UiE_awloEZ4UEzRm4X_bnBLhF&_nc_ohc=a3blZ7aIfB4Q7kNvwE4zu3W&_nc_oc=Adqi8_izlhxfEJ7c1FYZbayB8e43a9hb8VhV8pNlbexyGKjcVO9TcSkk8ukTbhOmbEM&_nc_zt=23&_nc_ht=scontent-dfw5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=VJynxKFb2280sD7FgIiMKg&oh=00_AQEBoWPskmTHDLxGVomBdZyRJz_EJRA9asZ9wHVM_fKehQ&oe=6A84BFDE", igId: "Db-7fIVn2T4" },
+        { tags: ["flyer", "auto-detectado"], meta: "14 ago", title: "Tu próxima estadía en el corazón de Resistencia empieza con un mensaje", desc: "✨ Tu próxima estadía en el corazón de Resistencia empieza con un mensaje📲 En Amérian Hotel Casino Gala queremos estar más cerca desde el...", likes: 11, shares: 1, image: "https://scontent-ord5-1.cdninstagram.com/v/t39.30808-6/776578652_1504932198329091_9169808266127556401_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeGhSe1wxmNtYSkn2mVtrPjK07sgjiSXlgLTuyCOJJeWAgZ93l-ptjv7s0ICCJ-wNmLbwVeJKZ2OTqMJcIZ5U2Mq&_nc_ohc=PHrR9SX_lV8Q7kNvwFAMRty&_nc_oc=AdoWEzPJIO-eClk4Kk-UpgrfI4ql55j0avzxnPQqsP_9G0DxMUVCSXFUs4pY2FTcIvQ&_nc_zt=23&_nc_ht=scontent-ord5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=1Biq9t2Q7GJsWolltj2_hQ&oh=00_AQEwDMNRwkYq4qI275q0HYZJSKOQ4DgYxzCMkXuuo_9Vxw&oe=6A8633C2", igId: "DcCB3gkn86x" }
       ],
       septiembre: [
       ]
@@ -275,7 +278,8 @@ const UNITS = [
         { date: "2026-08-10", views: 144, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 5, profileViews: 11, followers: 8813, followersDelta: 2, fbFollowers: 15650, fbInteractions: 0 },
         { date: "2026-08-11", views: 103, likes: 0, comments: 0, shares: 8, saves: 0, interactions: 16, reach: 4, profileViews: 6, followers: 8811, followersDelta: -2, fbFollowers: 15651, fbInteractions: 0 },
         { date: "2026-08-12", views: 237, likes: 1, comments: 0, shares: 0, saves: 0, interactions: 1, reach: 10, profileViews: 21, followers: 8813, followersDelta: 2, fbFollowers: 15650, fbInteractions: 0 },
-        { date: "2026-08-13", views: 1188, likes: 17, comments: 0, shares: 3, saves: 0, interactions: 23, reach: 535, profileViews: 26, followers: 8817, followersDelta: 4, fbFollowers: 15650, fbInteractions: 1 }
+        { date: "2026-08-13", views: 1188, likes: 17, comments: 0, shares: 3, saves: 0, interactions: 23, reach: 535, profileViews: 26, followers: 8817, followersDelta: 4, fbFollowers: 15650, fbInteractions: 1 },
+        { date: "2026-08-14", views: 1518, likes: 14, comments: 0, shares: 2, saves: 0, interactions: 18, reach: 782, profileViews: 44, followers: 8817, followersDelta: 0, fbFollowers: 15649 }
       ] }
   },
   {
@@ -294,8 +298,8 @@ const UNITS = [
       julio: [
       ],
       agosto: [
-        { tags: ["carrusel", "auto-detectado"], meta: "7 ago", title: "️ Tu mejor parada en la ruta puede ser parte del viaje.", desc: "🛣️ Tu mejor parada en la ruta puede ser parte del viaje. Si estás de paso por Resistencia, hacé una pausa como corresponde: estacioná tra...", likes: 22, shares: 1, image: "https://scontent-sjc6-1.cdninstagram.com/v/t39.30808-6/765917402_1383118167294616_2586101384701301166_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeHu5Ram5bznH7X4SnoC4O6OOTJcjrjgrSY5MlyOuOCtJosDYYm6pkFvwMZTyFVCg6GQprUSksVs4UD_rGmHPhA3&_nc_ohc=Q7ztu0vIYhgQ7kNvwF3FFFA&_nc_oc=AdrspA4mhaUd2C63pwTMCvZk-XjwRgnjlxiXUV4Jo54Xu_c3dBnVUOxNbq7jtNlMMvg&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=yXGyAGefoctW1XdGHR_PNg&oh=00_AQGGw9NX3taQWK9kmZ2_bi82_aUHRtoB1TCg69xtygbfdA&oe=6A7CCB3E", igId: "Dbv906wnyME" }
-      
+        { tags: ["carrusel", "auto-detectado"], meta: "7 ago", title: "️ Tu mejor parada en la ruta puede ser parte del viaje.", desc: "🛣️ Tu mejor parada en la ruta puede ser parte del viaje. Si estás de paso por Resistencia, hacé una pausa como corresponde: estacioná tra...", likes: 22, shares: 1, image: "https://scontent-sjc6-1.cdninstagram.com/v/t39.30808-6/765917402_1383118167294616_2586101384701301166_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeHu5Ram5bznH7X4SnoC4O6OOTJcjrjgrSY5MlyOuOCtJosDYYm6pkFvwMZTyFVCg6GQprUSksVs4UD_rGmHPhA3&_nc_ohc=Q7ztu0vIYhgQ7kNvwF3FFFA&_nc_oc=AdrspA4mhaUd2C63pwTMCvZk-XjwRgnjlxiXUV4Jo54Xu_c3dBnVUOxNbq7jtNlMMvg&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=yXGyAGefoctW1XdGHR_PNg&oh=00_AQGGw9NX3taQWK9kmZ2_bi82_aUHRtoB1TCg69xtygbfdA&oe=6A7CCB3E", igId: "Dbv906wnyME" },
+        { tags: ["flyer", "auto-detectado"], meta: "14 ago", title: "️ Tu mejor parada en la ruta, ahora más cerca.", desc: "🛣️ Tu mejor parada en la ruta, ahora más cerca. . Si estás planificando tu paso por Resistencia, queremos que reservar tu estadía sea más...", likes: 5, shares: 1, image: "https://scontent-ord5-2.cdninstagram.com/v/t39.30808-6/776253020_1389061126700320_7415349529159079769_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_eui2=AeEwzUK7yfxbGA6ymJpm84oGsnAqKFrJsVmycCooWsmxWbtAwAilzDtnLS5MuVFGzk5fd_oJO7p0lhmWT2ZtByeC&_nc_ohc=MA3r6lePC7AQ7kNvwFFM9To&_nc_oc=AdriQt0cTqy08ecVUUk27f9eC93eArkgxkoRefAqSkrXp40eLWQ9SjwIWTXSxO5flCc&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=dI77a2pXs6oBDAFGZbVkdw&oh=00_AQEtynTiFvh-L0yEHrfE5oaJV0mG6blbLTuRY4-V7kLINw&oe=6A862D2A", igId: "DcCCZTxH6TI" }
       ],
       septiembre: [
       ]
@@ -333,7 +337,8 @@ const UNITS = [
         { date: "2026-08-10", views: 1202, likes: 20, comments: 0, shares: 4, saves: 0, interactions: 28, reach: 92, profileViews: 51, followers: 19665, followersDelta: -5, fbFollowers: 17817, fbInteractions: 0 },
         { date: "2026-08-11", views: 1285, likes: 18, comments: 0, shares: 5, saves: 3, interactions: 31, reach: 134, profileViews: 66, followers: 19671, followersDelta: 6, fbFollowers: 17817, fbInteractions: 0 },
         { date: "2026-08-12", views: 877, likes: 6, comments: 2, shares: 3, saves: 2, interactions: 16, reach: 73, profileViews: 80, followers: 19672, followersDelta: 1, fbFollowers: 17817, fbInteractions: 0 },
-        { date: "2026-08-13", views: 985, likes: 10, comments: 2, shares: 2, saves: 2, interactions: 18, reach: 62, profileViews: 66, followers: 19679, followersDelta: 7, fbFollowers: 17815, fbInteractions: 0 }
+        { date: "2026-08-13", views: 985, likes: 10, comments: 2, shares: 2, saves: 2, interactions: 18, reach: 62, profileViews: 66, followers: 19679, followersDelta: 7, fbFollowers: 17815, fbInteractions: 0 },
+        { date: "2026-08-14", views: 2902, likes: 30, comments: 0, shares: 2, saves: 1, interactions: 35, reach: 1018, profileViews: 147, followers: 19682, followersDelta: 3, fbFollowers: 17817, fbInteractions: 0 }
       ] }
   },
   {
@@ -387,7 +392,8 @@ const UNITS = [
         { date: "2026-08-10", views: 102, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 7, profileViews: 7, followers: 514, followersDelta: 1, fbFollowers: 1, fbInteractions: 0 },
         { date: "2026-08-11", views: 37, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 6, profileViews: 8, followers: 515, followersDelta: 1, fbFollowers: 1, fbInteractions: 0 },
         { date: "2026-08-12", views: 33, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 5, profileViews: 2, followers: 515, followersDelta: 0, fbFollowers: 1, fbInteractions: 0 },
-        { date: "2026-08-13", views: 55, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 7, profileViews: 3, followers: 515, followersDelta: 0, fbFollowers: 1, fbInteractions: 0 }
+        { date: "2026-08-13", views: 55, likes: 0, comments: 0, shares: 0, saves: 0, interactions: 0, reach: 7, profileViews: 3, followers: 515, followersDelta: 0, fbFollowers: 1, fbInteractions: 0 },
+        { date: "2026-08-14", views: 271, likes: 3, comments: 0, shares: 0, saves: 0, interactions: 3, reach: 13, profileViews: 7, followers: 516, followersDelta: 1, fbFollowers: 2, fbInteractions: 0 }
       ] }
   }
 ];
