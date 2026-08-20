@@ -39,51 +39,50 @@ const WEEKDAY_LABELS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
 // 18-ago-2026. Si el cronograma cambia, se edita este objeto directamente.
 const ACT_MONTH_ORDER = ["agosto", "septiembre", "octubre"];
 const ACT_TYPE_LABELS = { folklore: "🪕 Folklore", cumbia: "🥁 Cumbia", boxie: "🎮 Jueves Boxie", experiencia: "✨ La Experiencia" };
+// Arranca la semana del 24-30 de agosto (confirmado con Jessica el
+// 20-ago-2026 — el cronograma original arrancaba "esta semana", pero en
+// realidad arranca la semana que viene, así que todo se corrió +7 días).
 const CASINO_ACTIVITIES = {
   agosto: [
-    { day: 19, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
-    { day: 20, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
-    { day: 21, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
-    { day: 22, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" },
     { day: 26, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
-    { day: 27, dia: "Jueves", tipo: "boxie", sala: "Sala Sáenz Peña" },
-    { day: 28, dia: "Viernes", tipo: "cumbia", sala: "Sala Barranqueras" }
+    { day: 27, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
+    { day: 28, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
+    { day: 29, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" }
   ],
   septiembre: [
     { day: 2, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
-    { day: 3, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
-    { day: 4, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
-    { day: 5, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" },
+    { day: 3, dia: "Jueves", tipo: "boxie", sala: "Sala Sáenz Peña" },
+    { day: 4, dia: "Viernes", tipo: "cumbia", sala: "Sala Barranqueras" },
     { day: 9, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
-    { day: 10, dia: "Jueves", tipo: "boxie", sala: "Sala Sáenz Peña" },
-    { day: 11, dia: "Viernes", tipo: "cumbia", sala: "Sala Barranqueras" },
+    { day: 10, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
+    { day: 11, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
+    { day: 12, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" },
     { day: 16, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
-    { day: 17, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
-    { day: 18, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
-    { day: 19, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" },
+    { day: 17, dia: "Jueves", tipo: "boxie", sala: "Sala Sáenz Peña" },
+    { day: 18, dia: "Viernes", tipo: "cumbia", sala: "Sala Barranqueras" },
     { day: 23, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
-    { day: 24, dia: "Jueves", tipo: "boxie", sala: "Sala Sáenz Peña" },
-    { day: 25, dia: "Viernes", tipo: "cumbia", sala: "Sala Barranqueras" },
+    { day: 24, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
+    { day: 25, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
+    { day: 26, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" },
     { day: 30, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" }
   ],
   octubre: [
-    { day: 1, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
-    { day: 2, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
-    { day: 3, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" },
+    { day: 1, dia: "Jueves", tipo: "boxie", sala: "Sala Sáenz Peña" },
+    { day: 2, dia: "Viernes", tipo: "cumbia", sala: "Sala Barranqueras" },
     { day: 7, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
-    { day: 8, dia: "Jueves", tipo: "boxie", sala: "Sala Sáenz Peña" },
-    { day: 9, dia: "Viernes", tipo: "cumbia", sala: "Sala Barranqueras" },
+    { day: 8, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
+    { day: 9, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
+    { day: 10, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" },
     { day: 14, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
-    { day: 15, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
-    { day: 16, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
-    { day: 17, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" },
+    { day: 15, dia: "Jueves", tipo: "boxie", sala: "Sala Sáenz Peña" },
+    { day: 16, dia: "Viernes", tipo: "cumbia", sala: "Sala Barranqueras" },
     { day: 21, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
-    { day: 22, dia: "Jueves", tipo: "boxie", sala: "Sala Sáenz Peña" },
-    { day: 23, dia: "Viernes", tipo: "cumbia", sala: "Sala Barranqueras" },
+    { day: 22, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
+    { day: 23, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
+    { day: 24, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" },
     { day: 28, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
-    { day: 29, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
-    { day: 30, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
-    { day: 31, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" }
+    { day: 29, dia: "Jueves", tipo: "boxie", sala: "Sala Sáenz Peña" },
+    { day: 30, dia: "Viernes", tipo: "cumbia", sala: "Sala Barranqueras" }
   ]
 };
 
