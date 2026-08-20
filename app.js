@@ -28,10 +28,64 @@ const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
 const MONTH_ORDER = ["junio", "julio", "agosto", "septiembre"];
-const MONTH_LABELS = { junio: "Junio", julio: "Julio", agosto: "Agosto", septiembre: "Septiembre" };
+const MONTH_LABELS = { junio: "Junio", julio: "Julio", agosto: "Agosto", septiembre: "Septiembre", octubre: "Octubre" };
 const MONTH_NUM = { ene: 0, feb: 1, mar: 2, abr: 3, may: 4, jun: 5, jul: 6, ago: 7, sep: 8, oct: 9, nov: 10, dic: 11 };
-const MONTH_TO_ABBR = { junio: "jun", julio: "jul", agosto: "ago", septiembre: "sep" };
+const MONTH_TO_ABBR = { junio: "jun", julio: "jul", agosto: "ago", septiembre: "sep", octubre: "oct" };
 const WEEKDAY_LABELS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
+
+// ---------- Sección: Actividades (cronograma de eventos en sala, Casino Gala) ----------
+// A diferencia del Calendario (posts de Instagram), esto son eventos físicos en las
+// salas — no viene de data.js ni de Firestore, es fijo, definido en la reunión del
+// 18-ago-2026. Si el cronograma cambia, se edita este objeto directamente.
+const ACT_MONTH_ORDER = ["agosto", "septiembre", "octubre"];
+const ACT_TYPE_LABELS = { folklore: "🪕 Folklore", cumbia: "🥁 Cumbia", boxie: "🎮 Jueves Boxie", experiencia: "✨ La Experiencia" };
+const CASINO_ACTIVITIES = {
+  agosto: [
+    { day: 19, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
+    { day: 20, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
+    { day: 21, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
+    { day: 22, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" },
+    { day: 26, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
+    { day: 27, dia: "Jueves", tipo: "boxie", sala: "Sala Sáenz Peña" },
+    { day: 28, dia: "Viernes", tipo: "cumbia", sala: "Sala Barranqueras" }
+  ],
+  septiembre: [
+    { day: 2, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
+    { day: 3, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
+    { day: 4, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
+    { day: 5, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" },
+    { day: 9, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
+    { day: 10, dia: "Jueves", tipo: "boxie", sala: "Sala Sáenz Peña" },
+    { day: 11, dia: "Viernes", tipo: "cumbia", sala: "Sala Barranqueras" },
+    { day: 16, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
+    { day: 17, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
+    { day: 18, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
+    { day: 19, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" },
+    { day: 23, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
+    { day: 24, dia: "Jueves", tipo: "boxie", sala: "Sala Sáenz Peña" },
+    { day: 25, dia: "Viernes", tipo: "cumbia", sala: "Sala Barranqueras" },
+    { day: 30, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" }
+  ],
+  octubre: [
+    { day: 1, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
+    { day: 2, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
+    { day: 3, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" },
+    { day: 7, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
+    { day: 8, dia: "Jueves", tipo: "boxie", sala: "Sala Sáenz Peña" },
+    { day: 9, dia: "Viernes", tipo: "cumbia", sala: "Sala Barranqueras" },
+    { day: 14, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
+    { day: 15, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
+    { day: 16, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
+    { day: 17, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" },
+    { day: 21, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
+    { day: 22, dia: "Jueves", tipo: "boxie", sala: "Sala Sáenz Peña" },
+    { day: 23, dia: "Viernes", tipo: "cumbia", sala: "Sala Barranqueras" },
+    { day: 28, dia: "Miércoles", tipo: "folklore", sala: "Sala Central" },
+    { day: 29, dia: "Jueves", tipo: "boxie", sala: "Sala Güemes" },
+    { day: 30, dia: "Viernes", tipo: "cumbia", sala: "Sala Ruta 11" },
+    { day: 31, dia: "Sábado", tipo: "experiencia", sala: "Sala Central | Paño" }
+  ]
+};
 
 const THUMB_STYLES = {
   reel: { gradient: "linear-gradient(135deg, #3a2a5c, #1c1030)", icon: "🎬" },
@@ -47,6 +101,7 @@ const PLATFORM_LABELS = { instagram: "Instagram", facebook: "Facebook", tiktok: 
 const SECTIONS = [
   { key: "resumen", label: "Resumen", icon: "📊" },
   { key: "calendario", label: "Calendario", icon: "🗓️" },
+  { key: "actividades", label: "Actividades", icon: "🎪" },
   { key: "contenido", label: "Contenido", icon: "🗂️" },
   { key: "ideas", label: "Ideas", icon: "💡" },
   { key: "guiones", label: "Guiones", icon: "✍️" },
@@ -255,6 +310,7 @@ let currentUnitId = null;
 let currentSection = "resumen";
 let currentContentFilter = "todos";
 let currentCalMonth = "julio";
+let currentActMonth = "agosto";
 
 // ---------- Sección: Resumen ----------
 
@@ -448,6 +504,73 @@ function renderCalendario(unit) {
         <button type="button" class="cal-nav-arrow" id="cal-prev-month" ${currentCalMonth === MONTH_ORDER[0] ? "disabled" : ""}>‹</button>
         <h3 class="cal-month-nav__label">${MONTH_LABELS[currentCalMonth]} <span class="cal-month-nav__year">2026</span></h3>
         <button type="button" class="cal-nav-arrow" id="cal-next-month" ${currentCalMonth === MONTH_ORDER[MONTH_ORDER.length - 1] ? "disabled" : ""}>›</button>
+      </div>
+      <div class="cal-grid" style="grid-template-rows: auto repeat(${weekRows}, 1fr)">
+        ${WEEKDAY_LABELS.map((w) => `<div class="cal-weekday">${w}</div>`).join("")}
+        ${cells}
+      </div>
+    </div>
+  `;
+}
+
+// ---------- Sección: Actividades ----------
+
+function renderActividades(unit) {
+  if (unit.id !== "casino-gala") {
+    return `
+      <div class="section-block">
+        <div class="panel">
+          <h3 class="panel__title">Actividades</h3>
+          <p class="empty-note">Todavía no hay un cronograma de actividades cargado para esta unidad.</p>
+        </div>
+      </div>
+    `;
+  }
+
+  const monthIdx = MONTH_NUM[MONTH_TO_ABBR[currentActMonth]];
+  const daysInMonth = new Date(2026, monthIdx + 1, 0).getDate();
+  const firstDay = new Date(2026, monthIdx, 1);
+  const leadingBlanks = (firstDay.getDay() + 6) % 7;
+  const totalCells = leadingBlanks + daysInMonth;
+  const weekRows = Math.ceil(totalCells / 7);
+  const monthActivities = CASINO_ACTIVITIES[currentActMonth] || [];
+
+  let cells = "";
+  for (let i = 0; i < leadingBlanks; i++) cells += `<div class="cal-cell cal-cell--blank"></div>`;
+  for (let day = 1; day <= daysInMonth; day++) {
+    const act = monthActivities.find((a) => a.day === day);
+    const isToday = (() => {
+      const t = new Date();
+      return t.getFullYear() === 2026 && t.getMonth() === monthIdx && t.getDate() === day;
+    })();
+    const cls = [
+      "cal-cell",
+      "cal-cell--static",
+      !act ? "cal-cell--empty" : "",
+      isToday ? "cal-cell--today" : ""
+    ].filter(Boolean).join(" ");
+    cells += `
+      <div class="${cls}">
+        <span class="cal-cell__day">${day}</span>
+        ${act ? `
+          <div class="act-chip act-chip--${act.tipo}">
+            <span class="act-chip__title">${ACT_TYPE_LABELS[act.tipo]}</span>
+            <span class="act-chip__sala">${act.sala}</span>
+          </div>
+        ` : ""}
+      </div>
+    `;
+  }
+
+  return `
+    <div class="cal-fullscreen">
+      <div class="cal-month-nav">
+        <button type="button" class="cal-nav-arrow" id="act-prev-month" ${currentActMonth === ACT_MONTH_ORDER[0] ? "disabled" : ""}>‹</button>
+        <h3 class="cal-month-nav__label">${MONTH_LABELS[currentActMonth]} <span class="cal-month-nav__year">2026</span></h3>
+        <button type="button" class="cal-nav-arrow" id="act-next-month" ${currentActMonth === ACT_MONTH_ORDER[ACT_MONTH_ORDER.length - 1] ? "disabled" : ""}>›</button>
+      </div>
+      <div class="act-legend">
+        ${Object.entries(ACT_TYPE_LABELS).map(([tipo, label]) => `<span class="act-legend__item act-legend__item--${tipo}">${label}</span>`).join("")}
       </div>
       <div class="cal-grid" style="grid-template-rows: auto repeat(${weekRows}, 1fr)">
         ${WEEKDAY_LABELS.map((w) => `<div class="cal-weekday">${w}</div>`).join("")}
@@ -1760,13 +1883,14 @@ function renderUnit(unit) {
   let sectionHtml = "";
   if (currentSection === "resumen") sectionHtml = renderResumen(unit);
   else if (currentSection === "calendario") sectionHtml = renderCalendario(unit);
+  else if (currentSection === "actividades") sectionHtml = renderActividades(unit);
   else if (currentSection === "contenido") sectionHtml = renderContenido(unit);
   else if (currentSection === "ideas") sectionHtml = renderIdeas(unit);
   else if (currentSection === "guiones") sectionHtml = renderGuiones(unit);
   else if (currentSection === "carruseles") sectionHtml = renderCarruseles(unit);
   else if (currentSection === "metricas") sectionHtml = renderMetricas(unit);
 
-  content.classList.toggle("main--full", currentSection === "calendario");
+  content.classList.toggle("main--full", currentSection === "calendario" || currentSection === "actividades");
 
   content.innerHTML = `
     <div class="unit-header">
@@ -1870,6 +1994,16 @@ function initContentEvents() {
       const nextIdx = e.target.id === "cal-prev-month" ? idx - 1 : idx + 1;
       if (nextIdx >= 0 && nextIdx < MONTH_ORDER.length) {
         currentCalMonth = MONTH_ORDER[nextIdx];
+        const unit = UNITS.find((u) => u.id === currentUnitId);
+        if (unit) renderUnit(unit);
+      }
+      return;
+    }
+    if (e.target.id === "act-prev-month" || e.target.id === "act-next-month") {
+      const idx = ACT_MONTH_ORDER.indexOf(currentActMonth);
+      const nextIdx = e.target.id === "act-prev-month" ? idx - 1 : idx + 1;
+      if (nextIdx >= 0 && nextIdx < ACT_MONTH_ORDER.length) {
+        currentActMonth = ACT_MONTH_ORDER[nextIdx];
         const unit = UNITS.find((u) => u.id === currentUnitId);
         if (unit) renderUnit(unit);
       }

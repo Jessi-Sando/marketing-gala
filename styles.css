@@ -630,6 +630,66 @@ main.main--full .section-nav { margin-bottom: 0.9rem; }
   padding: 0.1rem 0.15rem;
 }
 
+/* ---------- Actividades (cronograma de eventos en sala) ---------- */
+
+.cal-cell--static { cursor: default; }
+.cal-cell--static:hover { border-color: var(--border-soft); }
+.cal-cell--static.cal-cell--today:hover { border-color: var(--accent); }
+
+.act-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-bottom: 0.9rem;
+}
+
+.act-legend__item {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--act-color, var(--border-soft));
+  color: var(--act-color, var(--text-muted));
+}
+
+.act-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.68rem;
+  border-radius: 6px;
+  padding: 0.3rem 0.4rem;
+  background: color-mix(in srgb, var(--act-color, var(--accent)) 16%, var(--bg-sunken));
+  border: 1px solid color-mix(in srgb, var(--act-color, var(--accent)) 45%, transparent);
+}
+
+.act-chip__title {
+  color: var(--act-color, var(--text));
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.act-chip__sala {
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.act-chip--folklore, .act-legend__item--folklore { --act-color: #C9A84C; }
+.act-chip--cumbia, .act-legend__item--cumbia { --act-color: #E0507A; }
+.act-chip--boxie, .act-legend__item--boxie { --act-color: #3FA9A0; }
+.act-chip--experiencia, .act-legend__item--experiencia { --act-color: #8B6FD9; }
+
+@media (max-width: 640px) {
+  .act-chip__sala { display: none; }
+  .act-legend { gap: 0.35rem; }
+  .act-legend__item { font-size: 0.6rem; padding: 0.2rem 0.4rem; }
+}
+
 /* ---------- Panel lateral: lista del día + editor unificado ---------- */
 
 .day-panel-backdrop {
